@@ -31,6 +31,9 @@ Bundle 'joonty/vim-phpqa'
 Bundle 'vim-scripts/phpfolding.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'drslump/vim-syntax-js'
+Bundle 'kgust/sql.vim'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'vim-scripts/matchit.zip'
 
 " Medium Priority
 "Bundle 'thinca/vim-fontzoom'
@@ -47,7 +50,6 @@ Bundle 'drslump/vim-syntax-js'
 " Disabled
 "Bundle 'vim-scripts/HTML-AutoCloseTag'
 "Bundle 'vim-scripts/Color-Sampler-Pack'
-"Bundle 'vim-scripts/matchit.zip'
 "Bundle 'spf13/PIV'
 "Bundle 'vim-scripts/gtags.vim'
 "Bundle 'othree/html5.vim'
