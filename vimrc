@@ -277,6 +277,17 @@
         let g:syntax_js=['function', 'return', 'solarized']
         let g:solarized_contrast='normal'
         let g:solarized_visibility='low'
+
+        " Detect jQuery plugins
+        autocmd BufNewFile,BufRead *.plugin.js set filetype=javascript syntax=jquery
+        autocmd BufNewFile,BufRead jquery.*.js set filetype=javascript syntax=jquery
+
+        " Detect twig filetype
+        autocmd BufNewFile,BufRead *.txt.twig set filetype=txt syntax=jinja
+        autocmd BufNewFile,BufRead *.html.twig set filetype=html syntax=htmljinja
+
+        " Make sure help set properly for PHP files
+        autocmd FileType php set kp=:help
     " }
     " NerdCommenter {
         let g:NERDCustomDelimiters = {
