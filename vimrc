@@ -278,6 +278,14 @@
         let g:solarized_contrast='normal'
         let g:solarized_visibility='low'
     " }
+    " NerdCommenter {
+        let g:NERDCustomDelimiters = {
+                \ 'rubyX': { 'left': '#', 'leftAlt': 'FOO', 'rightAlt': 'BAR' },
+                \ 'grondle': { 'left': '{{', 'right': '}}' },
+                \ 'sql': { 'left': '-- ' }
+            \ }
+
+    " }
     " OmniComplete {
         "if has("autocmd") && exists("+omnifunc")
             "autocmd Filetype *
@@ -367,6 +375,9 @@
         let g:sqlutil_align_first_word = 1
         let g:sqlutil_align_keyword_right = 1
         let g:sqlutil_keyword_case = '\U'
+
+        " Set the DB type
+        let g:sql_type_default = 'mysql'
     " }
     " Supertab {
         let g:SuperTabDefaultCompletionType = "context"
