@@ -14,8 +14,8 @@
     source ~/.vim/repos.vim
 " }
 " General {
-	filetype plugin indent on     " required!
-	scriptencoding utf-8
+    filetype plugin indent on     " required!
+    scriptencoding utf-8
     set autowrite
     set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
     set hidden                      " Turn on hidden mode
@@ -208,8 +208,8 @@
         let g:ctrlp_map = '<C-p>'
         let g:ctrlp_working_path_mode = 2
         let g:ctrlp_clear_cache_on_exit = 1
-        let g:ctrlp_max_files = 100000
-        let g:ctrlp_max_depth = 40
+        let g:ctrlp_max_files = 10000
+        let g:ctrlp_max_depth = 30
 
         let g:ctrlp_user_command = {
             \ 'types': {
@@ -218,11 +218,11 @@
             \ 'fallback': 'find %s -type f'
         \ }
 
-        "let g:ctrlp_custom_ignore = {
-          "\ 'dir':  '\.git$\|\.svn$\|cache$\|log$\|vendor$\|build$',
-          "\ 'file': '\.sw?$\|\.exe$\|\.so$\|\.dll$',
-          "\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-          "\ }
+        let g:ctrlp_custom_ignore = {
+          \ 'dir':  '\.git$\|\.svn$\|cache$\|log$\|vendor$\|build$',
+          \ 'file': '\.sw?$\|\.exe$\|\.so$\|\.dll$',
+          \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+          \ }
 
         let g:ctrlp_extensions = [
         \    'tag',
