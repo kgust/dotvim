@@ -201,6 +201,11 @@
     " AlignMaps {
         let g:DrChipTopLvlMenu= "&Plugin."
     " }
+    " CoffeeScript {
+        let coffee_compile_vert = 1
+        au BufWritePost *.coffee silent CoffeeMake! | cwindow | redraw!
+        au BufNewFile,BufReadPost *.coffee setl foldmethod=indent sw=2 et
+    " }
     " Ctags {
         set tags=./tags;/,~/.vimtags
     " }
