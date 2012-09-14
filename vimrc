@@ -291,6 +291,9 @@
         autocmd BufNewFile,BufRead *.txt.twig set filetype=txt syntax=jinja
         autocmd BufNewFile,BufRead *.html.twig set filetype=html syntax=htmljinja
 
+        " Set defaults for PHP files
+        autocmd BufNewFile,BufRead *.php set sw=4 ts=4 sts=4 et
+
         " Make sure help set properly for PHP files
         autocmd FileType php set kp=:help
     " }
