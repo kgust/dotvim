@@ -96,7 +96,7 @@
     " GVIM (here instead of .gvimrc) {
     if has('gui_running')
         set guifont=Inconsolata\ 12
-        set background=dark              " Assume a light background
+        set background=light              " Assume a light background
         colorscheme solarized
         set guioptions-=T                  " remove the toolbar
         highlight Pmenu guibg=brown gui=bold
