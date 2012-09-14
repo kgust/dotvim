@@ -359,7 +359,8 @@
         "let g:phpqa_codecoverage_autorun = 0
 
         " Stop the location list opening automatically
-        "let g:phpqa_open_loc = 0
+        let g:phpqa_open_loc = 0
+
         " Clover code coverage XML file
         let g:phpqa_codecoverage_file = "/home/kgustavson/workspace/symfony2/build/logs/clover.xml"
         " Show markers for lines that ARE covered by tests (default = 1)
