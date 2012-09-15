@@ -289,7 +289,7 @@
         autocmd BufNewFile,BufRead jquery.*.js set filetype=javascript syntax=jquery
 
         " Detect twig filetype
-        autocmd BufNewFile,BufRead *.twig set filetype=htmljinja
+        autocmd BufNewFile,BufRead *.twig set filetype=jinja2
 
         " Set defaults for PHP files
         autocmd BufNewFile,BufRead *.php set sw=4 ts=4 sts=4 et
