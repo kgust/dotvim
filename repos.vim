@@ -10,12 +10,6 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/syntastic'
 Bundle 'ervandew/supertab'
-" required by vim-snipmate
-Bundle 'MarcWeber/vim-addon-mw-utils'
-" required by vim-snipmate
-Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/snipmate-snippets'
 Bundle 'tpope/vim-surround'
 Bundle 'tsaleh/vim-align'
 Bundle 'vim-scripts/mru.vim'
@@ -34,6 +28,14 @@ Bundle 'drslump/vim-syntax-js'
 Bundle 'kgust/sql.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'vim-scripts/matchit.zip'
+Bundle 'SirVer/ultisnips'
+
+" required by vim-snipmate
+"Bundle 'MarcWeber/vim-addon-mw-utils'
+" required by vim-snipmate
+"Bundle 'tomtom/tlib_vim'
+"Bundle 'garbas/vim-snipmate'
+"Bundle 'honza/snipmate-snippets'
 
 " Medium Priority
 "Bundle 'thinca/vim-fontzoom'
