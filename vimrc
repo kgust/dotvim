@@ -14,6 +14,7 @@
     source ~/.vim/repos.vim
 " }
 " General {
+    filetype plugin on            " required!
     filetype plugin indent on     " required!
     scriptencoding utf-8
     set autowrite
@@ -288,8 +289,7 @@
         autocmd BufNewFile,BufRead jquery.*.js set filetype=javascript syntax=jquery
 
         " Detect twig filetype
-        autocmd BufNewFile,BufRead *.txt.twig set filetype=txt syntax=jinja
-        autocmd BufNewFile,BufRead *.html.twig set filetype=html syntax=htmljinja
+        autocmd BufNewFile,BufRead *.twig set filetype=htmljinja
 
         " Set defaults for PHP files
         autocmd BufNewFile,BufRead *.php set sw=4 ts=4 sts=4 et
