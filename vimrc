@@ -277,10 +277,6 @@
 
         let b:match_ignorecase = 1
 
-        let conceallevel=2
-        "let concealcursor=""
-
-        let g:syntax_js=['function', 'return', 'solarized']
         let g:solarized_contrast='normal'
         let g:solarized_visibility='low'
 
@@ -289,7 +285,7 @@
         autocmd BufNewFile,BufRead jquery.*.js set filetype=javascript syntax=jquery
 
         " Detect twig filetype
-        autocmd BufNewFile,BufRead *.twig set filetype=jinja2
+        autocmd BufNewFile,BufRead *.twig set filetype=jinja2 sw=4 ts=4 sts=4 et
 
         " Set defaults for PHP files
         autocmd BufNewFile,BufRead *.php set sw=4 ts=4 sts=4 et
@@ -301,7 +297,8 @@
         let g:NERDCustomDelimiters = {
                 \ 'rubyX': { 'left': '#', 'leftAlt': 'FOO', 'rightAlt': 'BAR' },
                 \ 'grondle': { 'left': '{{', 'right': '}}' },
-                \ 'sql': { 'left': '-- ' }
+                \ 'sql': { 'left': '-- ' },
+                \ 'jinja2': { 'left': '<!--', 'right': '-->' }
             \ }
 
     " }
@@ -345,12 +342,25 @@
         let g:pdv_cfg_License = "CellTrak Internal Source {@link http://www.celltrak.com/}"
         let g:pdv_cfg_CommentEnd = ""
 
+        " PHP Syntax
+        let php_sql_query = 1
+        let php_baselib = 1
+        let php_htmlInStrings = 1
+        " let php_parent_error_close = 1
+
         inoremap <Leader>pd <ESC>:call PhpDocSingle()<CR>i
         nnoremap <Leader>pd :call PhpDocSingle()<CR>
         vnoremap <Leader>pd :call PhpDocRange()<CR>
 
         ""let b:match_words = b:match_words . ',{:},(:),[:]'
         map <Leader>ff :EnableFastPHPFolds<CR>
+    " }
+    " PHP Namespace {
+    " TODO This should be effective for PHP files only!
+        imap <buffer><leader>ns <C-O>:call PhpInsertUse()><CR>
+        "imap <Leader>ns <C-O>:call PhpInsertUse()><CR>
+        map <buffer><leader>ns :call PhpInsertUse()><CR>
+        "map <Leader>ns :call PhpInsertUse()><CR>
     " }
     " PhpQA {
         let g:phpqa_messdetector_ruleset = "/home/kgustavson/workspace/symfony2/phpmd.xml"
@@ -368,6 +378,13 @@
         let g:phpqa_codecoverage_file = "/home/kgustavson/workspace/symfony2/build/logs/clover.xml"
         " Show markers for lines that ARE covered by tests (default = 1)
         "let g:phpqa_codecoverage_showcovered = 0
+    " }
+    " PHPUnit {
+        " http://knplabs.com/blog/boost-your-productivity-with-sf2-and-vim
+        " phpunit compilation
+        com! -nargs=* Phpunit make -c app <q-args> | cw
+        nnoremap <Leader>pu :Phpunit %<CR>
+        nnoremap <Leader>pua :Phpunit<CR>
     " }
     " Scratch {
         function! ToggleScratch()
@@ -403,9 +420,44 @@
         let g:SuperTabDefaultCompletionType = "context"
         let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
     " }
+    " Symfony {
+        " disable the mapping of Symfony's console
+        let g:symfony_enable_shell_mapping = 0
+        " remap it (default is <C-F>)
+        "map <Leader>sfc :execute ":!"g:symfony_enable_shell_cmd<CR>
+
+        " first set path
+        set path+=**
+
+        " jump to a twig view in symfony
+        function! s:SfJumpToView()
+            mark C
+            normal! ]M
+            let end = line(".")
+            normal! [m
+            try
+                call search('\v[^.:]+\.html\.twig', '', end)
+                normal! gf
+            catch
+                normal! g`C
+                echohl WarningMsg | echomsg "Template file not found" | echohl None
+            endtry
+        endfunction
+        com! SfJumpToView call s:SfJumpToView()
+
+        " create a mapping only in a Controller file
+        autocmd BufEnter *Controller.php nmap <buffer><leader>v :SfJumpToView<CR>
+
+        nmap <leader>ve :call PhpStackTrace()<CR>
+    " }
     " Syntax -- Move this out? {
-        set conceallevel=2
-        set concealcursor=n
+        let conceallevel=2
+        let concealcursor=""
+
+        let g:syntax_js=['function', 'return', 'solarized']
+    " }
+    " UltiSnips {
+        let g:UltiSnipsSnippetsDir="~/.vim/bundle/kgust-ultisnips/UltiSnips"
     " }
     " VimOrganizer {
         au! BufRead,BufWrite,BufWritePost,BufNewFile *.org

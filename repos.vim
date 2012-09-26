@@ -29,6 +29,9 @@ Bundle 'kgust/sql.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'SirVer/ultisnips'
+Bundle 'docteurklein/vim-symfony'
+Bundle 'docteurklein/vim-phpunit'
+Bundle 'docteurklein/vim-php-namespace'
 
 " required by vim-snipmate
 "Bundle 'MarcWeber/vim-addon-mw-utils'
