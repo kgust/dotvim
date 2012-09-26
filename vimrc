@@ -39,70 +39,73 @@
 " }
 
 " UI Settings {
-    " Console Vim {
-        " Fix console Vim, which was giving A B C D when using arrow keys in
-        " insert mode.
-        set term=linux
+    "color desert256
+    set tabpagemax=15               " only show 15 tabs
+    set showmode                    " display the current mode
 
-        "color desert256
-        set tabpagemax=15               " only show 15 tabs
-        set showmode                    " display the current mode
+    set cursorline                  " highlight current line
+    hi cursorline guibg=#333333     " highlight bg color of current line
+    hi CursorColumn guibg=#333333   " highlight cursor
 
-        set cursorline                  " highlight current line
-        hi cursorline guibg=#333333     " highlight bg color of current line
-        hi CursorColumn guibg=#333333   " highlight cursor
+    set splitright                  " I want vertical windows to open on the right
+    "set splitbelow                  " I want horizontal windows to open on the bottom
 
-        set splitright                  " I want vertical windows to open on the right
-        "set splitbelow                  " I want horizontal windows to open on the bottom
+    if has('cmdline_info')
+        set ruler                   " show the ruler
+        set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
+        set showcmd                 " show partial commands in status line and
+                                    " selected characters/lines in visual mode
+    endif
 
-        if has('cmdline_info')
-            set ruler                   " show the ruler
-            set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
-            set showcmd                 " show partial commands in status line and
-                                        " selected characters/lines in visual mode
-        endif
+    if has('statusline')
+        set laststatus=2             " show statusline always
+        " Use the commented line if fugitive isn't installed
+        "set statusline=%<%f\ %=\:\b%n%y%m%r%w\ %l,%c%V\ %P " a statusline, also on steroids
+    endif
 
-        if has('statusline')
-            set laststatus=2             " show statusline always
-            " Use the commented line if fugitive isn't installed
-            "set statusline=%<%f\ %=\:\b%n%y%m%r%w\ %l,%c%V\ %P " a statusline, also on steroids
-        endif
+    set backspace=indent,eol,start   " backspace for dummys
+    set linespace=0                  " No extra spaces between rows
+    set number                       " Line numbers on
+    "set relativenumber              " Turn on relative number mode
+    set showmatch                    " show matching brackets/parenthesis
+    set incsearch                    " find as you type search
+    set hlsearch                     " highlight search terms
+    set winminheight=0               " windows can be 0 line high
+    set ignorecase                   " case insensitive search
+    set smartcase                    " case sensitive when uc present
+    set wildmenu                     " show list instead of just completing
+    set wildmode=list:longest,full   " comand <Tab> completion, list matches, then longest common part, then all.
+    set whichwrap=b,s,h,l,<,>,[,]    " backspace and cursor keys wrap to
+    set scrolljump=5                 " lines to scroll when cursor leaves screen
+    set scrolloff=3                  " minimum lines to keep above and below cursor
+    set foldenable                   " auto fold code
+    set gdefault                     " the /g flag on :s substitutions by default
+    set switchbuf=usetab             " when opening a buffer from the list, use existing window first
+    set colorcolumn=80               " visible wrap here/long line indicator
+    hi ColorColumn ctermbg=darkgray guibg=darkgray " Change the ColorColumn to lightgray
 
-        set backspace=indent,eol,start   " backspace for dummys
-        set linespace=0                  " No extra spaces between rows
-        set number                       " Line numbers on
-        "set relativenumber              " Turn on relative number mode
-        set showmatch                    " show matching brackets/parenthesis
-        set incsearch                    " find as you type search
-        set hlsearch                     " highlight search terms
-        set winminheight=0               " windows can be 0 line high
-        set ignorecase                   " case insensitive search
-        set smartcase                    " case sensitive when uc present
-        set wildmenu                     " show list instead of just completing
-        set wildmode=list:longest,full   " comand <Tab> completion, list matches, then longest common part, then all.
-        set whichwrap=b,s,h,l,<,>,[,]    " backspace and cursor keys wrap to
-        set scrolljump=5                 " lines to scroll when cursor leaves screen
-        set scrolloff=3                  " minimum lines to keep above and below cursor
-        set foldenable                   " auto fold code
-        set gdefault                     " the /g flag on :s substitutions by default
-        set switchbuf=usetab             " when opening a buffer from the list, use existing window first
-        set colorcolumn=80               " visible wrap here/long line indicator
-        hi ColorColumn ctermbg=darkgray guibg=darkgray " Change the ColorColumn to lightgray
+    " u+2294 ⊔  u+231f ⌟  u+00bb »  u+2422 ␢  u+27ab ➫  u+2022 •  u+2027 ‧
+    " u+2056 ⁖
+    set list
+    set listchars=trail:⁖,nbsp:⊔,tab:➫•
 
-        " u+2294 ⊔  u+231f ⌟  u+00bb »  u+2422 ␢  u+27ab ➫  u+2022 •  u+2027 ‧
-        " u+2056 ⁖
-        set list
-        set listchars=trail:⁖,nbsp:⊔,tab:➫•
-    " }
-    " GVIM (here instead of .gvimrc) {
     if has('gui_running')
-        set guifont=Inconsolata\ 12
+    " GVIM (here instead of .gvimrc) {
+        "set guifont=Inconsolata\ 12
+        set guifont=Inconsolata-dz\ for\ Powerline
+        let g:Powerline_symbols = 'fancy'
         set background=light              " Assume a light background
         colorscheme solarized
         set guioptions-=T                  " remove the toolbar
         highlight Pmenu guibg=brown gui=bold
-    endif
     " }
+    else
+    " Console Only VIM Settings {
+        " Fix console Vim, which was giving A B C D when using arrow keys in
+        " insert mode.
+        set term=linux
+    " }
+    endif
     " Formatting {
         set wrap                         " wrap long lines
         set autoindent                   " indent at the same level of the previous line

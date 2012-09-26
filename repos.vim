@@ -32,6 +32,7 @@ Bundle 'SirVer/ultisnips'
 Bundle 'docteurklein/vim-symfony'
 Bundle 'docteurklein/vim-phpunit'
 Bundle 'docteurklein/vim-php-namespace'
+Bundle 'Lokaltog/vim-powerline'
 
 " required by vim-snipmate
 "Bundle 'MarcWeber/vim-addon-mw-utils'
