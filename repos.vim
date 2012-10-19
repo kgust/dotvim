@@ -47,6 +47,7 @@ Bundle 'kakkyz81/evervim'
 Bundle 'mattn/gist-vim'
 " required by gist-vim
 Bundle 'mattn/webapi-vim'
+Bundle 'suan/vim-instant-markdown'
 "Bundle 'mattn/zencoding-vim'
 "Bundle 'othree/html5.vim'
 "Bundle 'shawncplus/phpcomplete.vim'
