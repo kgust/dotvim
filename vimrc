@@ -21,7 +21,8 @@
     set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
     set hidden                      " Turn on hidden mode
     set undofile                    " Turn on undofile functionality
-    " Setting up the directories {
+
+    " Set up the directories {
         set backup                         " backups are nice ...
         set backupdir=$HOME/.vimbackup     " but not when they clog .
         set directory=$HOME/.vimswap       " Same for swap files
@@ -120,12 +121,18 @@
     " Key Mappings {
 
         " Easier moving in tabs and windows
-        map <C-H> <C-W>h
-        map <C-J> <C-W>j
-        map <C-K> <C-W>k
-        map <C-L> <C-W>l
-        map <S-H> gT
-        map <S-L> gt
+        nnoremap <C-H> <C-W>h
+        vnoremap <C-H> <C-W>h
+        nnoremap <C-J> <C-W>j
+        vnoremap <C-J> <C-W>j
+        nnoremap <C-K> <C-W>k
+        vnoremap <C-K> <C-W>k
+        nnoremap <C-L> <C-W>l
+        vnoremap <C-L> <C-W>l
+        nnoremap <S-H> gT
+        vnoremap <S-H> gT
+        nnoremap <S-L> gt
+        vnoremap <S-L> gt
 
         " Yank from the cursor to the end of the line, to be consistent with C and D.
         nnoremap Y y$
@@ -134,67 +141,56 @@
         nnoremap <CR> :noh<CR><CR>
 
         " Buffers and Tabs
-        map <C-Up> :bprev<CR>
-        map <C-Down> :bnext<CR>
-        "map <Left> :tabprev<CR>
-        "map <Right> :tabnext<CR>
-
-        " Shortcut mappings
-        vmap Q gq
-        nmap Q gqap
+        noremap <C-Up> :bprev<CR>
+        noremap <C-Down> :bnext<CR>
+        "noremap <Left> :tabprev<CR>
+        "noremap <Right> :tabnext<CR>
 
         " Shortcuts
         " Change Working Directory to that of the current file
-        cmap cwd lcd %:p:h
+        cnoremap cwd lcd %:p:h
 
         " Quickly enter paste mode
         set pastetoggle=<F2>
 
         " Save a write protected file when you forgot sudo
-        cmap w!! w !sudo tee % >/dev/null
-
-        " Map Esc alternatives
-        imap ;; <Esc>
-        "imap jj <Esc>
-
-        " Use regular regexp for searches
-        "nnoremap / /\v
-        "vnoremap / /\v
+        cnoremap w!! write !sudo tee % >/dev/null
 
         " Make tab key bounce between matches like '%'
         nnoremap <tab> %
         vnoremap <tab> %
 
-        nmap S  :%s//<Left>
-        vmap S  :%s//<Left>
-
-        nnoremap ;; :s/\([^;]\)$/\1;/<CR>
+        nnoremap <Leader>; :s/\([^;]\)$/\1;/<CR>
+        vnoremap <Leader>; :s/\([^;]\)$/\1;/<CR>
 
         " Leader Key Mappings {
-            " Firstly, define the <leader> key
+            " Firstly, define the <Leader> key
             let mapleader = ","
+            let maplocalleader = "\\"
 
             " This should be moved to a Textile specific config file
-            nnoremap <leader>1 yypVr=
+            nnoremap <Leader>1 yypVr=
 
             " Strip all trailing whitespace in the current file
-            nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+            nnoremap <Leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
             " fold HMTL tag
-            nnoremap <leader>ft Vatzf
+            nnoremap <Leader>ft Vatzf
 
             " sort CSS properties
-            "nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
-            nnoremap <leader>S Vi{:sort<CR>:noh<CR> "}
+            "nnoremap <Leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
+            nnoremap <Leader>S Vi{:sort<CR>:noh<CR> "}
 
             " re-highlight text just pasted
-            nnoremap <leader>v V`]
+            nnoremap <Leader>v V`]
 
             " edit .vimrc in a vertical window
-            nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+            "nnoremap <Leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+            nnoremap <Leader>ev :vsplit $HOME/.vim/vimrc<cr>
+            nnoremap <Leader>sv :source $MYVIMRC<cr>
 
             " switch to alternate buffer
-            nmap <silent><leader>, :buffer#<CR>
+            nnoremap <silent><Leader>, :buffer#<CR>
 
         " }
     " }
@@ -246,10 +242,10 @@
     " }
     " fontzoom {
         let g:fontzoom_no_default_key_mappings = 1
-        silent! nmap <unique> <silent> = <Plug>(fontzoom-larger)
-        silent! nmap <unique> <silent> - <Plug>(fontzoom-smaller)
-        silent! nmap <unique> <silent> <C-ScrollWheelUp> <Plug>(fontzoom-larger)
-        silent! nmap <unique> <silent> <C-ScrollWheelDown> <Plug>(fontzoom-smaller)
+        silent! nnoremap <unique> <silent> = <Plug>(fontzoom-larger)
+        silent! nnoremap <unique> <silent> - <Plug>(fontzoom-smaller)
+        silent! nnoremap <unique> <silent> <C-ScrollWheelUp> <Plug>(fontzoom-larger)
+        silent! nnoremap <unique> <silent> <C-ScrollWheelDown> <Plug>(fontzoom-smaller)
     " }
     " Fugitive {
         "let g:fugitive_git_executable = 'myGit'
@@ -275,7 +271,7 @@
         let g:checksyntax_auto = 0
 
         "comment out line(s) in visual mode
-        vmap  o  :call NERDComment(1, 'toggle')<CR>
+        vnoremap  o  :call NERDComment(1, 'toggle')<CR>
         let g:NERDShutUp=1
 
         let b:match_ignorecase = 1
@@ -351,19 +347,20 @@
         let php_htmlInStrings = 1
         " let php_parent_error_close = 1
 
-        inoremap <Leader>pd <ESC>:call PhpDocSingle()<CR>i
+        "inoremap <Leader>pd <Esc>:call PhpDocSingle()<CR>
         nnoremap <Leader>pd :call PhpDocSingle()<CR>
         vnoremap <Leader>pd :call PhpDocRange()<CR>
 
         ""let b:match_words = b:match_words . ',{:},(:),[:]'
-        map <Leader>ff :EnableFastPHPFolds<CR>
+        nnoremap <Leader>ff :EnableFastPHPFolds<CR>
+        vnoremap <Leader>ff :EnableFastPHPFolds<CR>
     " }
     " PHP Namespace {
     " TODO This should be effective for PHP files only!
-        imap <buffer><leader>ns <C-O>:call PhpInsertUse()><CR>
-        "imap <Leader>ns <C-O>:call PhpInsertUse()><CR>
-        map <buffer><leader>ns :call PhpInsertUse()><CR>
-        "map <Leader>ns :call PhpInsertUse()><CR>
+        inoremap <buffer><Leader>ns <C-O>:call PhpInsertUse()><CR>
+        "inoremap <Leader>ns <C-O>:call PhpInsertUse()><CR>
+        noremap <buffer><Leader>ns :call PhpInsertUse()><CR>
+        "noremap <Leader>ns :call PhpInsertUse()><CR>
     " }
     " PhpQA {
         let g:phpqa_messdetector_ruleset = "/home/kgustavson/workspace/symfony2/phpmd.xml"
@@ -408,7 +405,7 @@
         " Setting the author var
         let g:snips_author = 'Kevin Gustavson <kgust@pobox.com>'
         " Shortcut for reloading snippets, useful when developing
-        nnoremap ,smr <esc>:exec ReloadAllSnippets()<cr>
+        nnoremap ,smr <Esc>:exec ReloadAllSnippets()<cr>
     " }
     " SQLUtilities {
         let g:sqlutil_align_comma = 1
@@ -427,7 +424,7 @@
         " disable the mapping of Symfony's console
         let g:symfony_enable_shell_mapping = 0
         " remap it (default is <C-F>)
-        "map <Leader>sfc :execute ":!"g:symfony_enable_shell_cmd<CR>
+        "noremap <Leader>sfc :execute ":!"g:symfony_enable_shell_cmd<CR>
 
         " first set path
         set path+=**
@@ -449,9 +446,9 @@
         com! SfJumpToView call s:SfJumpToView()
 
         " create a mapping only in a Controller file
-        autocmd BufEnter *Controller.php nmap <buffer><leader>v :SfJumpToView<CR>
+        autocmd Vimrc BufEnter *Controller.php nnoremap <buffer><Leader>v :SfJumpToView<CR>
 
-        nmap <leader>ve :call PhpStackTrace()<CR>
+        nnoremap <Leader>ve :call PhpStackTrace()<CR>
     " }
     " Syntax -- Move this out? {
         let conceallevel=2
@@ -472,7 +469,7 @@
         "let g:agenda_files = split(glob("~/Dropbox/Documents/VimOrg/*.org"),"\n")
 
         " open VimOrganizerNotes.org in a vertical window
-        nnoremap <leader>vo <C-w><C-v><C-l>:e ~/Dropbox/Documents/VimOrg/<cr>
+        nnoremap <Leader>vo <C-w><C-v><C-l>:e ~/Dropbox/Documents/VimOrg/<cr>
     " }
     " ZenCoding {
         let g:user_zen_settings = {
