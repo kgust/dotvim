@@ -1,0 +1,21 @@
+# For CellTrak
+snippet file "File-level comment" b
+/**
+ * ${1:CellTrak VisitManager 2.x.}
+ *
+ * @package ${2:AppBundle}
+ */
+
+endsnippet
+
+
+snippet class "Class keyword" !b
+<?php
+
+namespace ${1:`substitute(substitute(expand("%:h"), '\v^\w+\/(\u)', '\1', ''), '\/', '\\\', 'g')`};
+
+class ${2:`Filename('', 'myClass')`}
+{
+    ${3}
+}
+endsnippet

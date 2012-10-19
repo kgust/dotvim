@@ -1,0 +1,10 @@
+
+snippet $.pubsub "jQuery Pub Sub" !b
+// Works in modern browsers + IE9, but Modernizer has a polyfill baked in for function.bind.
+// Hit tip Paul Irish (and Jeffery Wey)
+
+var o = $( {} );
+$.subscribe = o.on.bind(o);
+$.unsubscribe = o.off.bind(o);
+$.publish = o.trigger.bind(o);
+endsnippet

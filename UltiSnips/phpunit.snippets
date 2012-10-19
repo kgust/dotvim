@@ -1,0 +1,24 @@
+snippet set "Set Up Function" !b
+/**
+ * Run before each test.
+ *
+ * @return void
+ */
+public function setUp()
+{
+    $1
+}
+endsnippet
+
+snippet test "Test Method" !b
+/**
+ * ${1:Short description}
+ *
+ * @group ${2:unit}
+ * @return void
+ */
+public function test${3:Name}(${4:$forDepends})
+{
+    $this->assert${5:Equals}(${6:expected}, ${7:actual});
+}
+endsnippet
