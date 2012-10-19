@@ -238,7 +238,7 @@
         source ~/.vim/dbext.vim
     " }
     " dbgPavim {
-        let g:dbgPavimPort = 9009
+        let g:dbgPavimPort = 9000
         let g:dbgPavimBreakAtEntry = 0
     " }
     " fontzoom {
