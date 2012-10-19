@@ -211,17 +211,18 @@
     " }
     " CtrlP {
         let g:ctrlp_map = '<C-p>'
-        let g:ctrlp_working_path_mode = 2
+        let g:ctrlp_working_path_mode = 'ra'
         let g:ctrlp_clear_cache_on_exit = 1
-        let g:ctrlp_max_files = 10000
-        let g:ctrlp_max_depth = 30
+        let g:ctrlp_max_files = 3000
+        let g:ctrlp_max_depth = 10
+        "let g:ctrlp_cmd = 'CtrlP'
 
         let g:ctrlp_user_command = {
             \ 'types': {
                 \ 1: ['.git/', 'cd %s && git ls-files'],
                 \ },
-            \ 'fallback': 'find %s -type f'
         \ }
+            "\ 'fallback': 'find %s -type f'
 
         let g:ctrlp_custom_ignore = {
           \ 'dir':  '\.git$\|\.svn$\|cache$\|log$\|vendor$\|build$',
