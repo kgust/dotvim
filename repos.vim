@@ -33,6 +33,7 @@ Bundle 'docteurklein/vim-symfony'
 Bundle 'docteurklein/vim-phpunit'
 Bundle 'docteurklein/vim-php-namespace'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'thinca/vim-fontzoom'
 
 " required by vim-snipmate
 "Bundle 'MarcWeber/vim-addon-mw-utils'
@@ -52,6 +53,9 @@ Bundle 'Lokaltog/vim-powerline'
 "Bundle 'kchmck/vim-coffee-script'
 "Bundle 'docteurklein/vim-phpunit'
 "Bundle 'docteurklein/vim-symfony'
+
+" Low Priority
+Bundle 'Toggle'
 
 " Disabled
 "Bundle 'vim-scripts/HTML-AutoCloseTag'
