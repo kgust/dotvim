@@ -95,8 +95,9 @@
 
     " u+2294 ⊔  u+231f ⌟  u+00bb »  u+2422 ␢  u+27ab ➫  u+2022 •  u+2027 ‧
     " u+2056 ⁖
+    " u+25c0 ◀  u+25b6 ▶  u+25c4 ◄  u+25ba ►
     set list
-    set listchars=trail:⁖,nbsp:⊔,tab:➫•
+    set listchars=precedes:◀,extends:▶,trail:⁖,nbsp:⊔,tab:➫•
 
     if has('gui_running')
     " GVIM (here instead of .gvimrc) {
