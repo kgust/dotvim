@@ -43,6 +43,7 @@ Bundle 'thinca/vim-fontzoom'
 "Bundle 'honza/snipmate-snippets'
 
 " Medium Priority
+Bundle 'kakkyz81/evervim'
 Bundle 'mattn/gist-vim'
 " required by gist-vim
 Bundle 'mattn/webapi-vim'
