@@ -364,10 +364,10 @@
     " }
     " PhpQA {
         let g:phpqa_messdetector_ruleset = "/home/kgustavson/workspace/symfony2/phpmd.xml"
-        let g:phpqa_codesniffer_args = "--standard=Symfony2"
+        let g:phpqa_codesniffer_args = "--standard=/home/kgustavson/workspace/php/celltrak_coding_standard.xml"
 
         " All of these are default = 1
-        "let g:phpqa_messdetector_autorun = 0
+        let g:phpqa_messdetector_autorun = 0
         "let g:phpqa_codesniffer_autorun = 0
         "let g:phpqa_codecoverage_autorun = 0
 
