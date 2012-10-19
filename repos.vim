@@ -43,6 +43,9 @@ Bundle 'thinca/vim-fontzoom'
 "Bundle 'honza/snipmate-snippets'
 
 " Medium Priority
+Bundle 'mattn/gist-vim'
+" required by gist-vim
+Bundle 'mattn/webapi-vim'
 "Bundle 'mattn/zencoding-vim'
 "Bundle 'othree/html5.vim'
 "Bundle 'shawncplus/phpcomplete.vim'
