@@ -241,6 +241,11 @@
         let g:dbgPavimPort = 9000
         let g:dbgPavimBreakAtEntry = 0
     " }
+    " EverVim + Instant-Markdown {
+        autocmd BufWinLeave __EVERVIM_NOTE__ silent call CloseMarkdown()
+        autocmd BufWinEnter __EVERVIM_NOTE__ silent call OpenMarkdown()
+        autocmd CursorMoved,CursorMovedI,CursorHold,CursorHoldI __EVERVIM_NOTE__ silent call UpdateMarkdown()
+    " }
     " fontzoom {
         let g:fontzoom_no_default_key_mappings = 1
         silent! nnoremap <unique> <silent> = <Plug>(fontzoom-larger)
