@@ -22,6 +22,14 @@
     set hidden                      " Turn on hidden mode
     set undofile                    " Turn on undofile functionality
 
+    " Set the autocommand group and remove existing mappings
+    augroup Vimrc
+        autocmd!
+
+        " Testing autocmd statements
+        "set verbose=9
+    augroup END
+
     " Set up the directories {
         set backup                         " backups are nice ...
         set backupdir=$HOME/.vimbackup     " but not when they clog .
@@ -34,8 +42,8 @@
         silent execute '!mkdir -p $HOME/.vimswap'
         silent execute '!mkdir -p $HOME/.vimviews'
         silent execute '!mkdir -p $HOME/.vimundo'
-        "au BufWinLeave * silent! mkview  "make vim save view (state) (folds, cursor, etc)
-        "au BufWinEnter * silent! loadview "make vim load view (state) (folds, cursor, etc)
+        "autocmd Vimrc BufWinLeave * silent! mkview  "make vim save view (state) (folds, cursor, etc)
+        "autocmd Vimrc BufWinEnter * silent! loadview "make vim load view (state) (folds, cursor, etc)
     " }
 " }
 
@@ -203,8 +211,8 @@
     " }
     " CoffeeScript {
         let coffee_compile_vert = 1
-        au BufWritePost *.coffee silent CoffeeMake! | cwindow | redraw!
-        au BufNewFile,BufReadPost *.coffee setl foldmethod=indent sw=2 et
+        autocmd Vimrc BufWritePost *.coffee silent CoffeeMake! | cwindow | redraw!
+        autocmd Vimrc BufNewFile,BufReadPost *.coffee setl foldmethod=indent sw=2 et
     " }
     " Ctags {
         set tags=./tags;/,~/.vimtags
@@ -242,9 +250,9 @@
         let g:dbgPavimBreakAtEntry = 0
     " }
     " EverVim + Instant-Markdown {
-        autocmd BufWinLeave __EVERVIM_NOTE__ silent call CloseMarkdown()
-        autocmd BufWinEnter __EVERVIM_NOTE__ silent call OpenMarkdown()
-        autocmd CursorMoved,CursorMovedI,CursorHold,CursorHoldI __EVERVIM_NOTE__ silent call UpdateMarkdown()
+        autocmd Vimrc BufWinLeave __EVERVIM_NOTE__ silent call CloseMarkdown()
+        autocmd Vimrc BufWinEnter __EVERVIM_NOTE__ silent call OpenMarkdown()
+        autocmd Vimrc CursorMoved,CursorMovedI,CursorHold,CursorHoldI __EVERVIM_NOTE__ silent call UpdateMarkdown()
     " }
     " fontzoom {
         let g:fontzoom_no_default_key_mappings = 1
@@ -260,9 +268,9 @@
             set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
         endif
 
-        autocmd BufReadPost fugitive://* set bufhidden=delete
+        autocmd Vimrc BufReadPost fugitive://* set bufhidden=delete
 
-        autocmd User fugitive
+        autocmd Vimrc User fugitive
           \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
           \   nnoremap <buffer> .. :edit %:h<CR> |
           \ endif
@@ -295,17 +303,22 @@
         let g:solarized_visibility='low'
 
         " Detect jQuery plugins
-        autocmd BufNewFile,BufRead *.plugin.js set filetype=javascript syntax=jquery
-        autocmd BufNewFile,BufRead jquery.*.js set filetype=javascript syntax=jquery
+        autocmd Vimrc BufNewFile,BufRead *.plugin.js set filetype=javascript syntax=jquery
+        autocmd Vimrc BufNewFile,BufRead jquery.*.js set filetype=javascript syntax=jquery
 
         " Detect twig filetype
-        autocmd BufNewFile,BufRead *.twig set filetype=jinja2 sw=4 ts=4 sts=4 et
+        autocmd Vimrc BufNewFile,BufRead *.twig set filetype=jinja2 sw=4 ts=4 sts=4 et
+        autocmd Vimrc BufNewFile,BufRead *.html.twig UltiSnipsAddFiletypes jinja2.html<CR>
 
         " Set defaults for PHP files
-        autocmd BufNewFile,BufRead *.php set sw=4 ts=4 sts=4 et
+        autocmd Vimrc BufNewFile,BufRead *.php set sw=4 ts=4 sts=4 et
+        autocmd Vimrc BufNewFile,BufRead *Test.php UltiSnipsAddFiletypes phpunit.php<CR>
+
+        " Automatically strip trailing spaces in PHP files when 
+        autocmd Vimrc BufRead,BufWrite *.php %s/\s\+$//e
 
         " Make sure help set properly for PHP files
-        autocmd FileType php set kp=:help
+        autocmd Vimrc FileType php set kp=:help
     " }
     " NerdCommenter {
         let g:NERDCustomDelimiters = {
@@ -318,7 +331,7 @@
     " }
     " OmniComplete {
         "if has("autocmd") && exists("+omnifunc")
-            "autocmd Filetype *
+            "autocmd Vimrc Filetype *
                 "\if &omnifunc == "" |
                 "\setlocal omnifunc=syntaxcomplete#Complete |
                 "\endif
@@ -343,7 +356,7 @@
         inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
 
         " automatically open and close the popup menu / preview window
-        au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+        autocmd Vimrc CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
         set completeopt=menu,longest,preview
     " }
     " PDV PHPDoc Support {
@@ -475,8 +488,8 @@
         let g:UltiSnipsSnippetsDir="~/.vim/bundle/kgust-ultisnips/UltiSnips"
     " }
     " VimOrganizer {
-        au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
-        au BufEnter *.org call org#SetOrgFileType()
+        autocmd! BufRead,BufWrite,BufWritePost,BufNewFile *.org
+        autocmd Vimrc BufEnter *.org call org#SetOrgFileType()
 
         let g:org_tags_alist='@home(h) @celltrak(c) @dtedesigns(d) easy(e) hard(r)'
         let g:org_todo_setup='TODO NEXT STARTED | DONE CANCEL'
