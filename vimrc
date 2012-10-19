@@ -101,7 +101,7 @@
     if has('gui_running')
     " GVIM (here instead of .gvimrc) {
         "set guifont=Inconsolata\ 12
-        set guifont=Inconsolata-dz\ for\ Powerline
+        set guifont=Inconsolata-dz\ for\ Powerline\ 11
         let g:Powerline_symbols = 'fancy'
         set background=light              " Assume a light background
         colorscheme solarized
