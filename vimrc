@@ -3,7 +3,7 @@
 "
 " }
 
-" Required {
+" Vundle Required {
     set nocompatible               " be iMproved
     filetype off                   " required!
 
@@ -13,7 +13,8 @@
     " Vundle Bundles
     source ~/.vim/repos.vim
 " }
-" General {
+
+" General Settings {
     filetype plugin on            " required!
     filetype plugin indent on     " required!
     scriptencoding utf-8
@@ -47,8 +48,7 @@
     " }
 " }
 
-" UI Settings {
-    "color desert256
+" User Interface Settings {
     set tabpagemax=15               " only show 15 tabs
     set showmode                    " display the current mode
 
@@ -213,7 +213,7 @@
     " CoffeeScript {
         let coffee_compile_vert = 1
         autocmd Vimrc BufWritePost *.coffee silent CoffeeMake! | cwindow | redraw!
-        autocmd Vimrc BufNewFile,BufReadPost *.coffee setl foldmethod=indent sw=2 et
+        autocmd Vimrc BufNewFile,BufReadPost *.coffee setlocal foldmethod=indent sw=2 et
     " }
     " Ctags {
         set tags=./tags;/,~/.vimtags
@@ -434,7 +434,7 @@
         " Setting the author var
         let g:snips_author = 'Kevin Gustavson <kgust@pobox.com>'
         " Shortcut for reloading snippets, useful when developing
-        nnoremap ,smr <Esc>:exec ReloadAllSnippets()<cr>
+        nnoremap ,smr <Esc>:execute ReloadAllSnippets()<cr>
     " }
     " SQLUtilities {
         let g:sqlutil_align_comma = 1
@@ -516,6 +516,7 @@
     " }
 
 " }
+
 " Windows Compatible -- Keeping for the fun of it {
     " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
     " across (heterogeneous) systems easier.
