@@ -210,6 +210,9 @@
     " AlignMaps {
         let g:DrChipTopLvlMenu= "&Plugin."
     " }
+    " Behat {
+        let feature_filetype='behat'
+    " }
     " CoffeeScript {
         let coffee_compile_vert = 1
         autocmd Vimrc BufWritePost *.coffee silent CoffeeMake! | cwindow | redraw!
@@ -250,17 +253,21 @@
         let g:dbgPavimPort = 9000
         let g:dbgPavimBreakAtEntry = 0
     " }
-    " EverVim + Instant-Markdown {
+    " EverVim & Instant-Markdown {
+        " EverVim authentication
+        source ~/.vim/evernote_auth.vim
+
         autocmd Vimrc BufWinLeave __EVERVIM_NOTE__ silent call CloseMarkdown()
         autocmd Vimrc BufWinEnter __EVERVIM_NOTE__ silent call OpenMarkdown()
         autocmd Vimrc CursorMoved,CursorMovedI,CursorHold,CursorHoldI __EVERVIM_NOTE__ silent call UpdateMarkdown()
     " }
     " fontzoom {
+        " Replace the default keymapping
         let g:fontzoom_no_default_key_mappings = 1
-        silent! nnoremap <unique> <silent> = <Plug>(fontzoom-larger)
-        silent! nnoremap <unique> <silent> - <Plug>(fontzoom-smaller)
-        silent! nnoremap <unique> <silent> <C-ScrollWheelUp> <Plug>(fontzoom-larger)
-        silent! nnoremap <unique> <silent> <C-ScrollWheelDown> <Plug>(fontzoom-smaller)
+        "silent! nmap <unique> <silent> = <Plug>(fontzoom-larger)
+        "silent! nmap <silent> - <Plug>(fontzoom-smaller)
+        silent! nmap <unique> <silent> <C-ScrollWheelUp> <Plug>(fontzoom-larger)
+        silent! nmap <unique> <silent> <C-ScrollWheelDown> <Plug>(fontzoom-smaller)
     " }
     " Fugitive {
         "let g:fugitive_git_executable = 'myGit'
@@ -307,8 +314,8 @@
         autocmd Vimrc BufNewFile,BufRead *.plugin.js set filetype=javascript syntax=jquery
         autocmd Vimrc BufNewFile,BufRead jquery.*.js set filetype=javascript syntax=jquery
 
-        " Detect twig filetype
-        autocmd Vimrc BufNewFile,BufRead *.twig set filetype=jinja2 sw=4 ts=4 sts=4 et
+        " Detect Twig filetype
+        autocmd Vimrc BufNewFile,BufRead *.twig set filetype=jinja2 et sw=4 ts=4 sts=4 fdm=marker fmr=block,endblock fdl=0
         autocmd Vimrc BufNewFile,BufRead *.html.twig UltiSnipsAddFiletypes jinja2.html<CR>
 
         " Set defaults for PHP files
@@ -401,12 +408,17 @@
         "let g:phpqa_codecoverage_autorun = 0
 
         " Stop the location list opening automatically
-        let g:phpqa_open_loc = 0
+        "let g:phpqa_open_loc = 0
 
         " Clover code coverage XML file
         let g:phpqa_codecoverage_file = "/home/kgustavson/workspace/symfony2/build/logs/clover.xml"
         " Show markers for lines that ARE covered by tests (default = 1)
         "let g:phpqa_codecoverage_showcovered = 0
+
+        " Additional Mappings
+        nnoremap <Leader>pmd :Phpmd<cr>
+        nnoremap <Leader>pcs :Phpcs<cr>
+        nnoremap <Leader>pcc :Phpcc<cr>
     " }
     " PHPUnit {
         " http://knplabs.com/blog/boost-your-productivity-with-sf2-and-vim
@@ -486,7 +498,11 @@
         let g:syntax_js=['function', 'return', 'solarized']
     " }
     " UltiSnips {
-        let g:UltiSnipsSnippetsDir="~/.vim/bundle/kgust-ultisnips/UltiSnips"
+        "let g:UltiSnipsSnippetsDir="~/.vim/bundle/kgust-ultisnips/UltiSnips"
+        "let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+        let g:UltiSnipsJumpForwardTrigger = "<c-h>"
+        "et g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+        let g:UltiSnipsJumpBackwardTrigger = "<c-l>"
     " }
     " VimOrganizer {
         autocmd! BufRead,BufWrite,BufWritePost,BufNewFile *.org
