@@ -44,6 +44,7 @@ Bundle 'thinca/vim-fontzoom'
 "Bundle 'honza/snipmate-snippets'
 
 " Medium Priority
+Bundle 'veloce/vim-behat'
 Bundle 'kakkyz81/evervim'
 Bundle 'mattn/gist-vim'
 " required by gist-vim
@@ -58,6 +59,7 @@ Bundle 'brookhong/DBGPavim'
 "Bundle 'kchmck/vim-coffee-script'
 "Bundle 'docteurklein/vim-phpunit'
 "Bundle 'docteurklein/vim-symfony'
+Bundle 'Raimondi/delimitMate'
 
 " Low Priority
 Bundle 'Toggle'
