@@ -16,7 +16,7 @@ syntax match phpOperator "<=" conceal cchar=≤ contained containedin=phpRegion
 syntax match phpOperator ">=" conceal cchar=≥ contained containedin=phpRegion
 syntax match phpOperator "==" conceal cchar=≈ contained containedin=phpRegion
 syntax match phpOperator "===" conceal cchar=≡ contained containedin=phpRegion
-syntax match phpOperator "::" conceal cchar=∷ contained containedin=phpRegion
+syntax match phpOperator "::" conceal cchar=⁝ contained containedin=phpRegion
 syntax match phpOperator "!=" conceal cchar=≉ contained containedin=phpRegion
 "syntax match phpOperator "!==" conceal cchar=≠ contained containedin=phpRegion
 syntax match phpOperator "!==" conceal cchar=≢ contained containedin=phpRegion
