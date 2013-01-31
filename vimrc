@@ -59,6 +59,8 @@
     set splitright                  " I want vertical windows to open on the right
     "set splitbelow                  " I want horizontal windows to open on the bottom
 
+    set clipboard=unnamedplus       " Make yank use the "+ register
+
     if has('cmdline_info')
         set ruler                   " show the ruler
         set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
