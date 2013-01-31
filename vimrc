@@ -117,15 +117,15 @@
     " }
     endif
     " Formatting {
-        set wrap                         " wrap long lines
         set autoindent                   " indent at the same level of the previous line
-        set shiftwidth=4                 " use indents of 4 spaces
+        set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
         set expandtab                    " tabs are tabs, not spaces
-        set tabstop=4                    " an indentation every four columns
+        "set foldmethod=syntax
         set matchpairs+=<:>              " match, to be used with %
         set pastetoggle=<F12>            " pastetoggle (sane indentation on pastes)
-        "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
-        "set foldmethod=syntax
+        set shiftwidth=4                 " use indents of 4 spaces
+        set tabstop=4                    " an indentation every four columns
+        set wrap                         " wrap long lines
     " }
     " Key Mappings {
 
