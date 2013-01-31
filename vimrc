@@ -73,7 +73,7 @@
     endif
 
     set backspace=indent,eol,start   " backspace for dummys
-    set linespace=0                  " No extra spaces between rows
+    set linespace=3                  " No extra spaces between rows
     set number                       " Line numbers on
     "set relativenumber              " Turn on relative number mode
     set showmatch                    " show matching brackets/parenthesis
@@ -102,7 +102,7 @@
     if has('gui_running')
     " GVIM (here instead of .gvimrc) {
         "set guifont=Inconsolata\ 12
-        set guifont=Inconsolata-dz\ for\ Powerline\ 11
+        set guifont=Inconsolata-dz\ for\ Powerline\ 9
         let g:Powerline_symbols = 'fancy'
         set background=light              " Assume a light background
         colorscheme solarized
