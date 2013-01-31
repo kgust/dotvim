@@ -335,7 +335,9 @@
                 \ 'sql': { 'left': '-- ' },
                 \ 'jinja2': { 'left': '<!--', 'right': '-->' }
             \ }
-
+    " }
+    " Netrw {
+        let g:netrw_liststyle=3
     " }
     " OmniComplete {
         "if has("autocmd") && exists("+omnifunc")
