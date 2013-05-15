@@ -4,6 +4,10 @@
 " required!
 Bundle 'gmarik/vundle'
 
+" My Bundles
+Bundle 'kgust-snippets'
+"Bundle 'README.md'
+
 " High Priority
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'kien/ctrlp.vim'
@@ -50,7 +54,7 @@ Bundle 'mattn/gist-vim'
 " required by gist-vim
 Bundle 'mattn/webapi-vim'
 Bundle 'suan/vim-instant-markdown'
-"Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/zencoding-vim'
 "Bundle 'othree/html5.vim'
 "Bundle 'shawncplus/phpcomplete.vim'
 "Bundle 'rson/vim-conque'
@@ -60,9 +64,15 @@ Bundle 'brookhong/DBGPavim'
 "Bundle 'docteurklein/vim-phpunit'
 "Bundle 'docteurklein/vim-symfony'
 Bundle 'Raimondi/delimitMate'
+Bundle 'stephpy/vim-php-cs-fixer'
+"Bundle 'Valloric/YouCompleteMe'
 
 " Low Priority
 Bundle 'Toggle'
+Bundle 'adt.vim'
+Bundle 'vim-scripts/renamer.vim'
+"Bundle 'dsummersl/vimunit.git'
+Bundle 'airblade/vim-gitgutter'
 
 " Disabled
 "Bundle 'vim-scripts/HTML-AutoCloseTag'
