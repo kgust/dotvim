@@ -22,6 +22,11 @@
     set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
     set hidden                      " Turn on hidden mode
     set undofile                    " Turn on undofile functionality
+    "set autoread                    " If an unedited file is changed on disk,
+                                    "   automatically reload it
+    set smarttab
+    "set shell=bash\ -i              " Use bash as vim's default shell
+
 
     " Set the autocommand group and remove existing mappings
     augroup Vimrc
@@ -59,7 +64,7 @@
     set splitright                  " I want vertical windows to open on the right
     "set splitbelow                  " I want horizontal windows to open on the bottom
 
-    set clipboard=unnamedplus       " Make yank use the "+ register
+    "set clipboard=unnamedplus       " Make yank use the "+ register
 
     if has('cmdline_info')
         set ruler                   " show the ruler
@@ -98,15 +103,15 @@
     " u+2294 ⊔  u+231f ⌟  u+00bb »  u+2422 ␢  u+27ab ➫  u+2022 •  u+2027 ‧
     " u+2056 ⁖
     " u+25c0 ◀  u+25b6 ▶  u+25c4 ◄  u+25ba ►
-    set list
+    setlocal nolist
     set listchars=precedes:◀,extends:▶,trail:⁖,nbsp:⊔,tab:➫•
 
     if has('gui_running')
     " GVIM (here instead of .gvimrc) {
         "set guifont=Inconsolata\ 12
-        set guifont=Inconsolata-dz\ for\ Powerline\ 9
+        set guifont=Inconsolata-dz\ for\ Powerline\ 11
         let g:Powerline_symbols = 'fancy'
-        set background=light              " Assume a light background
+        set background=dark
         colorscheme solarized
         set guioptions-=T                  " remove the toolbar
         highlight Pmenu guibg=brown gui=bold
@@ -217,6 +222,7 @@
     " }
     " Behat {
         let feature_filetype='behat'
+        let g:behat_disable_omnicompl_cache = 1
     " }
     " CoffeeScript {
         let coffee_compile_vert = 1
@@ -262,9 +268,8 @@
         " EverVim authentication
         source ~/.vim/evernote_auth.vim
 
-        autocmd Vimrc BufWinLeave __EVERVIM_NOTE__ silent call CloseMarkdown()
-        autocmd Vimrc BufWinEnter __EVERVIM_NOTE__ silent call OpenMarkdown()
-        autocmd Vimrc CursorMoved,CursorMovedI,CursorHold,CursorHoldI __EVERVIM_NOTE__ silent call UpdateMarkdown()
+        autocmd BufWinEnter *.{md,mkd,mkdn,mdown,mark*} silent setf markdown
+        autocmd BufWinEnter __EVERVIM_NOTE__ silent setf markdown
     " }
     " fontzoom {
         " Replace the default keymapping
@@ -291,17 +296,70 @@
     " Gist {
         let g:gist_clip_command = 'xclip -selection clipboard'
         let g:git_detect_filetype = 1
-        "let g:gist_open_browser_after_post = 1
-        "let g:gist_browser_command = 'w3m %URL%'
+        let g:gist_open_browser_after_post = 1
+        "let g:gist_browser_command = 'x-www-browser %URL%'
         let g:gist_show_privates = 1
         let g:gist_post_private = 1
-        "let g:gist_get_multiplefile = 1
+        let g:gist_get_multiplefile = 1
     " }
     " Gundo {
         nnoremap <Leader>g :GundoToggle<CR>
         "let g:gundo_width = 60
         "let g:gundo_preview_height = 40
         let g:gundo_right = 1
+    " }
+    " Learn Vimscript the Hard Way --Steve Losh {
+        " More interesting horizontal scrolling
+        set sidescroll=5
+
+        " Round indent to multiple of shiftwidth
+        set shiftround
+
+        nnoremap ( ddp
+        nnoremap ) dd<up><up>pan
+
+        " Upcase the current word
+        inoremap <c-u> <Esc>viwUi
+        nnoremap <c-u> viwU
+
+        " Highlight the whole file
+        nnoremap <Leader>wf ggVG
+        vnoremap <Leader>wf ggVG
+
+        " Strip trailing spaces
+        "nnoremap <Leader>tw %s,\\s\\+$,,<cr>
+        "vnoremap <Leader>tw %s,\\s\\+$,,<cr>
+        "inoremap <Leader>tw <Esc>%s,\\s\\+$,,<cr>i
+
+        " Abbreviations
+        iabbrev @@ kgustavson@celltrak.com
+        iabbrev ccopy Copyright 2012 CellTrak Technologies Inc. All rights reserved.
+        iabbrev ssig -- <cr>Kevin Gustavson<cr>Software Developer<cr>kgustavson@celltrak.com
+
+        cabbrev gd Gdiff
+        cabbrev gw Gwrite
+        cabbrev gwr Gwrite
+        cabbrev gs Gstatus
+
+        nnoremap <Leader>" viw<Esc>a"<Esc>hbi"<Esc>lel
+        vnoremap <Leader>" <Esc>`<i"<Esc>`>la"<Esc>l
+        nnoremap <Leader>' viw<Esc>a'<Esc>hbi'<Esc>lel
+        vnoremap <Leader>' <Esc>`<i'<Esc>`>la'<Esc>l
+        nnoremap <Leader>[ viw<Esc>a]<Esc>hbi[<Esc>lel
+        vnoremap <Leader>" <Esc>`<i[<Esc>`>la]<Esc>l
+        nnoremap <Leader>( viw<Esc>a)<Esc>hbi(<Esc>lel
+
+        " Shortcut for Escape
+        inoremap jk <Esc>
+        " Disable the old mapping
+        inoremap <Esc> <nop>
+
+        " Floating Point Numbers
+        let g:math_pi = 3.14159265359
+        let g:math_e  = 2.71828182846
+
+        nnoremap <Leader>. :execute "rightbelow vsplit" bufname('#')<cr>
+
     " }
     " Misc {
         let g:checksyntax_auto = 0
@@ -324,7 +382,7 @@
         autocmd Vimrc BufNewFile,BufRead *.html.twig UltiSnipsAddFiletypes jinja2.html<CR>
 
         " Set defaults for PHP files
-        autocmd Vimrc BufNewFile,BufRead *.php set sw=4 ts=4 sts=4 et
+        autocmd Vimrc BufNewFile,BufRead *.php setlocal sw=4 ts=4 sts=4 et list
         autocmd Vimrc BufNewFile,BufRead *Test.php UltiSnipsAddFiletypes phpunit.php<CR>
 
         " Automatically strip trailing spaces in PHP files when 
@@ -332,6 +390,10 @@
 
         " Make sure help set properly for PHP files
         autocmd Vimrc FileType php set kp=:help
+
+        " Default mode settings
+        "autocmd Vimrc FileType html,xml,htmljinja setlocal et sw=2 ts=2 sts=2
+        "autocmd Vimrc FileType js,php setlocal et sw=4 ts=4 sts=4
     " }
     " NerdCommenter {
         let g:NERDCustomDelimiters = {
@@ -426,6 +488,17 @@
         nnoremap <Leader>pmd :Phpmd<cr>
         nnoremap <Leader>pcs :Phpcs<cr>
         nnoremap <Leader>pcc :Phpcc<cr>
+
+        "nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
+        "nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
+        let g:php_cs_fixer_path = "~/bin/php-cs-fixer" " define the path to the php-cs-fixer.phar
+        let g:php_cs_fixer_level = "all"               " which level ?
+        let g:php_cs_fixer_config = "default"          " configuration
+        let g:php_cs_fixer_php_path = "php"            " Path to PHP
+        let g:php_cs_fixer_fixers_list = ""            " List of fixers
+        let g:php_cs_fixer_enable_default_mapping = 1  " Enable the mapping by default (<leader>pcd)
+        let g:php_cs_fixer_dry_run = 0                 " Call command with dry-run option
+        let g:php_cs_fixer_verbose = 0                 " Return the output of command if 1, else an inline information.
     " }
     " PHPUnit {
         " http://knplabs.com/blog/boost-your-productivity-with-sf2-and-vim
@@ -548,3 +621,12 @@
     endif
 " }
 
+command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
+function! QuickfixFilenames()
+    " Building a hash ensures we get each buffer only once
+    let buffer_numbers = {}
+    for quickfix_item in getqflist()
+        let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+    endfor
+    return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+endfunction
