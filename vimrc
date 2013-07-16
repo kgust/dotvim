@@ -95,6 +95,7 @@
     set scrolljump=5                 " lines to scroll when cursor leaves screen
     set scrolloff=3                  " minimum lines to keep above and below cursor
     set foldenable                   " auto fold code
+    set foldlevel=3                  " fold three or more lines
     set gdefault                     " the /g flag on :s substitutions by default
     set switchbuf=usetab             " when opening a buffer from the list, use existing window first
     set colorcolumn=80               " visible wrap here/long line indicator
@@ -103,13 +104,14 @@
     " u+2294 ⊔  u+231f ⌟  u+00bb »  u+2422 ␢  u+27ab ➫  u+2022 •  u+2027 ‧
     " u+2056 ⁖
     " u+25c0 ◀  u+25b6 ▶  u+25c4 ◄  u+25ba ►
-    setlocal nolist
+    "setlocal nolist
+    "setlocal list
     set listchars=precedes:◀,extends:▶,trail:⁖,nbsp:⊔,tab:➫•
 
     if has('gui_running')
     " GVIM (here instead of .gvimrc) {
         "set guifont=Inconsolata\ 12
-        set guifont=Inconsolata-dz\ for\ Powerline\ 11
+        set guifont=Inconsolata-dz\ for\ Powerline\ 12
         let g:Powerline_symbols = 'fancy'
         set background=dark
         colorscheme solarized
@@ -292,6 +294,9 @@
           \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
           \   nnoremap <buffer> .. :edit %:h<CR> |
           \ endif
+
+        set errorformat+='%f:%l:%m'
+
     " }
     " Gist {
         let g:gist_clip_command = 'xclip -selection clipboard'
@@ -382,7 +387,7 @@
         autocmd Vimrc BufNewFile,BufRead *.html.twig UltiSnipsAddFiletypes jinja2.html<CR>
 
         " Set defaults for PHP files
-        autocmd Vimrc BufNewFile,BufRead *.php setlocal sw=4 ts=4 sts=4 et list
+        autocmd Vimrc BufNewFile,BufRead *.php setlocal sw=4 ts=4 sts=4 et
         autocmd Vimrc BufNewFile,BufRead *Test.php UltiSnipsAddFiletypes phpunit.php<CR>
 
         " Automatically strip trailing spaces in PHP files when 
