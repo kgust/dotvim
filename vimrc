@@ -111,9 +111,9 @@
     if has('gui_running')
     " GVIM (here instead of .gvimrc) {
         "set guifont=Inconsolata\ 12
-        set guifont=Inconsolata-dz\ for\ Powerline\ 12
+        set guifont=Inconsolata-dz\ for\ Powerline\ 9
         let g:Powerline_symbols = 'fancy'
-        set background=dark
+        set background=light
         colorscheme solarized
         set guioptions-=T                  " remove the toolbar
         highlight Pmenu guibg=brown gui=bold
