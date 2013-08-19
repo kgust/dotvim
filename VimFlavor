@@ -1,0 +1,20 @@
+group :high_priority do
+    #flavor 'vim-colors-solarized'
+    flavor 'kien/ctrlp.vim'
+    flavor 'tpope/vim-fugitive'
+    flavor 'gregsexton/gitv'
+    flavor 'scrooloose/syntastic'
+end
+
+group :medium_priority do
+end
+
+group :php do
+end
+
+group :ruby do
+end
+
+group :vim_development do
+  flavor 'kana/vim-vspec', '~> 0.0'
+end

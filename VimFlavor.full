@@ -1,0 +1,118 @@
+# VimFlavor file
+# Short Goal: Get this to download all my plugins
+# Long Goal: Eliminate plugins that are dependencies of others
+
+# My flavors
+#flavor 'kgust/kgust-snippets'
+
+# High Priority
+flavor 'altercation/vim-colors-solarized'
+flavor 'kien/ctrlp.vim'
+flavor 'tpope/vim-fugitive'
+flavor 'gregsexton/gitv'
+flavor 'scrooloose/syntastic'
+flavor 'ervandew/supertab'
+flavor 'tpope/vim-surround'
+flavor 'tsaleh/vim-align'
+flavor 'vim-scripts/mru.vim'
+flavor 'scrooloose/nerdcommenter'
+flavor 'vim-scripts/dbext.vim'
+flavor 'vim-scripts/camelcasemotion'
+flavor 'vim-scripts/scratch.vim'
+flavor 'vim-scripts/SQLUtilities'
+flavor 'sjl/gundo.vim'
+flavor 'yesmeck/PDV-revised'
+flavor 'tomtom/checksyntax_vim'
+flavor 'joonty/vim-phpqa'
+flavor 'vim-scripts/phpfolding.vim'
+flavor 'pangloss/vim-javascript'
+flavor 'drslump/vim-syntax-js'
+flavor 'kgust/sql.vim'
+flavor 'kchmck/vim-coffee-script'
+flavor 'vim-scripts/matchit.zip'
+flavor 'SirVer/ultisnips'
+flavor 'docteurklein/vim-symfony'
+flavor 'docteurklein/vim-phpunit'
+flavor 'docteurklein/vim-php-namespace'
+flavor 'Lokaltog/vim-powerline'
+flavor 'thinca/vim-fontzoom'
+
+# required by vim-snipmate
+#flavor 'MarcWeber/vim-addon-mw-utils'
+# required by vim-snipmate
+#flavor 'tomtom/tlib_vim'
+#flavor 'garbas/vim-snipmate'
+#flavor 'honza/snipmate-snippets'
+
+# Medium Priority
+flavor 'veloce/vim-behat'
+flavor 'kakkyz81/evervim'
+flavor 'mattn/gist-vim'
+# required by gist-vim
+flavor 'mattn/webapi-vim'
+flavor 'suan/vim-instant-markdown'
+flavor 'vim-pandoc/vim-pandoc'
+flavor 'mattn/zencoding-vim'
+#flavor 'othree/html5.vim'
+#flavor 'shawncplus/phpcomplete.vim'
+flavor 'trammell/vim-conque'
+#flavor 'tpope/vim-markdown'
+flavor 'brookhong/DBGPavim'
+#flavor 'kchmck/vim-coffee-script'
+#flavor 'docteurklein/vim-phpunit'
+#flavor 'docteurklein/vim-symfony'
+flavor 'Raimondi/delimitMate'
+flavor 'stephpy/vim-php-cs-fixer'
+#flavor 'Valloric/YouCompleteMe'
+
+# Low Priority
+flavor 'Toggle'
+flavor 'adt.vim'
+flavor 'vim-scripts/renamer.vim'
+#flavor 'dsummersl/vimunit.git'
+flavor 'airblade/vim-gitgutter'
+
+# Disabled
+#flavor 'vim-scripts/HTML-AutoCloseTag'
+#flavor 'vim-scripts/Color-Sampler-Pack'
+#flavor 'spf13/PIV'
+#flavor 'vim-scripts/gtags.vim'
+#flavor 'othree/html5.vim'
+#flavor 'shawncplus/phpcomplete.vim'
+#flavor 'tmallen/proj-vim'
+#flavor 'Raimondi/YAIFA'
+#flavor 'vim-scripts/taglist.vim'
+#flavor 'slack/vim-bufexplorer'
+#flavor 'vim-scripts/Parameter-Text-Objects'
+#flavor 'scrooloose/nerdtree'
+#flavor 'timcharper/textile.vim'
+#flavor 'vim-scripts/Rainbow-Parenthsis-flavor'
+#flavor 'Bogdanp/quicksilver.vim'
+#flavor 'chrismetcalf/vim-json'
+#flavor 'vim-scripts/confluencewiki.vim'
+#flavor 'hsitz/VimOrganizer'
+#flavor 'chrisbra/NrrwRgn'
+#flavor 'vim-scripts/utl.vim'
+#flavor 'astashov/vim-ruby-debugger'
+#flavor 'berkes/vim-pman'
+#flavor 'L9'
+#flavor 'git://repo.or.cz/vcscommand'
+#flavor 'git://gitorious.org/vim-gnupg/vim-gnupg'
+
+
+
+# Original flavors
+# ================
+# My flavors here:
+#
+# original repos on github
+#flavor 'tpope/vim-fugitive'
+#flavor 'Lokaltog/vim-easymotion'
+#flavor 'rstacruz/sparkup', {'rtp': 'vim/'}
+#flavor 'tpope/vim-rails.git'
+# vim-scripts repos
+#flavor 'L9'
+#flavor 'FuzzyFinder'
+# non github repos
+#flavor 'git://git.wincent.com/command-t.git'
+

@@ -1,5 +1,6 @@
 ~
 *.bak
+*.lock
 dbext.vim
 bundle/*
 evernote_auth.vim
