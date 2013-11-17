@@ -110,8 +110,8 @@
 
     if has('gui_running')
     " GVIM (here instead of .gvimrc) {
-        "set guifont=Inconsolata\ 12
-        set guifont=Inconsolata-dz\ for\ Powerline\ 9
+        set guifont=Inconsolata-dz\ for\ Powerline:h11
+
         let g:Powerline_symbols = 'fancy'
         set background=light
         colorscheme solarized
@@ -228,7 +228,7 @@
     " }
     " CoffeeScript {
         let coffee_compile_vert = 1
-        autocmd Vimrc BufWritePost *.coffee silent CoffeeMake! | cwindow | redraw!
+        autocmd Vimrc BufWritePost *.coffee silent make
         autocmd Vimrc BufNewFile,BufReadPost *.coffee setlocal foldmethod=indent sw=2 et
     " }
     " Ctags {
@@ -511,6 +511,9 @@
         com! -nargs=* Phpunit make -c app <q-args> | cw
         nnoremap <Leader>pu :Phpunit %<CR>
         nnoremap <Leader>pua :Phpunit<CR>
+    " }
+    " Powerline {
+        set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
     " }
     " Scratch {
         function! ToggleScratch()
