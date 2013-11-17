@@ -37,7 +37,6 @@ Bundle 'SirVer/ultisnips'
 Bundle 'docteurklein/vim-symfony'
 Bundle 'docteurklein/vim-phpunit'
 Bundle 'docteurklein/vim-php-namespace'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'thinca/vim-fontzoom'
 
 " required by vim-snipmate
