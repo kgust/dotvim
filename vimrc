@@ -108,9 +108,20 @@
     "setlocal list
     set listchars=precedes:◀,extends:▶,trail:⁖,nbsp:⊔,tab:➫•
 
+    " Equalize splits after a window resize
+    autocmd Vimrc VimResized * wincmd =
+
     if has('gui_running')
     " GVIM (here instead of .gvimrc) {
-        set guifont=Inconsolata-dz\ for\ Powerline:h11
+        let s:uname = system('uname')
+
+        if s:uname == "Darwin\n"
+            "set guifont=Inconsolata-dz\ for\ Powerline:h11
+            set guifont=Meslo\ LG\ L\ DZ\ for\ Powerline:h11
+        else
+            "set guifont=Inconsolata\ 12
+            set guifont=Inconsolata-dz\ for\ Powerline\ 9
+        endif
 
         let g:Powerline_symbols = 'fancy'
         set background=light
@@ -129,7 +140,6 @@
         set autoindent                   " indent at the same level of the previous line
         set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
         set expandtab                    " tabs are tabs, not spaces
-        "set foldmethod=syntax
         set matchpairs+=<:>              " match, to be used with %
         set pastetoggle=<F12>            " pastetoggle (sane indentation on pastes)
         set shiftwidth=4                 " use indents of 4 spaces
@@ -228,7 +238,7 @@
     " }
     " CoffeeScript {
         let coffee_compile_vert = 1
-        autocmd Vimrc BufWritePost *.coffee silent make
+        autocmd Vimrc BufWritePost *.coffee silent make!
         autocmd Vimrc BufNewFile,BufReadPost *.coffee setlocal foldmethod=indent sw=2 et
     " }
     " Ctags {
@@ -442,6 +452,7 @@
         set completeopt=menu,longest,preview
     " }
     " PDV PHPDoc Support {
+        "let g:DisableAutoPHPFolding = 1
         let g:DisableAutoPHPFolding = 0
 
         let g:pdv_cfg_Package = "CellTrak"
@@ -513,7 +524,10 @@
         nnoremap <Leader>pua :Phpunit<CR>
     " }
     " Powerline {
-        set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
+        "set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
+        "set rtp+=/usr/local/lib/python2.7/site-packages/Powerline-beta-py2.7.egg/powerline/bindings/vim
+        "set rtp+=/Users/kgustavson/powerline/build/lib/powerline/bindings/vim
+        set rtp+=/Users/kgustavson/powerline/powerline/bindings/vim
     " }
     " Scratch {
         function! ToggleScratch()

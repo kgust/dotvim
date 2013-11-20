@@ -65,6 +65,7 @@ Bundle 'brookhong/DBGPavim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'stephpy/vim-php-cs-fixer'
 "Bundle 'Valloric/YouCompleteMe'
+Bundle "zweifisch/pipe2eval"
 
 " Low Priority
 Bundle 'Toggle'
