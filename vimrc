@@ -458,8 +458,7 @@
         set completeopt=menu,longest,preview
     " }
     " PDV PHPDoc Support {
-        "let g:DisableAutoPHPFolding = 1
-        let g:DisableAutoPHPFolding = 0
+        let g:DisableAutoPHPFolding = 1
 
         let g:pdv_cfg_Package = "CellTrak"
         let g:pdv_cfg_Version = "2.0.4"
@@ -608,9 +607,12 @@
     " UltiSnips {
         "let g:UltiSnipsSnippetsDir="~/.vim/bundle/kgust-ultisnips/UltiSnips"
         "let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-        let g:UltiSnipsJumpForwardTrigger = "<c-h>"
-        "et g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-        let g:UltiSnipsJumpBackwardTrigger = "<c-l>"
+        "let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+        "let g:UltiSnipsJumpForwardTrigger = "<c-h>"
+        "let g:UltiSnipsJumpBackwardTrigger = "<c-l>"
+        let g:UltiSnipsExpandTrigger="<tab>"
+        let g:UltiSnipsJumpForwardTrigger="<tab>"
+        let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
     " }
     " VimOrganizer {
         autocmd! BufRead,BufWrite,BufWritePost,BufNewFile *.org
