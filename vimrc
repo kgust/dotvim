@@ -26,7 +26,9 @@
                                     "   automatically reload it
     set smarttab
     "set shell=bash\ -i              " Use bash as vim's default shell
-
+    
+    " 256 colors
+    set t_Co=256
 
     " Set the autocommand group and remove existing mappings
     augroup Vimrc
@@ -80,7 +82,7 @@
     endif
 
     set backspace=indent,eol,start   " backspace for dummys
-    set linespace=3                  " No extra spaces between rows
+    set linespace=2                  " spaces between rows
     set number                       " Line numbers on
     "set relativenumber              " Turn on relative number mode
     set showmatch                    " show matching brackets/parenthesis
@@ -114,6 +116,7 @@
     if has('gui_running')
     " GVIM (here instead of .gvimrc) {
         let s:uname = system('uname')
+        set lines=60 columns=140
 
         if s:uname == "Darwin\n"
             "set guifont=Inconsolata-dz\ for\ Powerline:h11
@@ -133,7 +136,8 @@
     " Console Only VIM Settings {
         " Fix console Vim, which was giving A B C D when using arrow keys in
         " insert mode.
-        set term=linux
+        "set term=linux
+        set mouse=a
     " }
     endif
     " Formatting {
