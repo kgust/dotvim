@@ -193,6 +193,8 @@
         vnoremap <tab> %
 
         " Add a semicolon
+        nnoremap ;; :s/\([^;]\)$/\1;/<CR>
+        inoremap ;; <esc>mq:s/\([^;]\)$/\1;/<CR>`qa
         nnoremap <Leader>; :s/\([^;]\)$/\1;/<CR>
         vnoremap <Leader>; :s/\([^;]\)$/\1;/<CR>
         "nnoremap <Leader>; execute "normal! mqA;\<Esc>`q"
