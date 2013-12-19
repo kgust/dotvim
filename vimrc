@@ -59,10 +59,6 @@
     set tabpagemax=15               " only show 15 tabs
     set showmode                    " display the current mode
 
-    set cursorline                  " highlight current line
-    hi cursorline guibg=#333333     " highlight bg color of current line
-    hi CursorColumn guibg=#333333   " highlight cursor
-
     set splitright                  " I want vertical windows to open on the right
     "set splitbelow                  " I want horizontal windows to open on the bottom
 
@@ -101,6 +97,12 @@
     set gdefault                     " the /g flag on :s substitutions by default
     set switchbuf=usetab             " when opening a buffer from the list, use existing window first
     set colorcolumn=80               " visible wrap here/long line indicator
+
+    " Colors and Listchars {
+    set cursorline                  " highlight current line
+    hi cursorline guibg=#333333     " highlight bg color of current line
+    hi CursorColumn guibg=#333333   " highlight cursor
+
     hi ColorColumn ctermbg=darkgray guibg=darkgray " Change the ColorColumn to lightgray
 
     " u+2294 ⊔  u+231f ⌟  u+00bb »  u+2422 ␢  u+27ab ➫  u+2022 •  u+2027 ‧
@@ -109,9 +111,16 @@
     "setlocal nolist
     "setlocal list
     set listchars=precedes:◀,extends:▶,trail:⁖,nbsp:⊔,tab:➫•
+    " }
 
     " Equalize splits after a window resize
     autocmd Vimrc VimResized * wincmd =
+
+    " MacVim Settings {
+    if has("gui_macvim")
+        set macmeta
+    endif
+    " }
 
     if has('gui_running')
     " GVIM (here instead of .gvimrc) {
@@ -153,18 +162,18 @@
     " Key Mappings {
 
         " Easier moving in tabs and windows
-        nnoremap <C-H> <C-W>h
-        vnoremap <C-H> <C-W>h
-        nnoremap <C-J> <C-W>j
-        vnoremap <C-J> <C-W>j
-        nnoremap <C-K> <C-W>k
-        vnoremap <C-K> <C-W>k
-        nnoremap <C-L> <C-W>l
-        vnoremap <C-L> <C-W>l
-        nnoremap <S-H> gT
-        vnoremap <S-H> gT
-        nnoremap <S-L> gt
-        vnoremap <S-L> gt
+        "nnoremap <C-H> <C-W>h
+        "vnoremap <C-H> <C-W>h
+        "nnoremap <C-J> <C-W>j
+        "vnoremap <C-J> <C-W>j
+        "nnoremap <C-K> <C-W>k
+        "vnoremap <C-K> <C-W>k
+        "nnoremap <C-L> <C-W>l
+        "vnoremap <C-L> <C-W>l
+        "nnoremap <S-H> gT
+        "vnoremap <S-H> gT
+        "nnoremap <S-L> gt
+        "vnoremap <S-L> gt
 
         " Yank from the cursor to the end of the line, to be consistent with C and D.
         nnoremap Y y$
@@ -233,6 +242,56 @@
     " }
 " }
 
+" FileType Specific Settings {
+    let g:checksyntax_auto = 0
+
+    "comment out line(s) in visual mode
+    vnoremap  o  :call NERDComment(1, 'toggle')<CR>
+    let g:NERDShutUp=1
+
+    let b:match_ignorecase = 1
+
+    let g:solarized_contrast='normal'
+    let g:solarized_visibility='low'
+
+    " Detect jQuery plugins
+    autocmd Vimrc BufNewFile,BufRead *.plugin.js set filetype=javascript syntax=jquery
+    autocmd Vimrc BufNewFile,BufRead jquery.*.js set filetype=javascript syntax=jquery
+
+    " Detect Twig filetype
+    autocmd Vimrc BufNewFile,BufRead *.twig set filetype=jinja2 et sw=4 ts=4 sts=4 fdm=marker fmr=block,endblock fdl=0
+    autocmd Vimrc BufNewFile,BufRead *.html.twig UltiSnipsAddFiletypes jinja2.html<CR>
+
+    " Set defaults for PHP files
+    autocmd Vimrc BufNewFile,BufRead *.php setlocal sw=4 ts=4 sts=4 et
+    autocmd Vimrc BufNewFile,BufRead *Test.php UltiSnipsAddFiletypes phpunit.php<CR>
+
+    " Automatically strip trailing spaces in PHP files when 
+    autocmd Vimrc BufRead,BufWrite *.php %s/\s\+$//e
+
+    " Make sure help set properly for PHP files
+    autocmd Vimrc FileType php set kp=:help
+
+    " Default mode settings
+    "autocmd Vimrc FileType html,xml,htmljinja setlocal et sw=2 ts=2 sts=2
+    "autocmd Vimrc FileType js,php setlocal et sw=4 ts=4 sts=4
+
+    " Tool Sharpening {
+        " This should fix the <? problem I have with html files.
+        autocmd Vimrc FileType html,jinja2 inoremap <buffer> <? </
+    " }
+
+    " http://vim.wikia.com/wiki/Use_eval_to_create_dynamic_templates {
+        augroup templates
+            " clear the augroup
+            au!
+            autocmd Vimrc BufNewFile *.* silent! execute '0r ~/.vim/templates/skeleton.'.expand("<afile>:e")
+
+            autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
+        augroup END
+    " }
+" }
+
 " Vim Plugins {
 
     " AlignMaps {
@@ -281,6 +340,20 @@
     " dbgPavim {
         let g:dbgPavimPort = 9000
         let g:dbgPavimBreakAtEntry = 0
+    " }
+    " Emmet-Vim {
+        let g:user_emmet_settings = {
+        \    'php' : {
+        \        'extends' : 'html',
+        \        'filters' : 'c',
+        \    },
+        \    'xml' : {
+        \        'extends' : 'html',
+        \    },
+        \    'haml' : {
+        \        'extends' : 'html',
+        \    },
+        \}
     " }
     " EverVim & Instant-Markdown {
         " EverVim authentication
@@ -382,40 +455,6 @@
         nnoremap <Leader>. :execute "rightbelow vsplit" bufname('#')<cr>
 
     " }
-    " Misc {
-        let g:checksyntax_auto = 0
-
-        "comment out line(s) in visual mode
-        vnoremap  o  :call NERDComment(1, 'toggle')<CR>
-        let g:NERDShutUp=1
-
-        let b:match_ignorecase = 1
-
-        let g:solarized_contrast='normal'
-        let g:solarized_visibility='low'
-
-        " Detect jQuery plugins
-        autocmd Vimrc BufNewFile,BufRead *.plugin.js set filetype=javascript syntax=jquery
-        autocmd Vimrc BufNewFile,BufRead jquery.*.js set filetype=javascript syntax=jquery
-
-        " Detect Twig filetype
-        autocmd Vimrc BufNewFile,BufRead *.twig set filetype=jinja2 et sw=4 ts=4 sts=4 fdm=marker fmr=block,endblock fdl=0
-        autocmd Vimrc BufNewFile,BufRead *.html.twig UltiSnipsAddFiletypes jinja2.html<CR>
-
-        " Set defaults for PHP files
-        autocmd Vimrc BufNewFile,BufRead *.php setlocal sw=4 ts=4 sts=4 et
-        autocmd Vimrc BufNewFile,BufRead *Test.php UltiSnipsAddFiletypes phpunit.php<CR>
-
-        " Automatically strip trailing spaces in PHP files when 
-        autocmd Vimrc BufRead,BufWrite *.php %s/\s\+$//e
-
-        " Make sure help set properly for PHP files
-        autocmd Vimrc FileType php set kp=:help
-
-        " Default mode settings
-        "autocmd Vimrc FileType html,xml,htmljinja setlocal et sw=2 ts=2 sts=2
-        "autocmd Vimrc FileType js,php setlocal et sw=4 ts=4 sts=4
-    " }
     " NerdCommenter {
         let g:NERDCustomDelimiters = {
                 \ 'rubyX': { 'left': '#', 'leftAlt': 'FOO', 'rightAlt': 'BAR' },
@@ -423,6 +462,9 @@
                 \ 'sql': { 'left': '-- ' },
                 \ 'jinja2': { 'left': '<!--', 'right': '-->' }
             \ }
+    " }
+    " NerdTree {
+        nnoremap <Leader>nt :NERDTree<CR>
     " }
     " Netrw {
         let g:netrw_liststyle=3
@@ -547,14 +589,6 @@
         nnoremap <Leader>ss :Sscratch<CR>
         nnoremap <Leader>as :AddtoScratch<CR>
     " }
-    " SnipMate {
-        "let loaded_snips = 1 " Disable the plugin
-
-        " Setting the author var
-        let g:snips_author = 'Kevin Gustavson <kgust@pobox.com>'
-        " Shortcut for reloading snippets, useful when developing
-        nnoremap ,smr <Esc>:execute ReloadAllSnippets()<cr>
-    " }
     " SQLUtilities {
         let g:sqlutil_align_comma = 1
         let g:sqlutil_align_first_word = 1
@@ -605,11 +639,19 @@
         let g:syntax_js=['function', 'return', 'solarized']
     " }
     " UltiSnips {
+        " Matt Boehm
+            "let g:UltiSnipsExpandTrigger="<tab>"
+            "let g:UltiSnipsJumpForwardTrigger="<tab>"
+            "let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+            "let g:UltiSnipsSnippetDirectories=["mysnippets"]
+            "nnoremap <leader>vs :call g:EditMySnippets()
         "let g:UltiSnipsSnippetsDir="~/.vim/bundle/kgust-ultisnips/UltiSnips"
         "let g:UltiSnipsJumpForwardTrigger = "<c-j>"
         "let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
         "let g:UltiSnipsJumpForwardTrigger = "<c-h>"
         "let g:UltiSnipsJumpBackwardTrigger = "<c-l>"
+
+        nnoremap <leader>es :call g:EditMySnippets()<CR>
         let g:UltiSnipsExpandTrigger="<tab>"
         let g:UltiSnipsJumpForwardTrigger="<tab>"
         let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
@@ -626,20 +668,6 @@
         " open VimOrganizerNotes.org in a vertical window
         nnoremap <Leader>vo <C-w><C-v><C-l>:e ~/Dropbox/Documents/VimOrg/<cr>
     " }
-    " ZenCoding {
-        let g:user_zen_settings = {
-        \    'php' : {
-        \        'extends' : 'html',
-        \        'filters' : 'c',
-        \    },
-        \    'xml' : {
-        \        'extends' : 'html',
-        \    },
-        \    'haml' : {
-        \        'extends' : 'html',
-        \    },
-        \}
-    " }
 
 " }
 
@@ -651,6 +679,7 @@
     endif
 " }
 
+" Functions {
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
 function! QuickfixFilenames()
     " Building a hash ensures we get each buffer only once
@@ -660,3 +689,11 @@ function! QuickfixFilenames()
     endfor
     return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
+
+function! g:EditMySnippets()
+    let ft = &ft
+    tabe ~/.vim/bundle/snippets/UltiSnips/
+    call search(ft)
+endfunction
+" }
+
