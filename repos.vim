@@ -5,8 +5,7 @@
 Bundle 'gmarik/vundle'
 
 " My Bundles
-Bundle 'kgust-snippets'
-"Bundle 'README.md'
+Bundle 'kgust/snippets'
 
 " High Priority
 Bundle 'altercation/vim-colors-solarized'
@@ -73,6 +72,8 @@ Bundle 'adt.vim'
 Bundle 'vim-scripts/renamer.vim'
 "Bundle 'dsummersl/vimunit.git'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'mattn/emmet-vim'
 
 " Disabled
 "Bundle 'vim-scripts/HTML-AutoCloseTag'
@@ -86,7 +87,6 @@ Bundle 'airblade/vim-gitgutter'
 "Bundle 'vim-scripts/taglist.vim'
 "Bundle 'slack/vim-bufexplorer'
 "Bundle 'vim-scripts/Parameter-Text-Objects'
-"Bundle 'scrooloose/nerdtree'
 "Bundle 'timcharper/textile.vim'
 "Bundle 'vim-scripts/Rainbow-Parenthsis-Bundle'
 "Bundle 'Bogdanp/quicksilver.vim'
