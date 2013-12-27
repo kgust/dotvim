@@ -18,12 +18,13 @@
     filetype plugin on            " required!
     filetype plugin indent on     " required!
     scriptencoding utf-8
+    set encoding=utf-8
     set autowrite
     set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
     set hidden                      " Turn on hidden mode
     set undofile                    " Turn on undofile functionality
-    "set autoread                    " If an unedited file is changed on disk,
-                                    "   automatically reload it
+    set autoread                    " If an unedited file is changed on disk,
+                                   "   automatically reload it
     set smarttab
     "set shell=bash\ -i              " Use bash as vim's default shell
     
@@ -62,7 +63,8 @@
     set splitright                  " I want vertical windows to open on the right
     "set splitbelow                  " I want horizontal windows to open on the bottom
 
-    "set clipboard=unnamedplus       " Make yank use the "+ register
+    " Make yank use the "+ register
+    "set clipboard=unnamedplus
 
     if has('cmdline_info')
         set ruler                   " show the ruler
@@ -97,6 +99,8 @@
     set gdefault                     " the /g flag on :s substitutions by default
     set switchbuf=usetab             " when opening a buffer from the list, use existing window first
     set colorcolumn=80               " visible wrap here/long line indicator
+    set visualbell                   " visible alerts
+    set ttyfast                      " disable for slow terminals
 
     " Colors and Listchars {
     set cursorline                  " highlight current line
@@ -145,21 +149,23 @@
     " Console Only VIM Settings {
         " Fix console Vim, which was giving A B C D when using arrow keys in
         " insert mode.
-        "set term=linux
+        "set term=xterm-256color
         set mouse=a
     " }
     endif
     " Formatting {
         set autoindent                   " indent at the same level of the previous line
-        set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
-        set expandtab                    " tabs are tabs, not spaces
+        set comments=sl:/*,mb:*,elx:*/   " auto format comment blocks
         set matchpairs+=<:>              " match, to be used with %
-        set pastetoggle=<F12>            " pastetoggle (sane indentation on pastes)
+        set expandtab                    " tabs are tabs, not spaces
         set shiftwidth=4                 " use indents of 4 spaces
         set tabstop=4                    " an indentation every four columns
-        set wrap                         " wrap long lines
+        set softtabstop=4
+        set nowrap                       " wrap long lines
     " }
     " Key Mappings {
+        set pastetoggle=<F10>            " pastetoggle (sane indentation on pastes)
+        nnoremap <F10> :set paste!<CR>
 
         " Easier moving in tabs and windows
         "nnoremap <C-H> <C-W>h
@@ -175,8 +181,15 @@
         "nnoremap <S-L> gt
         "vnoremap <S-L> gt
 
+        " disable line-wise moving
+        nnoremap j gj
+        nnoremap k gk
+
         " Yank from the cursor to the end of the line, to be consistent with C and D.
         nnoremap Y y$
+
+        " allow ; to enter command mode
+        nnoremap ; :
 
         " clear highlighted seaches
         nnoremap <CR> :noh<CR><CR>
@@ -190,9 +203,6 @@
         " Shortcuts
         " Change Working Directory to that of the current file
         cnoremap cwd lcd %:p:h
-
-        " Quickly enter paste mode
-        set pastetoggle=<F2>
 
         " Save a write protected file when you forgot sudo
         cnoremap w!! write !sudo tee % >/dev/null
@@ -409,8 +419,9 @@
         " Round indent to multiple of shiftwidth
         set shiftround
 
-        nnoremap ( ddp
-        nnoremap ) dd<up><up>pan
+        " Move lines around
+        "nnoremap ( ddp
+        "nnoremap ) dd<up><up>p
 
         " Upcase the current word
         inoremap <c-u> <Esc>viwUi
@@ -442,11 +453,6 @@
         nnoremap <Leader>[ viw<Esc>a]<Esc>hbi[<Esc>lel
         vnoremap <Leader>" <Esc>`<i[<Esc>`>la]<Esc>l
         nnoremap <Leader>( viw<Esc>a)<Esc>hbi(<Esc>lel
-
-        " Shortcut for Escape
-        inoremap jk <Esc>
-        " Disable the old mapping
-        inoremap <Esc> <nop>
 
         " Floating Point Numbers
         let g:math_pi = 3.14159265359
@@ -637,6 +643,11 @@
         let concealcursor=""
 
         let g:syntax_js=['function', 'return', 'solarized']
+    " }
+    " Tslime {
+        vmap <C-c><C-c> <Plug>SendSelectionToTmux
+        nmap <C-c><C-c> <Plug>NormalModeSendToTmux
+        nmap <C-c>r <Plug>SetTmuxVars
     " }
     " UltiSnips {
         " Matt Boehm
