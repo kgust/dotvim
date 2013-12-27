@@ -38,13 +38,6 @@ Bundle 'docteurklein/vim-phpunit'
 Bundle 'docteurklein/vim-php-namespace'
 Bundle 'thinca/vim-fontzoom'
 
-" required by vim-snipmate
-"Bundle 'MarcWeber/vim-addon-mw-utils'
-" required by vim-snipmate
-"Bundle 'tomtom/tlib_vim'
-"Bundle 'garbas/vim-snipmate'
-"Bundle 'honza/snipmate-snippets'
-
 " Medium Priority
 Bundle 'veloce/vim-behat'
 Bundle 'kakkyz81/evervim'
@@ -65,6 +58,7 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'stephpy/vim-php-cs-fixer'
 "Bundle 'Valloric/YouCompleteMe'
 Bundle "zweifisch/pipe2eval"
+Bundle "jgdavey/tslime.vim"
 
 " Low Priority
 Bundle 'Toggle'
