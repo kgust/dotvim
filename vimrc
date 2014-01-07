@@ -19,6 +19,7 @@
     filetype plugin indent on     " required!
     scriptencoding utf-8
     set encoding=utf-8
+    syntax on
     set autowrite
     set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
     set hidden                      " Turn on hidden mode
@@ -30,6 +31,9 @@
     
     " 256 colors
     set t_Co=256
+    let g:Powerline_symbols = 'fancy'
+    set background=light
+    colorscheme solarized
 
     " Set the autocommand group and remove existing mappings
     augroup Vimrc
@@ -107,7 +111,7 @@
     hi cursorline guibg=#333333     " highlight bg color of current line
     hi CursorColumn guibg=#333333   " highlight cursor
 
-    hi ColorColumn ctermbg=darkgray guibg=darkgray " Change the ColorColumn to lightgray
+    hi ColorColumn ctermbg=lightgray guibg=lightgray " Change the ColorColumn to lightgray
 
     " u+2294 ⊔  u+231f ⌟  u+00bb »  u+2422 ␢  u+27ab ➫  u+2022 •  u+2027 ‧
     " u+2056 ⁖
@@ -139,9 +143,6 @@
             set guifont=Inconsolata-dz\ for\ Powerline\ 9
         endif
 
-        let g:Powerline_symbols = 'fancy'
-        set background=light
-        colorscheme solarized
         set guioptions-=T                  " remove the toolbar
         highlight Pmenu guibg=brown gui=bold
     " }
