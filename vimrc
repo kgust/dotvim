@@ -428,6 +428,8 @@
         iabbrev @@ kgustavson@celltrak.com
         iabbrev ccopy Copyright 2012 CellTrak Technologies Inc. All rights reserved.
         iabbrev ssig -- <cr>Kevin Gustavson<cr>Software Developer<cr>kgustavson@celltrak.com
+        " autocorrect ddate to "Monday 1/14/13"
+        iab ddate <C-R>=strftime("%a %m/%d/%y")<CR>
 
         cabbrev gd Gdiff
         cabbrev gw Gwrite
