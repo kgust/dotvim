@@ -1,3 +1,4 @@
+" FileType settings for HTMLJINJA
 " Author:  Eric Van Dewoestine
 "
 " Description: {{{

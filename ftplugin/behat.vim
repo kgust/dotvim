@@ -1,3 +1,4 @@
+" FileType settings for Behat
 " ~/.vim/ftplugin/behat.vim
 
 " b:behat_cmd_args let you add arguments to the behat command.

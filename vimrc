@@ -274,23 +274,11 @@
     autocmd Vimrc BufNewFile,BufRead *.html.twig UltiSnipsAddFiletypes jinja2.html<CR>
 
     " Set defaults for PHP files
-    autocmd Vimrc BufNewFile,BufRead *.php setlocal sw=4 ts=4 sts=4 et
     autocmd Vimrc BufNewFile,BufRead *Test.php UltiSnipsAddFiletypes phpunit.php<CR>
 
     " Automatically strip trailing spaces in PHP files when 
     autocmd Vimrc BufRead,BufWrite *.php %s/\s\+$//e
 
-    " Make sure help set properly for PHP files
-    autocmd Vimrc FileType php set kp=:help
-
-    " Default mode settings
-    "autocmd Vimrc FileType html,xml,htmljinja setlocal et sw=2 ts=2 sts=2
-    "autocmd Vimrc FileType js,php setlocal et sw=4 ts=4 sts=4
-
-    " Tool Sharpening {
-        " This should fix the <? problem I have with html files.
-        autocmd Vimrc FileType html,jinja2 inoremap <buffer> <? </
-    " }
 
     " http://vim.wikia.com/wiki/Use_eval_to_create_dynamic_templates {
         augroup templates
@@ -315,7 +303,6 @@
     " CoffeeScript {
         let coffee_compile_vert = 1
         autocmd Vimrc BufWritePost *.coffee silent make!
-        autocmd Vimrc BufNewFile,BufReadPost *.coffee setlocal foldmethod=indent sw=2 et
     " }
     " Ctags {
         set tags=./tags;/,~/.vimtags
