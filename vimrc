@@ -426,8 +426,8 @@
 
         " Abbreviations
         iabbrev @@ kgustavson@celltrak.com
-        iabbrev ccopy Copyright 2012 CellTrak Technologies Inc. All rights reserved.
-        iabbrev ssig -- <cr>Kevin Gustavson<cr>Software Developer<cr>kgustavson@celltrak.com
+        iabbrev ccopy Copyright 2014 CellTrak Technologies Inc. All rights reserved.
+        iabbrev ssig -- <cr>Kevin Gustavson<cr>Software Developer<cr>kgustavson@straightnorth.com
         " autocorrect ddate to "Monday 1/14/13"
         iab ddate <C-R>=strftime("%a %m/%d/%y")<CR>
 
@@ -449,6 +449,9 @@
         let g:math_e  = 2.71828182846
 
         nnoremap <Leader>. :execute "rightbelow vsplit" bufname('#')<cr>
+
+        onoremap ih :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<cr>
+        :onoremap ah :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rg_vk0"<cr>
 
     " }
     " NerdCommenter {
