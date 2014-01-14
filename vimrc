@@ -108,7 +108,7 @@
 
     " Colors and Listchars {
     set cursorline                  " highlight current line
-    hi cursorline guibg=#333333     " highlight bg color of current line
+    "hi cursorline guibg=#333333     " highlight bg color of current line
     hi CursorColumn guibg=#333333   " highlight cursor
 
     hi ColorColumn ctermbg=lightgray guibg=lightgray " Change the ColorColumn to lightgray
