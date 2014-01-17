@@ -213,12 +213,9 @@
         vnoremap <tab> %
 
         " Add a semicolon
-        nnoremap ;; :s/\([^;]\)$/\1;/<CR>
-        inoremap ;; <esc>mq:s/\([^;]\)$/\1;/<CR>`qa
-        nnoremap <Leader>; :s/\([^;]\)$/\1;/<CR>
-        vnoremap <Leader>; :s/\([^;]\)$/\1;/<CR>
-        "nnoremap <Leader>; execute "normal! mqA;\<Esc>`q"
-        "vnoremap <Leader>; execute "normal! \<Esc>A;\<Esc>gv"
+        nnoremap ;; mq:s/\([^;]\)$/\1;/<CR>:nohlsearch<CR>`q
+        inoremap ;; <esc>mq:s/\([^;]\)$/\1;/<CR>:nohlsearch<CR>`qa
+        vnoremap ;; :s/\([^;]\)$/\1;/e<CR>:nohlsearch<CR>gv
 
         " Leader Key Mappings {
             " Firstly, define the <Leader> key
