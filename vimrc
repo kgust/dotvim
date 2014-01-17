@@ -428,6 +428,13 @@
         " autocorrect ddate to "Monday 1/14/13"
         iab ddate <C-R>=strftime("%a %m/%d/%y")<CR>
 
+        " Filler text
+        iabbrev nitt Now is the time for all good men to come to the aid of their country.
+        iabbrev tiat This is a test of the Emergency Broadcast System. Broadcasters, in cooperation with federal, state and local authorities have developed this system to keep you informed in the event of an emergency.  This is only a test.  If this had been an actual emergency, you would have been instructed where to tune in your area for news and official information.
+        iabbrev qbf The quick brown fox jumped over the lazy dog.
+        iabbrev lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        iabbrev ebs This is a test of the Emergency Broadcast System. Broadcasters, in cooperation with federal, state and local authorities have developed this system to keep you informed in the event of an emergency.  This is only a test.  If this had been an actual emergency, you would have been instructed where to tune in your area for news and official information.
+
         cabbrev gd Gdiff
         cabbrev gw Gwrite
         cabbrev gwr Gwrite
