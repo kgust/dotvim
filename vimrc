@@ -445,10 +445,11 @@
         let g:math_pi = 3.14159265359
         let g:math_e  = 2.71828182846
 
+        " Open alternate buffer to the right
         nnoremap <Leader>. :execute "rightbelow vsplit" bufname('#')<cr>
 
         onoremap ih :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<cr>
-        :onoremap ah :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rg_vk0"<cr>
+        onoremap ah :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rg_vk0"<cr>
 
     " }
     " NerdCommenter {
