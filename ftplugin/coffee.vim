@@ -2,8 +2,14 @@
 setlocal foldmethod=indent expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
 function! CoffeeScriptFolds()
-  if getline(v:lnum) =~ '->\s*$'
-    return ">" . indent(v:lnum) / 2
+  if getline(v:lnum) =~ '^#'
+    return 0
+  elseif getline(v:lnum) =~ '^\s*class$'
+    return ">" . (indent(v:lnum) + 2) / 2
+  elseif getline(v:lnum) =~ '^\s*$' && getline(v:lnum + 1) =~ '^\s*$'
+    return "s1"
+  elseif getline(v:lnum) =~ '[=-]>$'
+    return ">" . (indent(v:lnum) + 2) / 2
   endif
   return "="
 endfunction
@@ -16,4 +22,4 @@ endfunction
 setlocal foldmethod=expr
 setlocal foldexpr=CoffeeScriptFolds()
 setlocal foldtext=CoffeeScriptFoldText()
-setlocal et ts=2 sw=2 sts=2
+"setlocal fdm=expr fde=getline(v:lnum)=~'->$'&&indent(v:lnum)<indent(v:lnum+1)?'a1':'s1'
