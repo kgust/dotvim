@@ -222,24 +222,17 @@
             let mapleader = ","
             let maplocalleader = "\\"
 
-            " This should be moved to a Textile specific config file
-            nnoremap <Leader>1 yypVr=
-
-            " Strip all trailing whitespace in the current file
-            nnoremap <Leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-
-            " fold HMTL tag
+            " fold HMTL tag - TODO move to HTML filetype?
             nnoremap <Leader>ft Vatzf
 
-            " sort CSS properties
+            " sort CSS properties - TODO move to CSS filetype?
             "nnoremap <Leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
-            nnoremap <Leader>S Vi{:sort<CR>:noh<CR> "}
+            nnoremap <Leader>S Vi{:sort<CR>:noh<CR>
 
             " re-highlight text just pasted
             nnoremap <Leader>v V`]
 
             " edit .vimrc in a vertical window
-            "nnoremap <Leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
             nnoremap <Leader>ev :vsplit $HOME/.vim/vimrc<cr>
             nnoremap <Leader>sv :source $MYVIMRC<cr>
 
@@ -273,8 +266,9 @@
     " Set defaults for PHP files
     autocmd Vimrc BufNewFile,BufRead *Test.php UltiSnipsAddFiletypes phpunit.php<CR>
 
-    " Automatically strip trailing spaces in PHP files when 
+    " Automatically strip trailing spaces - TODO Q: Can these be combined?
     autocmd Vimrc BufRead,BufWrite *.php %s/\s\+$//e
+    autocmd Vimrc BufRead,BufWrite *.js %s/\s\+$//e
 
 
     " http://vim.wikia.com/wiki/Use_eval_to_create_dynamic_templates {
@@ -422,8 +416,8 @@
         "inoremap <Leader>tw <Esc>%s,\\s\\+$,,<cr>i
 
         " Abbreviations
-        iabbrev @@ kgustavson@celltrak.com
-        iabbrev ccopy Copyright 2014 CellTrak Technologies Inc. All rights reserved.
+        iabbrev kgatsn kgustavson@straightnorth.com
+        iabbrev copyr Copyright 2014 Straight North LLC. All rights reserved.
         iabbrev ssig -- <cr>Kevin Gustavson<cr>Software Developer<cr>kgustavson@straightnorth.com
         " autocorrect ddate to "Monday 1/14/13"
         iab ddate <C-R>=strftime("%a %m/%d/%y")<CR>
