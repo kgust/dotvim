@@ -11,47 +11,47 @@ function! s:system(cmd, stdin)
     else
         call system(a:cmd, a:stdin)
     endif
-endfu
+endfunction
 
 function! s:refreshView()
     let bufnr = expand('<bufnr>')
     call s:system("curl -X PUT -T - http://localhost:8090/ &>/dev/null &",
                 \ s:bufGetContents(bufnr))
-endfu
+endfunction
 
 function! s:startDaemon(initialMD)
     call s:system("/usr/local/bin/instant-markdown-d &>/dev/null &", a:initialMD)
 
-endfu
+endfunction
 
 function! s:initDict()
     if !exists('s:buffers')
         let s:buffers = {}
     endif
-endfu
+endfunction
 
 function! s:pushBuffer(bufnr)
     call s:initDict()
     let s:buffers[a:bufnr] = 1
-endfu
+endfunction
 
 function! s:popBuffer(bufnr)
     call s:initDict()
     call remove(s:buffers, a:bufnr)
-endfu
+endfunction
 
 function! s:killDaemon()
     call system("curl -s -X DELETE http://localhost:8090/ &>/dev/null &")
-endfu
+endfunction
 
 function! s:bufGetContents(bufnr)
   return join(getbufline(a:bufnr, 1, "$"), "\n")
-endfu
+endfunction
 
 " I really, really hope there's a better way to do this.
-fu! s:myBufNr()
+function! s:myBufNr()
     return str2nr(expand('<abuf>'))
-endfu
+endfunction
 
 " # Functions called by autocmds
 "
@@ -60,7 +60,7 @@ endfu
 " 1. Track it so we know when to garbage collect the daemon
 " 2. Start daemon if we're on the first MD buffer.
 " 3. Initialize changedtickLast, possibly needlessly(?)
-fu! s:pushMarkdown()
+function! s:pushMarkdown()
     let bufnr = s:myBufNr()
     call s:initDict()
     if len(s:buffers) == 0
@@ -68,7 +68,7 @@ fu! s:pushMarkdown()
     endif
     call s:pushBuffer(bufnr)
     let b:changedtickLast = b:changedtick
-endfu
+endfunction
 
 " ## pop a Markdown buffer
 "
@@ -76,36 +76,36 @@ endfu
 " 2. Garbage collection
 "     * daemon
 "     * autocmds
-fu! s:popMarkdown()
+function! s:popMarkdown()
     let bufnr = s:myBufNr()
-    silent au! instant-markdown * <buffer=abuf>
+    silent autocmd! instant-markdown * <buffer=abuf>
     call s:popBuffer(bufnr)
     if len(s:buffers) == 0
         call s:killDaemon()
     endif
-endfu
+endfunction
 
 " ## Refresh if there's something new worth showing
 "
 " 'All things in moderation'
-fu! s:temperedRefresh()
+function! s:temperedRefresh()
     if !exists('b:changedtickLast')
         let b:changedtickLast = b:changedtick
     elseif b:changedtickLast != b:changedtick
         let b:changedtickLast = b:changedtick
         call s:refreshView()
     endif
-endfu
+endfunction
 
 " # Define the autocmds "
-aug instant-markdown
-    au! * <buffer>
-    au BufEnter <buffer> call s:refreshView()
+augroup instant-markdown
+    autocmd! * <buffer>
+    autocmd BufEnter <buffer> call s:refreshView()
     if g:instant_markdown_slow
-        au CursorHold,BufWrite,InsertLeave <buffer> call s:temperedRefresh()
+        autocmd CursorHold,BufWrite,InsertLeave <buffer> call s:temperedRefresh()
     else
-        au CursorHold,CursorHoldI,CursorMoved,CursorMovedI <buffer> call s:temperedRefresh()
+        autocmd CursorHold,CursorHoldI,CursorMoved,CursorMovedI <buffer> call s:temperedRefresh()
     endif
-    au BufWinLeave <buffer> call s:popMarkdown()
-    au BufwinEnter <buffer> call s:pushMarkdown()
-aug END
+    autocmd BufWinLeave <buffer> call s:popMarkdown()
+    autocmd BufwinEnter <buffer> call s:pushMarkdown()
+augroup END
