@@ -68,6 +68,7 @@ Bundle 'vim-scripts/renamer.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'mattn/emmet-vim'
+Bundle 'kana/vim-vspec'
 
 " Disabled
 "Bundle 'vim-scripts/HTML-AutoCloseTag'
