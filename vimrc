@@ -239,6 +239,9 @@
             " switch to alternate buffer
             nnoremap <silent><Leader>, :buffer#<CR>
 
+            " Edit Tool Sharpening
+            nnoremap <Leader>et :vsplit $HOME/Google\ Drive/tool-sharpening.md<cr>
+
         " }
     " }
 " }
@@ -254,17 +257,6 @@
 
     let g:solarized_contrast='normal'
     let g:solarized_visibility='low'
-
-    " Detect jQuery plugins
-    autocmd Vimrc BufNewFile,BufRead *.plugin.js set filetype=javascript syntax=jquery
-    autocmd Vimrc BufNewFile,BufRead jquery.*.js set filetype=javascript syntax=jquery
-
-    " Detect Twig filetype
-    autocmd Vimrc BufNewFile,BufRead *.twig set filetype=jinja2 et sw=4 ts=4 sts=4 fdm=marker fmr=block,endblock fdl=0
-    autocmd Vimrc BufNewFile,BufRead *.html.twig UltiSnipsAddFiletypes jinja2.html<CR>
-
-    " Set defaults for PHP files
-    autocmd Vimrc BufNewFile,BufRead *Test.php UltiSnipsAddFiletypes phpunit.php<CR>
 
     " Automatically strip trailing spaces - TODO Q: Can these be combined?
     autocmd Vimrc BufRead,BufWrite *.php %s/\s\+$//e
@@ -386,7 +378,7 @@
         let g:gist_get_multiplefile = 1
     " }
     " Gundo {
-        nnoremap <Leader>g :GundoToggle<CR>
+        nnoremap <Leader>u :GundoToggle<CR>
         "let g:gundo_width = 60
         "let g:gundo_preview_height = 40
         let g:gundo_right = 1
@@ -627,5 +619,30 @@ function! g:EditMySnippets()
     tabe ~/.vim/bundle/snippets/UltiSnips/
     call search(ft)
 endfunction
-" }
 
+" http://vim.wikia.com/wiki/Different_syntax_highlighting_within_regions_of_a_file
+function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
+    let ft=toupper(a:filetype)
+    let group='textGroup'.ft
+    if exists('b:current_syntax')
+        let s:current_syntax=b:current_syntax
+        " Remove current syntax definition, as some syntax files (e.g. cpp.vim)
+        " do nothing if b:current_syntax is defined.
+        unlet b:current_syntax
+    endif
+    execute 'syntax include @'.group.' syntax/'.a:filetype.'.vim'
+    try
+        execute 'syntax include @'.group.' after/syntax/'.a:filetype.'.vim'
+    catch
+    endtry
+    if exists('s:current_syntax')
+        let b:current_syntax=s:current_syntax
+    else
+        unlet b:current_syntax
+    endif
+    execute 'syntax region textSnip'.ft.'
+                \ matchgroup='.a:textSnipHl.'
+                \ start="'.a:start.'" end="'.a:end.'"
+                \ contains=@'.group
+endfunction
+" }

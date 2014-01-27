@@ -6,6 +6,7 @@ Bundle 'gmarik/vundle'
 
 " My Bundles
 Bundle 'kgust/snippets'
+Bundle 'kgust/vim-potion'
 
 " High Priority
 Bundle 'altercation/vim-colors-solarized'
