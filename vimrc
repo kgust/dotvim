@@ -98,8 +98,8 @@
     set whichwrap=b,s,h,l,<,>,[,]    " backspace and cursor keys wrap to
     set scrolljump=5                 " lines to scroll when cursor leaves screen
     set scrolloff=3                  " minimum lines to keep above and below cursor
-    set foldenable                   " auto fold code
-    set foldlevel=3                  " fold three or more lines
+    "set foldenable                   " auto fold code
+    "set foldlevel=3                  " fold three or more lines
     set gdefault                     " the /g flag on :s substitutions by default
     set switchbuf=usetab             " when opening a buffer from the list, use existing window first
     set colorcolumn=80               " visible wrap here/long line indicator
