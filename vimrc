@@ -242,6 +242,9 @@
             " Edit Tool Sharpening
             nnoremap <Leader>et :vsplit $HOME/Google\ Drive/tool-sharpening.md<cr>
 
+            " Most Recently Used Shortcut
+            nnoremap <Leader>mr :MRU<cr>
+
         " }
     " }
 " }
