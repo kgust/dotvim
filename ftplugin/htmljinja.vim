@@ -22,6 +22,14 @@
 "
 " }}}
 
+" KG: Added
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set list
+" KG: End
+
 runtime ftplugin/html.vim
 runtime indent/html.vim
 runtime eclim/ftplugin/html.vim
