@@ -318,9 +318,6 @@
         \    'tag',
         \ ]
     " }
-    " dbext {
-        source ~/.vim/dbext.vim
-    " }
     " dbgPavim {
         let g:dbgPavimPort = 9000
         let g:dbgPavimBreakAtEntry = 0
@@ -343,9 +340,6 @@
         nnoremap <leader>em execute "normal! %s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<cr>:nohls"<cr>
     " }
     " EverVim & Instant-Markdown {
-        " EverVim authentication
-        source ~/.vim/evernote_auth.vim
-
         autocmd BufWinEnter *.{md,mkd,mkdn,mdown,mark*} silent setf markdown
         autocmd BufWinEnter __EVERVIM_NOTE__ silent setf markdown
     " }
