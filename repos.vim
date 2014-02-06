@@ -7,6 +7,8 @@ Bundle 'gmarik/vundle'
 " My Bundles
 Bundle 'kgust/snippets'
 Bundle 'kgust/vim-potion'
+Bundle 'dtedesigns/vim-cute-php'
+Bundle 'dtedesigns/vim-cute-javascript'
 
 " High Priority
 Bundle 'altercation/vim-colors-solarized'
@@ -70,6 +72,8 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'mattn/emmet-vim'
 Bundle 'kana/vim-vspec'
+Bundle 'junegunn/vim-github-dashboard'
+Bundle 'junegunn/vim-emoji'
 
 " Disabled
 "Bundle 'vim-scripts/HTML-AutoCloseTag'

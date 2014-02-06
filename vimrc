@@ -339,6 +339,9 @@
         \    },
         \}
     " }
+    " Emoji {
+        nnoremap <leader>em execute "normal! %s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<cr>:nohls"<cr>
+    " }
     " EverVim & Instant-Markdown {
         " EverVim authentication
         source ~/.vim/evernote_auth.vim
@@ -379,6 +382,14 @@
         let g:gist_show_privates = 1
         let g:gist_post_private = 1
         let g:gist_get_multiplefile = 1
+    " }
+    " GitGutter {
+        if emoji#available()
+            let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
+            let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
+            let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
+            let g:gitgutter_sign_modified_removed = emoji#for('collision')
+        endif
     " }
     " Gundo {
         nnoremap <Leader>u :GundoToggle<CR>
