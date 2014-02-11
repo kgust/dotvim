@@ -15,6 +15,7 @@
 " }
 
 " General Settings {
+    set nrformats-=octal	      " Don't treat numbers with leading zeros as octal
     filetype plugin on            " required!
     filetype plugin indent on     " required!
     scriptencoding utf-8
