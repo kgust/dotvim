@@ -28,6 +28,10 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set list
+set foldmethod=marker
+set foldmarker=block,endblock
+set foldlevel=0
+UltiSnipsAddFiletypes jinja2.html
 " KG: End
 
 runtime ftplugin/html.vim
