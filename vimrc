@@ -113,10 +113,12 @@
 
     " Colors and Listchars {
     set cursorline                  " highlight current line
-    "hi cursorline guibg=#333333     " highlight bg color of current line
-    hi CursorColumn guibg=#333333   " highlight cursor
+    highlight clear CursorLine
+    "highlight cursorline guibg=#333333     " highlight bg color of current line
+    highlight CursorLine gui=underline guisp=lightgray
 
-    hi ColorColumn ctermbg=lightgray guibg=lightgray " Change the ColorColumn to lightgray
+    "highlight CursorColumn guibg=#333333   " highlight cursor
+    highlight ColorColumn ctermbg=lightgray guibg=lightgray " Change the ColorColumn to lightgray
 
     " u+2294 ⊔  u+231f ⌟  u+00bb »  u+2422 ␢  u+27ab ➫  u+2022 •  u+2027 ‧
     " u+2056 ⁖
@@ -486,9 +488,9 @@
         "highlight PmenuSbar ctermbg=7     guibg=DarkGray
         "highlight PmenuThumb             guibg=Black
 
-        hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
-        hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
-        hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
+        highlight Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
+        highlight PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
+        highlight PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 
         " some convenient mappings
         inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
