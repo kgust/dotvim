@@ -6,7 +6,6 @@ Bundle 'gmarik/vundle'
 
 " My Bundles
 Bundle 'kgust/snippets'
-Bundle 'kgust/vim-potion'
 Bundle 'dtedesigns/vim-cute-php'
 Bundle 'dtedesigns/vim-cute-javascript'
 
@@ -74,6 +73,9 @@ Bundle 'mattn/emmet-vim'
 Bundle 'kana/vim-vspec'
 Bundle 'junegunn/vim-github-dashboard'
 Bundle 'junegunn/vim-emoji'
+
+" Moved to VimFlavor
+"Bundle 'kgust/vim-potion'
 
 " Disabled
 "Bundle 'vim-scripts/HTML-AutoCloseTag'

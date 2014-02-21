@@ -1,7 +1,14 @@
 ~
 *.bak
 *.lock
+
+# Authorization
 dbext.vim
-bundle/*
 evernote_auth.vim
 vim-github-dashboard.vim
+
+# Generated files
+.netrwhist
+.vim-flavor/
+flavors/
+bundle/*

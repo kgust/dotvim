@@ -1,0 +1,32 @@
+# * Declare using git://github.com/kana/vim-textobj-indent.git
+# * vim-flavor fetches git://github.com/$USER/$REPO.git
+#   if the argument is written in '$USER/$REPO' format.
+# * kana/vim-textobj-indent requires kana/vim-textobj-user.
+#   Such dependencies are automatically installed
+#   if the flavored plugin declares its dependencies with VimFlavor file.
+flavor 'kana/vim-textobj-indent'
+
+# * Declare using git://github.com/vim-scripts/fakeclip.git
+# * vim-flavor fetches git://github.com/vim-scripts/$REPO.git
+#   if the argument is written in '$REPO' format.
+#flavor 'fakeclip'
+
+# * Declare using git://github.com/kana/vim-altr.git
+# * vim-flavor fetches the URI
+#   if the argument seems to be a URI.
+#flavor 'git://github.com/kana/vim-altr.git'
+
+# * Declare using kana/vim-smartchr 0.1.0 or later and older than 0.2.0.
+#flavor 'kana/vim-smartchr', '~> 0.1.0'
+
+# * Declare using kana/vim-smartword 0.1 or later and older than 1.0.
+#flavor 'kana/vim-smartword', '~> 0.1'
+
+# * Declare using kana/vim-smarttill 0.1.0 or later.
+#flavor 'kana/vim-smarttill', '>= 0.1.0'
+
+
+
+# KG Begin
+flavor 'kana/vim-vspec', '>= 1.0'
+flavor 'kgust/vim-potion'

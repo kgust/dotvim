@@ -14,6 +14,10 @@
     source ~/.vim/repos.vim
 " }
 
+" Vim-Flavor {
+    runtime flavors/bootstrap.vim
+" }
+
 " General Settings {
     set nrformats-=octal	      " Don't treat numbers with leading zeros as octal
     filetype plugin on            " required!
