@@ -4,11 +4,6 @@
 " required!
 Bundle 'gmarik/vundle'
 
-" My Bundles
-Bundle 'kgust/snippets'
-Bundle 'dtedesigns/vim-cute-php'
-Bundle 'dtedesigns/vim-cute-javascript'
-
 " High Priority
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'kien/ctrlp.vim'
@@ -66,16 +61,15 @@ Bundle "jgdavey/tslime.vim"
 Bundle 'Toggle'
 Bundle 'adt.vim'
 Bundle 'vim-scripts/renamer.vim'
-"Bundle 'dsummersl/vimunit.git'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'mattn/emmet-vim'
-Bundle 'kana/vim-vspec'
 Bundle 'junegunn/vim-github-dashboard'
 Bundle 'junegunn/vim-emoji'
 
 " Moved to VimFlavor
 "Bundle 'kgust/vim-potion'
+"Bundle 'kana/vim-vspec'
 
 " Disabled
 "Bundle 'vim-scripts/HTML-AutoCloseTag'

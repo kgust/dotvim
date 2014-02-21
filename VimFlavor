@@ -1,4 +1,4 @@
-# * Declare using git://github.com/kana/vim-textobj-indent.git
+# * Declare using git://github.com/kana/vim-textobj-indent.git;
 # * vim-flavor fetches git://github.com/$USER/$REPO.git
 #   if the argument is written in '$USER/$REPO' format.
 # * kana/vim-textobj-indent requires kana/vim-textobj-user.
@@ -25,8 +25,14 @@ flavor 'kana/vim-textobj-indent'
 # * Declare using kana/vim-smarttill 0.1.0 or later.
 #flavor 'kana/vim-smarttill', '>= 0.1.0'
 
+flavor 'kana/vim-vspec', '>= 1.0'
 
 
 # KG Begin
-flavor 'kana/vim-vspec', '>= 1.0'
 flavor 'kgust/vim-potion'
+flavor 'kgust/snippets'
+flavor 'dtedesigns/vim-cute-php'
+flavor 'dtedesigns/vim-cute-javascript'
+flavor 'kgust/sql.vim'
+
+# High Priority
