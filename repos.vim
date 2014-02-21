@@ -26,7 +26,6 @@ Bundle 'joonty/vim-phpqa'
 Bundle 'rayburgemeestre/phpfolding.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'drslump/vim-syntax-js'
-Bundle 'kgust/sql.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'SirVer/ultisnips'
@@ -67,10 +66,6 @@ Bundle 'mattn/emmet-vim'
 Bundle 'junegunn/vim-github-dashboard'
 Bundle 'junegunn/vim-emoji'
 
-" Moved to VimFlavor
-"Bundle 'kgust/vim-potion'
-"Bundle 'kana/vim-vspec'
-
 " Disabled
 "Bundle 'vim-scripts/HTML-AutoCloseTag'
 "Bundle 'vim-scripts/Color-Sampler-Pack'
@@ -96,31 +91,4 @@ Bundle 'junegunn/vim-emoji'
 "Bundle 'L9'
 "Bundle 'git://repo.or.cz/vcscommand'
 "Bundle 'git://gitorious.org/vim-gnupg/vim-gnupg'
-
-
-
-" Original Bundles
-" ================
-" My Bundles here:
-"
-" original repos on github
-"Bundle 'tpope/vim-fugitive'
-"Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-"Bundle 'tpope/vim-rails.git'
-" vim-scripts repos
-"Bundle 'L9'
-"Bundle 'FuzzyFinder'
-" non github repos
-"Bundle 'git://git.wincent.com/command-t.git'
-
-"
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
 
