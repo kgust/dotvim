@@ -3,6 +3,10 @@
 "
 " }
 
+" Vim-Flavor {
+    runtime flavors/bootstrap.vim
+" }
+
 " Vundle Required {
     set nocompatible               " be iMproved
     filetype off                   " required!
@@ -12,10 +16,6 @@
 
     " Vundle Bundles
     source ~/.vim/repos.vim
-" }
-
-" Vim-Flavor {
-    runtime flavors/bootstrap.vim
 " }
 
 " General Settings {
