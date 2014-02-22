@@ -27,6 +27,8 @@ flavor 'kana/vim-textobj-indent'
 
 flavor 'kana/vim-vspec', '>= 1.0'
 
+# REQUIRED
+flavor 'gmarik/vundle'
 
 # KG Begin
 flavor 'kgust/vim-potion'
@@ -36,3 +38,61 @@ flavor 'dtedesigns/vim-cute-javascript'
 flavor 'kgust/sql.vim'
 
 # High Priority
+#flavor 'altercation/vim-colors-solarized'
+#flavor 'docteurklein/vim-php-namespace'
+#flavor 'docteurklein/vim-phpunit'
+#flavor 'docteurklein/vim-symfony'
+#flavor 'drslump/vim-syntax-js'
+#flavor 'tsaleh/vim-align'
+flavor 'SirVer/ultisnips'
+flavor 'ervandew/supertab'
+flavor 'gregsexton/gitv'
+flavor 'joonty/vim-phpqa'
+flavor 'kchmck/vim-coffee-script'
+flavor 'kien/ctrlp.vim'
+flavor 'pangloss/vim-javascript'
+flavor 'rayburgemeestre/phpfolding.vim'
+flavor 'scrooloose/nerdcommenter'
+flavor 'scrooloose/syntastic'
+flavor 'sjl/gundo.vim'
+flavor 'thinca/vim-fontzoom'
+flavor 'tomtom/checksyntax_vim'
+flavor 'tpope/vim-fugitive'
+flavor 'tpope/vim-surround'
+flavor 'vim-scripts/SQLUtilities'
+flavor 'vim-scripts/camelcasemotion'
+flavor 'vim-scripts/dbext.vim'
+flavor 'vim-scripts/matchit.zip'
+flavor 'vim-scripts/mru.vim'
+flavor 'vim-scripts/scratch.vim'
+flavor 'yesmeck/PDV-revised'
+
+# Medium Priority
+#flavor 'Valloric/YouCompleteMe'
+#flavor 'kchmck/vim-coffee-script'
+#flavor 'othree/html5.vim'
+#flavor 'shawncplus/phpcomplete.vim'
+#flavor 'tpope/vim-markdown'
+#flavor 'mattn/webapi-vim' #required by gist-vim
+
+#flavor "zweifisch/pipe2eval"
+#flavor 'brookhong/DBGPavim'
+#flavor 'jgdavey/tslime.vim'
+#flavor 'kakkyz81/evervim'
+#flavor 'mattn/zencoding-vim'
+#flavor 'stephpy/vim-php-cs-fixer'
+#flavor 'trammell/vim-conque'
+flavor 'Raimondi/delimitMate'
+flavor 'mattn/gist-vim'
+flavor 'suan/vim-instant-markdown'
+flavor 'veloce/vim-behat'
+
+# Low Priority
+#flavor 'Toggle'
+#flavor 'adt.vim'
+#flavor 'airblade/vim-gitgutter'
+#flavor 'mattn/emmet-vim'
+#flavor 'junegunn/vim-github-dashboard'
+#flavor 'junegunn/vim-emoji'
+flavor 'vim-scripts/renamer.vim'
+flavor 'scrooloose/nerdtree'

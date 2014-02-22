@@ -1,6 +1,7 @@
 ~
 *.bak
 *.lock
+.DS_Store
 
 # Authorization
 dbext.vim
