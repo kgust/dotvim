@@ -11,6 +11,9 @@ Bundle 'docteurklein/vim-phpunit'
 Bundle 'docteurklein/vim-symfony'
 Bundle 'drslump/vim-syntax-js'
 Bundle 'tsaleh/vim-align'
+Bundle 'ervandew/supertab'
+Bundle 'rayburgemeestre/phpfolding.vim'
+Bundle 'tpope/vim-fugitive'
 
 " Medium Priority
 "Bundle 'othree/html5.vim'
@@ -18,6 +21,10 @@ Bundle 'tsaleh/vim-align'
 "Bundle 'kchmck/vim-coffee-script'
 "Bundle 'tpope/vim-markdown'
 "Bundle 'Valloric/YouCompleteMe'
+"Bundle 'rizzatti/funcoo.vim'
+"Bundle 'rizzatti/dash.vim'
+Bundle 'SirVer/ultisnips'
+Bundle 'tpope/vim-dispatch'
 
 Bundle 'kakkyz81/evervim'
 "Bundle 'mattn/webapi-vim' " required by gist-vim
