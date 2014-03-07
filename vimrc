@@ -252,6 +252,8 @@
             " Most Recently Used Shortcut
             nnoremap <Leader>mr :MRU<cr>
 
+            nmap <silent> <Leader>d <Plug>DashSearch
+
         " }
     " }
 " }
