@@ -7,17 +7,6 @@
     runtime flavors/bootstrap.vim
 " }
 
-" Vundle Required {
-    set nocompatible               " be iMproved
-    filetype off                   " required!
-
-    set rtp+=~/.vim/bundle/vundle/
-    call vundle#rc()
-
-    " Vundle Bundles
-    source ~/.vim/repos.vim
-" }
-
 " General Settings {
     set nrformats-=octal	      " Don't treat numbers with leading zeros as octal
     filetype plugin on            " required!

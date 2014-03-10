@@ -5,15 +5,15 @@
 "Bundle 'gmarik/vundle'
 
 " High Priority
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'docteurklein/vim-php-namespace'
-Bundle 'docteurklein/vim-phpunit'
-Bundle 'docteurklein/vim-symfony'
-Bundle 'drslump/vim-syntax-js'
-Bundle 'tsaleh/vim-align'
-Bundle 'ervandew/supertab'
-Bundle 'rayburgemeestre/phpfolding.vim'
-Bundle 'tpope/vim-fugitive'
+"Bundle 'altercation/vim-colors-solarized'
+"Bundle 'docteurklein/vim-php-namespace'
+"Bundle 'docteurklein/vim-phpunit'
+"Bundle 'docteurklein/vim-symfony'
+"Bundle 'drslump/vim-syntax-js'
+"Bundle 'tsaleh/vim-align'
+"Bundle 'ervandew/supertab'
+"Bundle 'rayburgemeestre/phpfolding.vim'
+"Bundle 'tpope/vim-fugitive'
 
 " Medium Priority
 "Bundle 'othree/html5.vim'
@@ -23,25 +23,25 @@ Bundle 'tpope/vim-fugitive'
 "Bundle 'Valloric/YouCompleteMe'
 "Bundle 'rizzatti/funcoo.vim'
 "Bundle 'rizzatti/dash.vim'
-Bundle 'SirVer/ultisnips'
-Bundle 'tpope/vim-dispatch'
+"Bundle 'SirVer/ultisnips'
+"Bundle 'tpope/vim-dispatch'
 
-Bundle 'kakkyz81/evervim'
+"Bundle 'kakkyz81/evervim'
 "Bundle 'mattn/webapi-vim' " required by gist-vim
-Bundle 'mattn/zencoding-vim'
-Bundle 'trammell/vim-conque'
-Bundle 'brookhong/DBGPavim'
-Bundle 'stephpy/vim-php-cs-fixer'
-Bundle "zweifisch/pipe2eval"
-Bundle "jgdavey/tslime.vim"
+"Bundle 'mattn/zencoding-vim'
+"Bundle 'trammell/vim-conque'
+"Bundle 'brookhong/DBGPavim'
+"Bundle 'stephpy/vim-php-cs-fixer'
+"Bundle 'zweifisch/pipe2eval'
+"Bundle 'jgdavey/tslime.vim'
 
 " Low Priority
-Bundle 'Toggle'
-Bundle 'adt.vim'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'mattn/emmet-vim'
-Bundle 'junegunn/vim-github-dashboard'
-Bundle 'junegunn/vim-emoji'
+"Bundle 'Toggle'
+"Bundle 'adt.vim'
+"Bundle 'airblade/vim-gitgutter'
+"Bundle 'mattn/emmet-vim'
+"Bundle 'junegunn/vim-github-dashboard'
+"Bundle 'junegunn/vim-emoji'
 
 " Disabled
 "Bundle 'vim-scripts/HTML-AutoCloseTag'
