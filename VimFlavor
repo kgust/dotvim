@@ -64,15 +64,15 @@ flavor 'vim-scripts/scratch.vim'
 flavor 'yesmeck/PDV-revised'
 flavor 'rizzatti/funcoo.vim'
 flavor 'rizzatti/dash.vim'
-flavor 'altercation/vim-colors-solarized', "branch: master"
-flavor 'docteurklein/vim-php-namespace', "branch: master"
-flavor 'docteurklein/vim-phpunit', "branch: master"
-flavor 'docteurklein/vim-symfony', "branch: master"
-flavor 'drslump/vim-syntax-js', "branch: master"
-flavor 'tsaleh/vim-align', "branch: master"
-flavor 'ervandew/supertab', "branch: master"
-flavor 'rayburgemeestre/phpfolding.vim', "branch: master"
-flavor 'tpope/vim-fugitive', "branch: master"
+flavor 'altercation/vim-colors-solarized', branch: 'master'
+flavor 'docteurklein/vim-php-namespace', branch: 'master'
+flavor 'docteurklein/vim-phpunit', branch: 'master'
+flavor 'docteurklein/vim-symfony', branch: 'master'
+flavor 'drslump/vim-syntax-js', branch: 'master'
+flavor 'tsaleh/vim-align', branch: 'master'
+flavor 'ervandew/supertab', branch: 'master'
+flavor 'rayburgemeestre/phpfolding.vim', branch: 'master'
+flavor 'tpope/vim-fugitive', branch: 'master'
 
 # Medium Priority
 #flavor 'Valloric/YouCompleteMe'
@@ -81,25 +81,18 @@ flavor 'tpope/vim-fugitive', "branch: master"
 #flavor 'shawncplus/phpcomplete.vim'
 #flavor 'tpope/vim-markdown'
 #flavor 'mattn/webapi-vim' #required by gist-vim
-flavor 'SirVer/ultisnips', "branch: master"
-flavor 'tpope/vim-dispatch', "branch: master"
+flavor 'SirVer/ultisnips', branch: 'master'
+flavor 'tpope/vim-dispatch', branch: 'master'
 
-flavor 'kakkyz81/evervim', "branch: master"
+flavor 'kakkyz81/evervim', branch: 'master'
 #flavor 'mattn/webapi-vim' " required by gist-vim
-flavor 'mattn/zencoding-vim', "branch: master"
-flavor 'trammell/vim-conque', "branch: master"
-flavor 'brookhong/DBGPavim', "branch: master"
-flavor 'stephpy/vim-php-cs-fixer', "branch: master"
-flavor "zweifisch/pipe2eval", "branch: master"
-flavor "jgdavey/tslime.vim", "branch: master"
+flavor 'mattn/zencoding-vim', branch: 'master'
+flavor 'trammell/vim-conque', branch: 'master'
+flavor 'brookhong/DBGPavim', branch: 'master'
+flavor 'stephpy/vim-php-cs-fixer', branch: 'master'
+flavor "zweifisch/pipe2eval", branch: 'master'
+flavor "jgdavey/tslime.vim", branch: 'master'
 
-#flavor "zweifisch/pipe2eval"
-#flavor 'brookhong/DBGPavim'
-#flavor 'jgdavey/tslime.vim'
-#flavor 'kakkyz81/evervim'
-#flavor 'mattn/zencoding-vim'
-#flavor 'stephpy/vim-php-cs-fixer'
-#flavor 'trammell/vim-conque'
 flavor 'Raimondi/delimitMate'
 flavor 'mattn/gist-vim'
 flavor 'suan/vim-instant-markdown'
@@ -115,11 +108,11 @@ flavor 'veloce/vim-behat'
 flavor 'vim-scripts/renamer.vim'
 flavor 'scrooloose/nerdtree'
 
-flavor 'airblade/vim-gitgutter', "branch: master"
-flavor 'mattn/emmet-vim', "branch: master"
-flavor 'junegunn/vim-github-dashboard', "branch: master"
-flavor 'junegunn/vim-emoji', "branch: master"
+flavor 'airblade/vim-gitgutter', branch: 'master'
+flavor 'mattn/emmet-vim', branch: 'master'
+flavor 'junegunn/vim-github-dashboard', branch: 'master'
+flavor 'junegunn/vim-emoji', branch: 'master'
 
-flavor 'vim-scripts/adt.vim', ">= 1.0"
+flavor 'vim-scripts/adt.vim', '>= 1.0'
 #Bundle 'Toggle'
-flavor 'vim-scripts/toggle_word.vim', ">= 1.4"
+flavor 'vim-scripts/toggle_word.vim', '>= 1.4'
