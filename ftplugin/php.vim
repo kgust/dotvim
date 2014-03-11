@@ -9,6 +9,7 @@ silent! EnableFastPHPFolds
 "autocmd File_Type BufRead,BufWrite *.php %s/\s\+$//e
 
 " PDV PHPDoc Support {
+if 0
     let g:DisableAutoPHPFolding = 1
 
     let g:pdv_cfg_Package = "CellTrak"
@@ -31,6 +32,14 @@ silent! EnableFastPHPFolds
     ""let b:match_words = b:match_words . ',{:},(:),[:]'
     nnoremap <Leader>ff :EnableFastPHPFolds<CR>
     vnoremap <Leader>ff :EnableFastPHPFolds<CR>
+endif
+" }
+" PDV 2 PHPDoc Support {
+    let g:pdv_template_dir = $HOME."/.vim/flavors/tobyS_pdv/templates"
+    let g:PHP_removeCRwhenUnix = 1             " 0 is default
+    let g:PHP_BracesAtCodeLevel = 0            " 0 is default
+    let g:PHP_vintage_case_default_indent = 0  " 0 is default
+    nnoremap <buffer> <Leader>pd :call pdv#DocumentCurrentLine()<CR>
 " }
 " PHP Namespace {
     inoremap <buffer><Leader>ns <C-O>:call PhpInsertUse()><CR>
