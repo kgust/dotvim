@@ -1,10 +1,14 @@
+##########
+# EXAMPLES
+##########
+
 # * Declare using git://github.com/kana/vim-textobj-indent.git;
 # * vim-flavor fetches git://github.com/$USER/$REPO.git
 #   if the argument is written in '$USER/$REPO' format.
 # * kana/vim-textobj-indent requires kana/vim-textobj-user.
 #   Such dependencies are automatically installed
 #   if the flavored plugin declares its dependencies with VimFlavor file.
-flavor 'kana/vim-textobj-indent'
+#flavor 'kana/vim-textobj-indent'
 
 # * Declare using git://github.com/vim-scripts/fakeclip.git
 # * vim-flavor fetches git://github.com/vim-scripts/$REPO.git
@@ -25,94 +29,114 @@ flavor 'kana/vim-textobj-indent'
 # * Declare using kana/vim-smarttill 0.1.0 or later.
 #flavor 'kana/vim-smarttill', '>= 0.1.0'
 
-flavor 'kana/vim-vspec', '>= 1.0'
-
-# REQUIRED
-#flavor 'gmarik/vundle'
-
-# KG Begin
+#########
+# KG Mine
+#########
 flavor 'kgust/vim-potion'
 flavor 'kgust/snippets'
-flavor 'dtedesigns/vim-cute-php'
-flavor 'dtedesigns/vim-cute-javascript'
-flavor 'kgust/sql.vim'
 
-# High Priority
-#flavor 'altercation/vim-colors-solarized'
-#flavor 'docteurklein/vim-php-namespace'
-#flavor 'docteurklein/vim-phpunit'
-#flavor 'docteurklein/vim-symfony'
-#flavor 'drslump/vim-syntax-js'
-#flavor 'tsaleh/vim-align'
-flavor 'gregsexton/gitv'
-flavor 'joonty/vim-phpqa'
-flavor 'kchmck/vim-coffee-script'
-flavor 'kien/ctrlp.vim'
-flavor 'pangloss/vim-javascript'
-flavor 'scrooloose/nerdcommenter'
-flavor 'scrooloose/syntastic'
-flavor 'sjl/gundo.vim'
-flavor 'thinca/vim-fontzoom'
-flavor 'tomtom/checksyntax_vim'
-flavor 'tpope/vim-surround'
-flavor 'vim-scripts/SQLUtilities'
-flavor 'vim-scripts/camelcasemotion'
-flavor 'vim-scripts/dbext.vim'
+# REQUIRED IF USING VUNDLE ALONGSIDE
+#flavor 'gmarik/vundle'
+
+####################
+# $VIMRUNTIME
+# - Replace Defaults
+####################
+flavor '2072/PHP-Indenting-for-VIm'
 flavor 'vim-scripts/matchit.zip'
-flavor 'vim-scripts/mru.vim'
-flavor 'vim-scripts/scratch.vim'
-flavor 'yesmeck/PDV-revised'
-flavor 'rizzatti/funcoo.vim'
-flavor 'rizzatti/dash.vim'
+
+########
+# GENERAL
+########
+
+# Colors
 flavor 'altercation/vim-colors-solarized', branch: 'master'
+
+###########
+# FILETYPES
+###########
+
+# PHP
+flavor 'joonty/vim-phpqa'
 flavor 'docteurklein/vim-php-namespace', branch: 'master'
 flavor 'docteurklein/vim-phpunit', branch: 'master'
 flavor 'docteurklein/vim-symfony', branch: 'master'
-flavor 'drslump/vim-syntax-js', branch: 'master'
-flavor 'tsaleh/vim-align', branch: 'master'
-flavor 'ervandew/supertab', branch: 'master'
 flavor 'rayburgemeestre/phpfolding.vim', branch: 'master'
-flavor 'tpope/vim-fugitive', branch: 'master'
-
-# Medium Priority
-#flavor 'Valloric/YouCompleteMe'
-#flavor 'kchmck/vim-coffee-script'
-#flavor 'othree/html5.vim'
 #flavor 'shawncplus/phpcomplete.vim'
-#flavor 'tpope/vim-markdown'
-#flavor 'mattn/webapi-vim' #required by gist-vim
-flavor 'SirVer/ultisnips', branch: 'master'
-flavor 'tpope/vim-dispatch', branch: 'master'
-
-flavor 'kakkyz81/evervim', branch: 'master'
-#flavor 'mattn/webapi-vim' " required by gist-vim
-flavor 'mattn/zencoding-vim', branch: 'master'
-flavor 'trammell/vim-conque', branch: 'master'
+flavor 'veloce/vim-behat'
+flavor 'tobyS/vmustache', branch: 'master'
+flavor 'tobyS/pdv', branch: 'master'
 flavor 'brookhong/DBGPavim', branch: 'master'
 flavor 'stephpy/vim-php-cs-fixer', branch: 'master'
-flavor "zweifisch/pipe2eval", branch: 'master'
-flavor "jgdavey/tslime.vim", branch: 'master'
+flavor 'dtedesigns/vim-cute-php'
 
-flavor 'Raimondi/delimitMate'
-flavor 'mattn/gist-vim'
-flavor 'suan/vim-instant-markdown'
-flavor 'veloce/vim-behat'
+# Coffeescript
+flavor 'kchmck/vim-coffee-script'
 
-# Low Priority
-#flavor 'Toggle'
-#flavor 'adt.vim'
-#flavor 'airblade/vim-gitgutter'
-#flavor 'mattn/emmet-vim'
-#flavor 'junegunn/vim-github-dashboard'
-#flavor 'junegunn/vim-emoji'
-flavor 'vim-scripts/renamer.vim'
-flavor 'scrooloose/nerdtree'
+# Javascript
+flavor 'pangloss/vim-javascript'
+flavor 'drslump/vim-syntax-js', branch: 'master'
+flavor 'dtedesigns/vim-cute-javascript'
 
-flavor 'airblade/vim-gitgutter', branch: 'master'
+# HTML
 flavor 'mattn/emmet-vim', branch: 'master'
-flavor 'junegunn/vim-github-dashboard', branch: 'master'
-flavor 'junegunn/vim-emoji', branch: 'master'
+#flavor 'othree/html5.vim'
 
-flavor 'vim-scripts/adt.vim', '>= 1.0'
+# Markdown
+#flavor 'tpope/vim-markdown'
+flavor 'suan/vim-instant-markdown'
+
+# SQL
+flavor 'vim-scripts/SQLUtilities'
+flavor 'vim-scripts/dbext.vim'
+flavor 'kgust/sql.vim'
+
+# Vimscript
+flavor 'kana/vim-vspec', '>= 1.0'
+
+
+###########
+# UTILITIES
+###########
+
+# Usage
+flavor 'scrooloose/nerdtree'
+flavor 'kien/ctrlp.vim'
+flavor 'sjl/gundo.vim'
 #Bundle 'Toggle'
 flavor 'vim-scripts/toggle_word.vim', '>= 1.4'
+flavor 'thinca/vim-fontzoom'
+flavor 'vim-scripts/camelcasemotion'
+flavor 'vim-scripts/mru.vim'
+flavor 'vim-scripts/scratch.vim'
+#flavor 'ervandew/supertab', branch: 'master'
+#flavor 'Valloric/YouCompleteMe'
+flavor 'tsaleh/vim-align', branch: 'master'
+flavor 'SirVer/ultisnips', branch: 'master'
+flavor 'vim-scripts/renamer.vim'
+flavor 'junegunn/vim-emoji', branch: 'master'
+
+# External Programs
+flavor 'trammell/vim-conque', branch: 'master'
+flavor 'tpope/vim-dispatch', branch: 'master'
+flavor "zweifisch/pipe2eval", branch: 'master'
+flavor "jgdavey/tslime.vim", branch: 'master'
+flavor 'junegunn/vim-github-dashboard', branch: 'master'
+#flavor 'mattn/webapi-vim' #required by gist-vim
+flavor 'mattn/gist-vim'
+flavor 'kakkyz81/evervim', branch: 'master'
+#   - Android
+#flavor 'vim-scripts/adt.vim', '>= 1.0'
+
+# Development
+flavor 'Raimondi/delimitMate'
+flavor 'airblade/vim-gitgutter', branch: 'master'
+flavor 'tpope/vim-fugitive', branch: 'master'
+flavor 'gregsexton/gitv'
+flavor 'scrooloose/nerdcommenter'
+flavor 'scrooloose/syntastic'
+flavor 'tomtom/checksyntax_vim'
+flavor 'tpope/vim-surround'
+flavor 'rizzatti/funcoo.vim'
+# dash requires funcoo.vim
+flavor 'rizzatti/dash.vim'
