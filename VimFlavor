@@ -84,7 +84,7 @@ flavor 'mattn/emmet-vim', branch: 'master'
 
 # Markdown
 #flavor 'tpope/vim-markdown'
-flavor 'suan/vim-instant-markdown'
+#flavor 'suan/vim-instant-markdown'
 
 # SQL
 flavor 'vim-scripts/SQLUtilities'
@@ -130,7 +130,7 @@ flavor 'kakkyz81/evervim', branch: 'master'
 
 # Development
 flavor 'Raimondi/delimitMate'
-flavor 'airblade/vim-gitgutter', branch: 'master'
+#flavor 'airblade/vim-gitgutter', branch: 'master'
 flavor 'tpope/vim-fugitive', branch: 'master'
 flavor 'gregsexton/gitv'
 flavor 'scrooloose/nerdcommenter'

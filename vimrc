@@ -557,6 +557,11 @@
 
         nnoremap <Leader>ve :call PhpStackTrace()<CR>
     " }
+    " Syntastic {
+        let g:syntastic_check_on_open = 1
+        let g:syntastic_error_symbol = '✗'
+        let g:syntastic_warning_symbol = '⚠'
+    " }
     " Syntax -- Move this out? {
         let conceallevel=2
         let concealcursor=""
