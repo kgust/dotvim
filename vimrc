@@ -8,6 +8,8 @@
 " }
 
 " General Settings {
+    let s:uname = system('uname') " What system am I using?
+
     set nrformats-=octal	      " Don't treat numbers with leading zeros as octal
     filetype plugin on            " required!
     filetype plugin indent on     " required!
@@ -128,7 +130,6 @@
 
     if has('gui_running')
     " GVIM (here instead of .gvimrc) {
-        let s:uname = system('uname')
         set lines=60 columns=140
 
         if s:uname == "Darwin\n"
@@ -274,6 +275,7 @@
         augroup END
     " }
 " }
+" }
 
 " Vim Plugins {
 
@@ -367,7 +369,11 @@
 
     " }
     " Gist {
-        let g:gist_clip_command = 'xclip -selection clipboard'
+        if s:uname == "Darwin\n"
+            let g:gist_clip_command = 'pbcopy'
+        else
+            let g:gist_clip_command = 'xclip -selection clipboard'
+        endif
         let g:git_detect_filetype = 1
         let g:gist_open_browser_after_post = 1
         "let g:gist_browser_command = 'x-www-browser %URL%'

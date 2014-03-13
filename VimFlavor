@@ -122,7 +122,7 @@ flavor 'tpope/vim-dispatch', branch: 'master'
 flavor "zweifisch/pipe2eval", branch: 'master'
 flavor "jgdavey/tslime.vim", branch: 'master'
 flavor 'junegunn/vim-github-dashboard', branch: 'master'
-#flavor 'mattn/webapi-vim' #required by gist-vim
+flavor 'mattn/webapi-vim'
 flavor 'mattn/gist-vim'
 flavor 'kakkyz81/evervim', branch: 'master'
 #   - Android
