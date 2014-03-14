@@ -377,7 +377,7 @@
             "let g:gist_browser_command = 'x-www-browser %URL%'
         endif
         let g:git_detect_filetype = 1
-        let g:gist_open_browser_after_post = 1
+        let g:gist_open_browser_after_post = 0
         let g:gist_show_privates = 1
         let g:gist_post_private = 1
         let g:gist_get_multiplefile = 1
@@ -531,8 +531,8 @@
         let g:sql_type_default = 'mysql'
     " }
     " Supertab {
-        let g:SuperTabDefaultCompletionType = "context"
-        let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+        "let g:SuperTabDefaultCompletionType = "context"
+        "let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
     " }
     " Symfony {
         " disable the mapping of Symfony's console
@@ -593,10 +593,18 @@
         "let g:UltiSnipsJumpForwardTrigger = "<c-h>"
         "let g:UltiSnipsJumpBackwardTrigger = "<c-l>"
 
+        "let g:UltiSnipsExpandTrigger="<c-tab>"
+        "let g:UltiSnipsListSnippets="<c-s-tab>""
+
         nnoremap <leader>es :call g:EditMySnippets()<CR>
-        let g:UltiSnipsExpandTrigger="<tab>"
-        let g:UltiSnipsJumpForwardTrigger="<tab>"
-        let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+        "let g:UltiSnipsExpandTrigger="<tab>"
+        "let g:UltiSnipsJumpForwardTrigger="<tab>"
+        "let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+        let g:UltiSnipsExpandTrigger="<c-j>"
+    " }
+    " YouCompleteMe {
+        let g:ycm_key_list_previous_completion=['<Up>']
     " }
     " VimOrganizer {
         autocmd! BufRead,BufWrite,BufWritePost,BufNewFile *.org
