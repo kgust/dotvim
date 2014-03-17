@@ -605,6 +605,7 @@
     " }
     " YouCompleteMe {
         let g:ycm_key_list_previous_completion=['<Up>']
+        let g:ycm_auto_trigger=1 " Don't auto trigger
     " }
     " VimOrganizer {
         autocmd! BufRead,BufWrite,BufWritePost,BufNewFile *.org
