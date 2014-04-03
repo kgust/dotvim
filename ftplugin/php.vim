@@ -3,20 +3,19 @@
 "setlocal kg=:help
 setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 setlocal colorcolumn=85
-silent! EnableFastPHPFolds
 
 " Automatically strip trailing spaces in PHP files when 
 "autocmd File_Type BufRead,BufWrite *.php %s/\s\+$//e
 
 " PDV PHPDoc Support {
-if 0
-    let g:DisableAutoPHPFolding = 1
+if 1
+    let g:DisableAutoPHPFolding = 0
 
-    let g:pdv_cfg_Package = "CellTrak"
-    let g:pdv_cfg_Version = "2.0.4"
-    let g:pdv_cfg_Author = "K. Gustavson <kgustavson@celltrak.com>"
-    let g:pdv_cfg_Copyright = "Copyright 2012 CellTrak Technologies, Inc. All Rights reserved."
-    let g:pdv_cfg_License = "CellTrak Internal Source {@link http://www.celltrak.com/}"
+    let g:pdv_cfg_Package = "StraightNorth"
+    "let g:pdv_cfg_Version = "2.0.4"
+    let g:pdv_cfg_Author = "K. Gustavson <kgustavson@straightnorth.com>"
+    let g:pdv_cfg_Copyright = "Copyright 2014 Straight North, LLC. All Rights reserved."
+    let g:pdv_cfg_License = "Straight North All Rights Reserved {@link http://www.straightnorth.com/}"
     let g:pdv_cfg_CommentEnd = ""
 
     " PHP Syntax
