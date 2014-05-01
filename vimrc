@@ -24,7 +24,7 @@
                                    "   automatically reload it
     set smarttab
     "set shell=bash\ -i              " Use bash as vim's default shell
-    
+
     " 256 colors
     set t_Co=256
     let g:Powerline_symbols = 'fancy'
@@ -90,6 +90,7 @@
     set winminheight=0               " windows can be 0 line high
     set ignorecase                   " case insensitive search
     set smartcase                    " case sensitive when uc present
+    set timeout timeoutlen=200 ttimeoutlen=100
     set wildmenu                     " show list instead of just completing
     set wildmode=list:longest,full   " comand <Tab> completion, list matches, then longest common part, then all.
     set whichwrap=b,s,h,l,<,>,[,]    " backspace and cursor keys wrap to
@@ -101,6 +102,7 @@
     set switchbuf=usetab             " when opening a buffer from the list, use existing window first
     set colorcolumn=80               " visible wrap here/long line indicator
     set visualbell                   " visible alerts
+    set noerrorbells                 " don't beep
     set ttyfast                      " disable for slow terminals
 
     " Colors and Listchars {
@@ -154,6 +156,7 @@
     endif
     " Formatting {
         set autoindent                   " indent at the same level of the previous line
+        set copyindent                   " copy the previous indenting on autoindenting
         set comments=sl:/*,mb:*,elx:*/   " auto format comment blocks
         set matchpairs+=<:>              " match, to be used with %
         set expandtab                    " tabs are tabs, not spaces
@@ -458,6 +461,31 @@
         onoremap ih :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<cr>
         onoremap ah :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rg_vk0"<cr>
 
+    " }
+    " Laravel with Jeffery Way {
+        " Fast saves
+        nnoremap <leader>s :w!<cr>
+
+        "nnoremap <c-v> :vertical resize +5<cr>
+        nnoremap 25 :vertical resize 40<cr>
+        nnoremap 50 <c-w>=
+        nnoremap 75 :vertical resize 120<cr>
+
+        nnoremap <c-b> :NERDTreeToggle<cr>
+        nnoremap <leader>o :open %<cr>
+
+        nnoremap :sp :rightbelow sp<cr>
+
+        autocmd cursorhold * set nohlsearch
+        autocmd cursormoved * set hlsearch
+        map <D-p> :CtrlP<cr>
+        map <D-r> :CtrlPBufTag<cr>
+
+        set wildignore+=*/vendor/**
+        set wildignore+=*/public/forum/**
+
+        nnoremap vs :vsplit<cr>
+        nnoremap sp :split<cr>
     " }
     " NerdCommenter {
         let g:NERDCustomDelimiters = {

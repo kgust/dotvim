@@ -4,7 +4,7 @@
 setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 setlocal colorcolumn=85
 
-" Automatically strip trailing spaces in PHP files when 
+" Automatically strip trailing spaces in PHP files when
 "autocmd File_Type BufRead,BufWrite *.php %s/\s\+$//e
 
 " PDV PHPDoc Support {
@@ -83,4 +83,68 @@ endif
     com! -nargs=* Phpunit make -c app <q-args> | cw
     nnoremap <Leader>pu :Phpunit %<CR>
     nnoremap <Leader>pua :Phpunit<CR>
+" }
+
+" Laravel - Jeffery Way {
+" Concept - load underlying class for Laravel
+function! FacadeLookup()
+    let facade = input('Facade Name: ')
+        let classes = {
+\       'Form': 'Html/FormBuilder.php',
+\       'Html': 'Html/HtmlBuilder.php',
+\       'File': 'Filesystem/Filesystem.php',
+\       'Eloquent': 'Database/Eloquent/Model.php'
+\   }
+
+    execute ":edit vendor/laravel/framework/src/Illuminate/" .  classes[facade]
+endfunction
+
+
+" Prepare a new PHP class
+function! Class()
+    let name = input('Class name? ')
+    let namespace = input('Any Namespace? ')
+
+    if strlen(namespace)
+        exec 'normal i<?php namespace ' . namespace . ';
+    else
+        exec 'normal i<?php
+    endif
+
+    " Open class
+    exec 'normal iclass ' . name . ' {^M}^[O^['
+
+    exec 'normal i^M    public function __construct()^M{^M ^M}^['
+endfunction
+
+" Add a new dependency to a PHP class
+function! AddDependency()
+    let dependency = input('Var Name: ')
+    let namespace = input('Class Path: ')
+
+    let segments = split(namespace, '\')
+    let typehint = segments[-1]
+
+    exec 'normal gg/construct^M:H^Mf)i, ' . typehint . ' $' . dependency . '^[/}^>O$this->^[a' . dependency . ' = $' . dependency . ';^[?{^MkOprotected $' . dependency . ';^M^[?{^MOuse ' . namespace . ';^M^['
+
+    " Remove opening comma if there is only one dependency
+    exec 'normal :%s/(, /(/g
+'
+endfunction
+
+
+abbrev pft PHPUnit_Framework_TestCase
+abbrev gm !./artisan generate:model
+abbrev gc !./artisan generate:controller
+abbrev gmig !./artisan generate:migration
+
+" Laravel framework commons
+nnoremap <leader>lr :e app/routes.php<cr>
+nnoremap <leader>lca :e app/config/app.php<cr>81Gf(%0
+nnoremap <leader>lcd :e app/config/database.php<cr>
+nnoremap <leader>lc :e composer.json<cr>
+
+nmap <leader>lf :call FacadeLookup()<cr>
+nmap <leader>1 :call Class()<cr>
+nmap <leader>2 :call AddDependency()<cr>
 " }
