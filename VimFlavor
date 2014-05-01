@@ -76,7 +76,7 @@ flavor 'kchmck/vim-coffee-script'
 # Javascript
 flavor 'pangloss/vim-javascript'
 flavor 'drslump/vim-syntax-js', branch: 'master'
-flavor 'dtedesigns/vim-cute-javascript'
+flavor 'dtedesigns/vim-cute-javascript', branch: 'master'
 
 # HTML
 flavor 'mattn/emmet-vim', branch: 'master'

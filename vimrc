@@ -30,6 +30,7 @@
     let g:Powerline_symbols = 'fancy'
     set background=light
     colorscheme solarized
+    set clipboard=unnamed
 
     " Set the autocommand group and remove existing mappings
     augroup Vimrc
