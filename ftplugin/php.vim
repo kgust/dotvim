@@ -24,13 +24,13 @@ if 1
     let php_htmlInStrings = 1
     " let php_parent_error_close = 1
 
-    "inoremap <Leader>pd <Esc>:call PhpDocSingle()<CR>
-    nnoremap <Leader>pd :call PhpDocSingle()<CR>
-    vnoremap <Leader>pd :call PhpDocRange()<CR>
+    "inoremap <LocalLeader>pd <Esc>:call PhpDocSingle()<CR>
+    nnoremap <LocalLeader>pd :call PhpDocSingle()<CR>
+    vnoremap <LocalLeader>pd :call PhpDocRange()<CR>
 
     ""let b:match_words = b:match_words . ',{:},(:),[:]'
-    nnoremap <Leader>ff :EnableFastPHPFolds<CR>
-    vnoremap <Leader>ff :EnableFastPHPFolds<CR>
+    nnoremap <LocalLeader>ff :EnableFastPHPFolds<CR>
+    vnoremap <LocalLeader>ff :EnableFastPHPFolds<CR>
 endif
 " }
 " PDV 2 PHPDoc Support {
@@ -38,11 +38,11 @@ endif
     let g:PHP_removeCRwhenUnix = 1             " 0 is default
     let g:PHP_BracesAtCodeLevel = 0            " 0 is default
     let g:PHP_vintage_case_default_indent = 0  " 0 is default
-    nnoremap <buffer> <Leader>pd :call pdv#DocumentCurrentLine()<CR>
+    nnoremap <buffer> <LocalLeader>pd :call pdv#DocumentCurrentLine()<CR>
 " }
 " PHP Namespace {
-    inoremap <buffer><Leader>ns <C-O>:call PhpInsertUse()><CR>
-    noremap <buffer><Leader>ns :call PhpInsertUse()><CR>
+    inoremap <buffer><LocalLeader>ns <C-O>:call PhpInsertUse()><CR>
+    noremap <buffer><LocalLeader>ns :call PhpInsertUse()><CR>
 " }
 " PhpQA {
     let g:phpqa_messdetector_ruleset = "/home/kgustavson/workspace/symfony2/phpmd.xml"
@@ -62,9 +62,9 @@ endif
     "let g:phpqa_codecoverage_showcovered = 0
 
     " Additional Mappings
-    nnoremap <Leader>pmd :Phpmd<cr>
-    nnoremap <Leader>pcs :Phpcs<cr>
-    nnoremap <Leader>pcc :Phpcc<cr>
+    nnoremap <LocalLeader>pmd :Phpmd<cr>
+    nnoremap <LocalLeader>pcs :Phpcs<cr>
+    nnoremap <LocalLeader>pcc :Phpcc<cr>
 
     "nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
     "nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
@@ -81,8 +81,8 @@ endif
     " http://knplabs.com/blog/boost-your-productivity-with-sf2-and-vim
     " phpunit compilation
     com! -nargs=* Phpunit make -c app <q-args> | cw
-    nnoremap <Leader>pu :Phpunit %<CR>
-    nnoremap <Leader>pua :Phpunit<CR>
+    nnoremap <LocalLeader>pu :Phpunit %<CR>
+    nnoremap <LocalLeader>pua :Phpunit<CR>
 " }
 
 " Laravel - Jeffery Way {
@@ -139,12 +139,22 @@ abbrev gc !./artisan generate:controller
 abbrev gmig !./artisan generate:migration
 
 " Laravel framework commons
-nnoremap <leader>lr :e app/routes.php<cr>
-nnoremap <leader>lca :e app/config/app.php<cr>81Gf(%0
-nnoremap <leader>lcd :e app/config/database.php<cr>
-nnoremap <leader>lc :e composer.json<cr>
+nnoremap <localleader>lr :e app/routes.php<cr>
+nnoremap <localleader>lca :e app/config/app.php<cr>81Gf(%0
+nnoremap <localleader>lcd :e app/config/database.php<cr>
+nnoremap <localleader>lc :e composer.json<cr>
 
-nmap <leader>lf :call FacadeLookup()<cr>
-nmap <leader>1 :call Class()<cr>
-nmap <leader>2 :call AddDependency()<cr>
+nmap <localleader>lf :call FacadeLookup()<cr>
+nmap <localleader>1 :call Class()<cr>
+nmap <localleader>2 :call AddDependency()<cr>
+
+" Extract method for PHP
+map <localleader>em <esc>F>lviw"ay/}<cr>o<esc>oprotected function <esc>"apa()<cr>{<cr>return <esc>"-pa;<cr>}<esc>
+
+" Extract variable for PHP
+nmap <localleader>ev O<C-a> = <ESC>pa;
+
+" var dump currently selected var
+nmap <localleader>vd Bv2iwyodie(var_dump(<esc>pa));<esc>
+
 " }
