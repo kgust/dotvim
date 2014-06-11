@@ -139,22 +139,25 @@ abbrev gc !./artisan generate:controller
 abbrev gmig !./artisan generate:migration
 
 " Laravel framework commons
-nnoremap <localleader>lr :e app/routes.php<cr>
-nnoremap <localleader>lca :e app/config/app.php<cr>81Gf(%0
-nnoremap <localleader>lcd :e app/config/database.php<cr>
-nnoremap <localleader>lc :e composer.json<cr>
+nnoremap <LocalLeader>lr :e app/routes.php<cr>
+nnoremap <LocalLeader>lca :e app/config/app.php<cr>81Gf(%0
+nnoremap <LocalLeader>lcd :e app/config/database.php<cr>
+nnoremap <LocalLeader>lc :e composer.json<cr>
 
-nmap <localleader>lf :call FacadeLookup()<cr>
-nmap <localleader>1 :call Class()<cr>
-nmap <localleader>2 :call AddDependency()<cr>
+nmap <LocalLeader>lf :call FacadeLookup()<cr>
+nmap <LocalLeader>1 :call Class()<cr>
+nmap <LocalLeader>2 :call AddDependency()<cr>
 
 " Extract method for PHP
-map <localleader>em <esc>F>lviw"ay/}<cr>o<esc>oprotected function <esc>"apa()<cr>{<cr>return <esc>"-pa;<cr>}<esc>
+map <LocalLeader>em <esc>F>lviw"ay/}<cr>o<esc>oprotected function <esc>"apa()<cr>{<cr>return <esc>"-pa;<cr>}<esc>
 
 " Extract variable for PHP
-nmap <localleader>ev O<C-a> = <ESC>pa;
+nmap <LocalLeader>ev O<C-a> = <ESC>pa;
 
 " var dump currently selected var
-nmap <localleader>vd Bv2iwyodie(var_dump(<esc>pa));<esc>
+nmap <LocalLeader>vd Bv2iwyodie(var_dump(<esc>pa));<esc>
+
+" Run PHPUnit on a particular method
+nmap <LocalLeader>m yiw:!phpunit --filter "<cr>
 
 " }
