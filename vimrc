@@ -23,7 +23,7 @@
     set autoread                    " If an unedited file is changed on disk,
                                    "   automatically reload it
     set smarttab
-    "set shell=bash\ -i              " Use bash as vim's default shell
+    set shell=bash                  " Use bash as vim's default shell
 
     " 256 colors
     set t_Co=256
@@ -98,6 +98,7 @@
     set scrolloff=3                  " minimum lines to keep above and below cursor
     "set foldenable                   " auto fold code
     "set foldlevel=3                  " fold three or more lines
+    set foldlevelstart=1             " start with topmost folds open
     set gdefault                     " the /g flag on :s substitutions by default
     set switchbuf=usetab             " when opening a buffer from the list, use existing window first
     set colorcolumn=80               " visible wrap here/long line indicator
@@ -106,20 +107,19 @@
     set ttyfast                      " disable for slow terminals
 
     " Colors and Listchars {
-    set cursorline                  " highlight current line
-    highlight clear CursorLine
-    "highlight cursorline guibg=#333333     " highlight bg color of current line
-    highlight CursorLine gui=underline guisp=lightgray
+        set list
+        set cursorline                  " highlight current line
+        highlight clear CursorLine
+        "highlight cursorline guibg=#333333     " highlight bg color of current line
+        highlight CursorLine gui=underline guisp=lightgray
 
-    "highlight CursorColumn guibg=#333333   " highlight cursor
-    highlight ColorColumn ctermbg=lightgray guibg=lightgray " Change the ColorColumn to lightgray
+        "highlight CursorColumn guibg=#333333   " highlight cursor
+        highlight ColorColumn ctermbg=lightgray guibg=lightgray " Change the ColorColumn to lightgray
 
-    " u+2294 ⊔  u+231f ⌟  u+00bb »  u+2422 ␢  u+27ab ➫  u+2022 •  u+2027 ‧
-    " u+2056 ⁖
-    " u+25c0 ◀  u+25b6 ▶  u+25c4 ◄  u+25ba ►
-    "setlocal nolist
-    "setlocal list
-    set listchars=precedes:◀,extends:▶,trail:⁖,nbsp:⊔,tab:➫•
+        " u+2294 ⊔  u+231f ⌟  u+00bb »  u+2422 ␢  u+27ab ➫  u+2022 •  u+2027 ‧
+        " u+2056 ⁖
+        " u+25c0 ◀  u+25b6 ▶  u+25c4 ◄  u+25ba ►
+        set listchars=precedes:◀,extends:▶,trail:⁖,nbsp:⊔,tab:➫•
     " }
 
     " Equalize splits after a window resize
@@ -137,7 +137,7 @@
 
         if s:uname == "Darwin\n"
             "set guifont=Inconsolata-dz\ for\ Powerline:h11
-            set guifont=Meslo\ LG\ L\ DZ\ for\ Powerline:h11
+            set guifont=Meslo\ LG\ L\ DZ\ for\ Powerline:h13
         else
             "set guifont=Inconsolata\ 12
             set guifont=Inconsolata-dz\ for\ Powerline\ 9
@@ -166,8 +166,8 @@
         set nowrap                       " wrap long lines
     " }
     " Key Mappings {
-        set pastetoggle=<F10>            " pastetoggle (sane indentation on pastes)
-        nnoremap <F10> :set paste!<CR>
+        "set pastetoggle=<F10>            " pastetoggle (sane indentation on pastes)
+        "nnoremap <F10> :set paste!<CR>
 
         " Easier moving in tabs and windows
         "nnoremap <C-H> <C-W>h
@@ -184,14 +184,14 @@
         "vnoremap <S-L> gt
 
         " disable line-wise moving
-        nnoremap j gj
-        nnoremap k gk
+        "nnoremap j gj
+        "nnoremap k gk
 
         " Yank from the cursor to the end of the line, to be consistent with C and D.
         nnoremap Y y$
 
         " allow ; to enter command mode
-        nnoremap ; :
+        "nnoremap ; :
 
         " clear highlighted seaches
         nnoremap <CR> :noh<CR><CR>
@@ -234,6 +234,8 @@
             nnoremap <Leader>v V`]
 
             " edit .vimrc in a vertical window
+            nnoremap ev :vsplit $HOME/.vim/vimrc<cr>
+            nnoremap sv :source $MYVIMRC<cr>
             nnoremap <Leader>ev :vsplit $HOME/.vim/vimrc<cr>
             nnoremap <Leader>sv :source $MYVIMRC<cr>
 
@@ -286,14 +288,6 @@
     " AlignMaps {
         let g:DrChipTopLvlMenu= "&Plugin."
     " }
-    " Behat {
-        let feature_filetype='behat'
-        let g:behat_disable_omnicompl_cache = 1
-    " }
-    " CoffeeScript {
-        let coffee_compile_vert = 1
-        autocmd Vimrc BufWritePost *.coffee silent make!
-    " }
     " Ctags {
         set tags=./tags;/,~/.vimtags
     " }
@@ -327,6 +321,7 @@
         let g:dbgPavimBreakAtEntry = 0
     " }
     " Emmet-Vim {
+        "let g:user_emmet_leader_key='<c-e>'
         let g:user_emmet_settings = {
         \    'php' : {
         \        'extends' : 'html',
@@ -470,14 +465,15 @@
         nnoremap 25 :vertical resize 40<cr>
         nnoremap 50 <c-w>=
         nnoremap 75 :vertical resize 120<cr>
+        "nnoremap 100 <c-w>\|
 
-        nnoremap <c-b> :NERDTreeToggle<cr>
-        nnoremap <leader>o :open %<cr>
+        "nnoremap <c-b> :NERDTreeToggle<cr>
+        "nnoremap <leader>o :open %<cr>
 
         nnoremap :sp :rightbelow sp<cr>
 
-        autocmd cursorhold * set nohlsearch
-        autocmd cursormoved * set hlsearch
+        "autocmd cursorhold * set nohlsearch
+        "autocmd cursormoved * set hlsearch
         map <D-p> :CtrlP<cr>
         map <D-r> :CtrlPBufTag<cr>
 
@@ -486,6 +482,17 @@
 
         nnoremap vs :vsplit<cr>
         nnoremap sp :split<cr>
+
+        "highlight Search cterm=underline
+
+        nnoremap mr :MRU<cr>
+
+        " No trailing spaces
+        autocmd BufWritePre *.php,*.js :%s/\s\+$//e
+
+        " Edit TODO for project
+        nnoremap todo :edit TODO.md<cr>
+
     " }
     " NerdCommenter {
         let g:NERDCustomDelimiters = {
@@ -496,7 +503,8 @@
             \ }
     " }
     " NerdTree {
-        nnoremap <Leader>nt :NERDTree<CR>
+        nnoremap nt :NERDTreeToggle<CR>
+        nnoremap <Leader>nt :NERDTreeToggle<CR>
     " }
     " Netrw {
         let g:netrw_liststyle=3
@@ -530,6 +538,8 @@
         " automatically open and close the popup menu / preview window
         autocmd Vimrc CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
         set completeopt=menu,longest,preview
+
+        let g:phpcomplete_index_composer_command = "composer"
     " }
     " Powerline {
         "set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
@@ -594,10 +604,10 @@
         nnoremap <Leader>ve :call PhpStackTrace()<CR>
     " }
     " Syntastic {
-        "let g:syntastic_error_symbol = '✗'
-        "let g:syntastic_warning_symbol = '⚠'
-        let g:syntastic_enable_signs = 0
-        let g:syntastic_always_populate_loc_list = 1
+        let g:syntastic_error_symbol = '✗'
+        let g:syntastic_warning_symbol = '⚠'
+        let g:syntastic_enable_signs = 1
+        "let g:syntastic_always_populate_loc_list = 1
     " }
     " Syntax -- Move this out? {
         let conceallevel=2
@@ -617,7 +627,7 @@
             "let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
             "let g:UltiSnipsSnippetDirectories=["mysnippets"]
             "nnoremap <leader>vs :call g:EditMySnippets()
-        "let g:UltiSnipsSnippetsDir="~/.vim/bundle/kgust-ultisnips/UltiSnips"
+        let g:UltiSnipsSnippetsDir="~/.vim/flavors/kgust_ultisnips/UltiSnips"
         "let g:UltiSnipsJumpForwardTrigger = "<c-j>"
         "let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
         "let g:UltiSnipsJumpForwardTrigger = "<c-h>"
@@ -636,18 +646,6 @@
     " YouCompleteMe {
         let g:ycm_key_list_previous_completion=['<Up>']
         let g:ycm_auto_trigger=1 " Don't auto trigger
-    " }
-    " VimOrganizer {
-        autocmd! BufRead,BufWrite,BufWritePost,BufNewFile *.org
-        autocmd Vimrc BufEnter *.org call org#SetOrgFileType()
-
-        let g:org_tags_alist='@home(h) @celltrak(c) @dtedesigns(d) easy(e) hard(r)'
-        let g:org_todo_setup='TODO NEXT STARTED | DONE CANCEL'
-        let g:agenda_select_dirs=["~/Dropbox/Documents/VimOrg"]
-        "let g:agenda_files = split(glob("~/Dropbox/Documents/VimOrg/*.org"),"\n")
-
-        " open VimOrganizerNotes.org in a vertical window
-        nnoremap <Leader>vo <C-w><C-v><C-l>:e ~/Dropbox/Documents/VimOrg/<cr>
     " }
 
 " }
@@ -673,7 +671,8 @@ endfunction
 
 function! g:EditMySnippets()
     let ft = &ft
-    tabe ~/.vim/bundle/snippets/UltiSnips/
+    "tabe ~/.vim/bundle/snippets/UltiSnips/
+    tabe ~/.vim/flavors/kgust_snippets/UltiSnips/
     call search(ft)
 endfunction
 
