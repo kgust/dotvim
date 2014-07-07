@@ -26,13 +26,13 @@ if 1
     let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 
 
-    "inoremap <Leader>pd <Esc>:call PhpDocSingle()<CR>
-    nnoremap <Leader>pd :call PhpDocSingle()<CR>
-    vnoremap <Leader>pd :call PhpDocRange()<CR>
+    "inoremap <LocalLeader>pd <Esc>:call PhpDocSingle()<CR>
+    nnoremap <LocalLeader>pd :call PhpDocSingle()<CR>
+    vnoremap <LocalLeader>pd :call PhpDocRange()<CR>
 
     ""let b:match_words = b:match_words . ',{:},(:),[:]'
-    nnoremap <Leader>ff :EnableFastPHPFolds<CR>
-    vnoremap <Leader>ff :EnableFastPHPFolds<CR>
+    nnoremap <LocalLeader>ff :EnableFastPHPFolds<CR>
+    vnoremap <LocalLeader>ff :EnableFastPHPFolds<CR>
 endif
 " }
 " PDV 2 PHPDoc Support {
@@ -40,11 +40,11 @@ endif
     let g:PHP_removeCRwhenUnix = 1             " 0 is default
     let g:PHP_BracesAtCodeLevel = 0            " 0 is default
     let g:PHP_vintage_case_default_indent = 0  " 0 is default
-    nnoremap <buffer> <Leader>pd :call pdv#DocumentCurrentLine()<CR>
+    nnoremap <buffer> <LocalLeader>pd :call pdv#DocumentCurrentLine()<CR>
 " }
 " PHP Namespace {
-    inoremap <buffer><Leader>ns <C-O>:call PhpInsertUse()><CR>
-    noremap <buffer><Leader>ns :call PhpInsertUse()><CR>
+    inoremap <buffer><LocalLeader>ns <C-O>:call PhpInsertUse()><CR>
+    noremap <buffer><LocalLeader>ns :call PhpInsertUse()><CR>
 " }
 " PhpQA {
     let g:phpqa_messdetector_ruleset = "/home/kgustavson/workspace/symfony2/phpmd.xml"
@@ -64,9 +64,9 @@ endif
     "let g:phpqa_codecoverage_showcovered = 0
 
     " Additional Mappings
-    nnoremap <Leader>pmd :Phpmd<cr>
-    nnoremap <Leader>pcs :Phpcs<cr>
-    nnoremap <Leader>pcc :Phpcc<cr>
+    nnoremap <LocalLeader>pmd :Phpmd<cr>
+    nnoremap <LocalLeader>pcs :Phpcs<cr>
+    nnoremap <LocalLeader>pcc :Phpcc<cr>
 
     "nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
     "nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
