@@ -23,6 +23,8 @@ if 1
     let php_baselib = 1
     let php_htmlInStrings = 1
     " let php_parent_error_close = 1
+    let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+
 
     "inoremap <Leader>pd <Esc>:call PhpDocSingle()<CR>
     nnoremap <Leader>pd :call PhpDocSingle()<CR>
@@ -80,71 +82,103 @@ endif
 " PHPUnit {
     " http://knplabs.com/blog/boost-your-productivity-with-sf2-and-vim
     " phpunit compilation
-    com! -nargs=* Phpunit make -c app <q-args> | cw
-    nnoremap <Leader>pu :Phpunit %<CR>
-    nnoremap <Leader>pua :Phpunit<CR>
+    "com! -nargs=* Phpunit make -c app <q-args> | cw
+    "nnoremap <Leader>pu :Phpunit %<CR>
+    "nnoremap <Leader>pua :Phpunit<CR>
+" }
+
+" Syntax Checking {
+    let g:syntasatic_cheedck_on_open = 1
 " }
 
 " Laravel - Jeffery Way {
-" Concept - load underlying class for Laravel
-function! FacadeLookup()
-    let facade = input('Facade Name: ')
+    " Concept - load underlying class for Laravel
+    function! FacadeLookup()
+        let facade = input('Facade Name: ')
         let classes = {
-\       'Form': 'Html/FormBuilder.php',
-\       'Html': 'Html/HtmlBuilder.php',
-\       'File': 'Filesystem/Filesystem.php',
-\       'Eloquent': 'Database/Eloquent/Model.php'
-\   }
+\           'Form': 'Html/FormBuilder.php',
+\           'Html': 'Html/HtmlBuilder.php',
+\           'File': 'Filesystem/Filesystem.php',
+\           'Eloquent': 'Database/Eloquent/Model.php'
+\       }
 
-    execute ":edit vendor/laravel/framework/src/Illuminate/" .  classes[facade]
-endfunction
-
-
-" Prepare a new PHP class
-function! Class()
-    let name = input('Class name? ')
-    let namespace = input('Any Namespace? ')
-
-    if strlen(namespace)
-        exec 'normal i<?php namespace ' . namespace . ';
-    else
-        exec 'normal i<?php
-    endif
-
-    " Open class
-    exec 'normal iclass ' . name . ' {^M}^[O^['
-
-    exec 'normal i^M    public function __construct()^M{^M ^M}^['
-endfunction
-
-" Add a new dependency to a PHP class
-function! AddDependency()
-    let dependency = input('Var Name: ')
-    let namespace = input('Class Path: ')
-
-    let segments = split(namespace, '\')
-    let typehint = segments[-1]
-
-    exec 'normal gg/construct^M:H^Mf)i, ' . typehint . ' $' . dependency . '^[/}^>O$this->^[a' . dependency . ' = $' . dependency . ';^[?{^MkOprotected $' . dependency . ';^M^[?{^MOuse ' . namespace . ';^M^['
-
-    " Remove opening comma if there is only one dependency
-    exec 'normal :%s/(, /(/g
-'
-endfunction
+        execute ":edit vendor/laravel/framework/src/Illuminate/" .  classes[facade]
+    endfunction
 
 
-abbrev pft PHPUnit_Framework_TestCase
-abbrev gm !./artisan generate:model
-abbrev gc !./artisan generate:controller
-abbrev gmig !./artisan generate:migration
+    " Prepare a new PHP class
+    function! Class()
+        let name = input('Class name? ')
+        let namespace = input('Any Namespace? ')
 
-" Laravel framework commons
-nnoremap <leader>lr :e app/routes.php<cr>
-nnoremap <leader>lca :e app/config/app.php<cr>81Gf(%0
-nnoremap <leader>lcd :e app/config/database.php<cr>
-nnoremap <leader>lc :e composer.json<cr>
+        if strlen(namespace)
+            exec 'normal i<?php namespace ' . namespace . ';
+        else
+            exec 'normal i<?php
+        endif
 
-nmap <leader>lf :call FacadeLookup()<cr>
-nmap <leader>1 :call Class()<cr>
-nmap <leader>2 :call AddDependency()<cr>
+        " Open class
+        exec 'normal iclass ' . name . ' {}^[O^['
+
+        exec 'normal i    public function __construct(){ }^['
+    endfunction
+
+    " Add a new dependency to a PHP class
+    function! AddDependency()
+        let dependency = input('Var Name: ')
+        let namespace = input('Class Path: ')
+
+        let segments = split(namespace, '\')
+        let typehint = segments[-1]
+
+        exec 'normal gg/construct:Hf)i, ' . typehint . ' $' . dependency . '^[/}^>O$this->^[a' . dependency . ' = $' . dependency . ';^[?{kOprotected $' . dependency . ';^[?{Ouse ' . namespace . ';^['
+
+        " Remove opening comma if there is only one dependency
+        exec 'normal :%s/(, /(/g
+    '
+    endfunction
+
+
+    iabbrev <buffer> pft PHPUnit_Framework_TestCase
+
+    cabbrev <buffer> gm !./artisan generate:model
+    cabbrev <buffer> gc !./artisan generate:controller
+    cabbrev <buffer> gmig !./artisan generate:migration
+
+    " Laravel framework commons
+    nnoremap <leader>lr :e app/routes.php<cr>
+    nnoremap <leader>lca :e app/config/app.php<cr>81Gf(%0
+    nnoremap <leader>lcd :e app/config/database.php<cr>
+    nnoremap <leader>lc :e composer.json<cr>
+
+    nmap <LocalLeader>fl :call FacadeLookup()<cr>
+    nmap <LocalLeader>1 :call Class()<cr>
+    nmap <LocalLeader>2 :call AddDependency()<cr>
+
+
+    set wildignore+=*/vendor/**
+    set wildignore+=*/public/forum/**
+
+    " Testing
+    " Extract variable for PHP
+    nnoremap <LocalLeader>ev O<c-a> = <ESC>pa;
+
+    " Extract method for PHP
+    noremap <LocalLeader>em <ESC>F>lviw"ay/}<CR>o<ESC>protected function <ESC>"apa()<cr>return <ESC>"-pa;<CR>}<ESC>
+
+    " var dump currently selected var
+    nnoremap <LocalLeader>vd Bv2iwyodie(var_dump(<ESC>pa));<ESC>
+
+    " Test a method
+    nnoremap <LocalLeader>m yiw:!phpunit --filter <c-r>"<CR>
+
+    nnoremap <LocalLeader>t :!clear && vendor/bin/codecept run %<cr>
+    nnoremap pu :!clear && phpunit %:.<cr>
+
+    " vim-php-namespace
+    inoremap <LocalLeader>u <C-O>:call PhpInsertUse()<CR>
+    nnoremap <LocalLeader>u :call PhpInsertUse()<CR>
+
+    inoremap <LocalLeader>e <C-O>:call PhpExpandClass()<CR>
+    nnoremap <LocalLeader>e :call PhpExpandClass()<CR>
 " }
