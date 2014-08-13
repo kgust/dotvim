@@ -1,6 +1,6 @@
-##########
-# EXAMPLES
-##########
+############
+# EXAMPLES #
+############
 
 # * Declare using git://github.com/kana/vim-textobj-indent.git;
 # * vim-flavor fetches git://github.com/$USER/$REPO.git
@@ -29,32 +29,32 @@
 # * Declare using kana/vim-smarttill 0.1.0 or later.
 #flavor 'kana/vim-smarttill', '>= 0.1.0'
 
-#########
-# KG Mine
-#########
+###########
+# KG Mine #
+###########
 flavor 'kgust/vim-potion'
 flavor 'kgust/snippets'
 
 # REQUIRED IF USING VUNDLE ALONGSIDE
 #flavor 'gmarik/vundle'
 
-####################
-# $VIMRUNTIME
-# - Replace Defaults
-####################
+######################
+# $VIMRUNTIME        #
+# - Replace Defaults #
+######################
 flavor '2072/PHP-Indenting-for-VIm'
 flavor 'vim-scripts/matchit.zip'
 
-########
-# GENERAL
-########
+###########
+# GENERAL #
+###########
 
 # Colors
 flavor 'altercation/vim-colors-solarized', branch: 'master'
 
-###########
-# FILETYPES
-###########
+#############
+# FILETYPES #
+#############
 
 # PHP
 flavor 'joonty/vim-phpqa'
@@ -74,15 +74,18 @@ flavor 'joshtronic/php.vim', branch: 'master'
 # Coffeescript
 flavor 'kchmck/vim-coffee-script'
 
+# HTML
+#flavor 'mattn/emmet-vim', branch: 'master'
+flavor 'tristen/vim-sparkup', branch: 'master'
+#flavor 'othree/html5.vim'
+
 # Javascript
 flavor 'pangloss/vim-javascript'
 flavor 'drslump/vim-syntax-js', branch: 'master'
 flavor 'dtedesigns/vim-cute-javascript', branch: 'master'
 
-# HTML
-#flavor 'mattn/emmet-vim', branch: 'master'
-flavor 'tristen/vim-sparkup', branch: 'master'
-#flavor 'othree/html5.vim'
+# LESS
+flavor 'groenewege/vim-less', branch: 'master'
 
 # Markdown
 #flavor 'tpope/vim-markdown'
@@ -97,9 +100,9 @@ flavor 'kgust/sql.vim'
 flavor 'kana/vim-vspec', '>= 1.0'
 
 
-###########
-# UTILITIES
-###########
+#############
+# UTILITIES #
+#############
 
 # Usage
 flavor 'scrooloose/nerdtree'
