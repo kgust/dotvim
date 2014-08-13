@@ -81,7 +81,7 @@
     endif
 
     set backspace=indent,eol,start   " backspace for dummys
-    set linespace=2                  " spaces between rows
+    "set linespace=1                  " spaces between rows
     set number                       " Line numbers on
     "set relativenumber              " Turn on relative number mode
     set showmatch                    " show matching brackets/parenthesis
@@ -111,10 +111,12 @@
         set cursorline                  " highlight current line
         highlight clear CursorLine
         "highlight cursorline guibg=#333333     " highlight bg color of current line
-        highlight CursorLine gui=underline guisp=lightgray
+        highlight CursorLine gui=underline guisp=lightgray " light background
+        "highlight CursorLine gui=underline guisp=#606060 " dark background
 
         "highlight CursorColumn guibg=#333333   " highlight cursor
         highlight ColorColumn ctermbg=lightgray guibg=lightgray " Change the ColorColumn to lightgray
+        "highlight ColorColumn ctermbg=lightgray guibg=#202020 " Change the ColorColumn to lightgray
 
         " u+2294 ⊔  u+231f ⌟  u+00bb »  u+2422 ␢  u+27ab ➫  u+2022 •  u+2027 ‧
         " u+2056 ⁖
@@ -609,7 +611,7 @@
         let g:syntastic_enable_signs = 1
         "let g:syntastic_always_populate_loc_list = 1
     " }
-    " Syntax -- Move this out? {
+    " Syntax {
         let conceallevel=2
         let concealcursor=""
 
