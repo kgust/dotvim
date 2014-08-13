@@ -1,10 +1,10 @@
 " FileType settings for PHP
 " vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
-"setlocal kg=:help
+
 setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 setlocal colorcolumn=85
 
-" Automatically strip trailing spaces in PHP files when
+" Automatically strip trailing spaces in PHP files when reading/writing
 "autocmd File_Type BufRead,BufWrite *.php %s/\s\+$//e
 
 " PDV PHPDoc Support {
@@ -35,6 +35,7 @@ if 1
     vnoremap <LocalLeader>ff :EnableFastPHPFolds<CR>
 endif
 " }
+
 " PDV 2 PHPDoc Support {
     let g:pdv_template_dir = $HOME."/.vim/flavors/tobyS_pdv/templates"
     let g:PHP_removeCRwhenUnix = 1             " 0 is default
@@ -42,10 +43,12 @@ endif
     let g:PHP_vintage_case_default_indent = 0  " 0 is default
     nnoremap <buffer> <LocalLeader>pd :call pdv#DocumentCurrentLine()<CR>
 " }
+
 " PHP Namespace {
     inoremap <buffer><LocalLeader>ns <C-O>:call PhpInsertUse()><CR>
     noremap <buffer><LocalLeader>ns :call PhpInsertUse()><CR>
 " }
+
 " PhpQA {
     let g:phpqa_messdetector_ruleset = "/home/kgustavson/workspace/symfony2/phpmd.xml"
     let g:phpqa_codesniffer_args = "--standard=/home/kgustavson/workspace/php/celltrak_coding_standard.xml"
@@ -79,16 +82,38 @@ endif
     let g:php_cs_fixer_dry_run = 0                 " Call command with dry-run option
     let g:php_cs_fixer_verbose = 0                 " Return the output of command if 1, else an inline information.
 " }
-" PHPUnit {
+
+" Syntax Checking {
+    let g:syntasatic_cheedck_on_open = 1
+" }
+
+" Testing {
     " http://knplabs.com/blog/boost-your-productivity-with-sf2-and-vim
     " phpunit compilation
     "com! -nargs=* Phpunit make -c app <q-args> | cw
     "nnoremap <Leader>pu :Phpunit %<CR>
     "nnoremap <Leader>pua :Phpunit<CR>
-" }
 
-" Syntax Checking {
-    let g:syntasatic_cheedck_on_open = 1
+    function! RunPhpTests()
+        if &ft =~ "codeception"
+            silent !clear
+            echom "Start codeception tests..."
+            execute '!/usr/local/bin/php vendor/bin/codecept run % --no-colors --group active'
+        elseif &ft =~ "phpunit"
+            silent !clear
+            echom "Start phpunit tests..."
+            execute '!phpunit --groups active %:.'
+        else
+            echom "Sorry, I can't test this file."
+        endif
+    endfunction
+
+    " Test a method
+    nnoremap <LocalLeader>m yiw:!phpunit --filter <c-r>"<CR>
+    nnoremap <LocalLeader>t :call RunPhpTests()<cr>
+
+    "nnoremap pu :!clear && vendor/bin/phpunit %:.<cr>
+
 " }
 
 " Laravel - Jeffery Way {
@@ -168,12 +193,6 @@ endif
 
     " var dump currently selected var
     nnoremap <LocalLeader>vd Bv2iwyodie(var_dump(<ESC>pa));<ESC>
-
-    " Test a method
-    nnoremap <LocalLeader>m yiw:!phpunit --filter <c-r>"<CR>
-
-    nnoremap <LocalLeader>t :!clear && vendor/bin/codecept run %<cr>
-    nnoremap pu :!clear && phpunit %:.<cr>
 
     " vim-php-namespace
     inoremap <LocalLeader>u <C-O>:call PhpInsertUse()<CR>
