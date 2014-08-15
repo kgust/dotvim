@@ -70,6 +70,7 @@ flavor 'brookhong/DBGPavim', branch: 'master'
 flavor 'stephpy/vim-php-cs-fixer', branch: 'master'
 flavor 'dtedesigns/vim-cute-php'
 flavor 'joshtronic/php.vim', branch: 'master'
+flavor 'xsbeats/vim-blade', branch: 'master'
 
 # Coffeescript
 flavor 'kchmck/vim-coffee-script'
