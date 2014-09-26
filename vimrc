@@ -322,6 +322,13 @@
         let g:dbgPavimPort = 9000
         let g:dbgPavimBreakAtEntry = 0
     " }
+    " direnv {
+        if exists("$EXTRA_VIM")
+            for path in split($EXTRA_VIM, ':')
+                exec "source".path
+            endfor
+        endif
+    " }
     " Emmet-Vim {
         "let g:user_emmet_leader_key='<c-e>'
         let g:user_emmet_settings = {
@@ -501,7 +508,10 @@
                 \ 'rubyX': { 'left': '#', 'leftAlt': 'FOO', 'rightAlt': 'BAR' },
                 \ 'grondle': { 'left': '{{', 'right': '}}' },
                 \ 'sql': { 'left': '-- ' },
-                \ 'jinja2': { 'left': '<!--', 'right': '-->' }
+                \ 'jinja2': { 'left': '<!--', 'right': '-->' },
+                \ 'php': { 'left': '//', 'right': '' },
+                \ 'php.codeception': { 'left': '//', 'right': '' },
+                \ 'codeception': { 'left': '//', 'right': '' }
             \ }
     " }
     " NerdTree {

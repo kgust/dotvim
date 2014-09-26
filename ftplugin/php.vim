@@ -8,32 +8,31 @@ setlocal colorcolumn=85
 "autocmd File_Type BufRead,BufWrite *.php %s/\s\+$//e
 
 " PDV PHPDoc Support {
-if 1
-    let g:DisableAutoPHPFolding = 0
+    if 1
+        let g:DisableAutoPHPFolding = 0
 
-    let g:pdv_cfg_Package = "StraightNorth"
-    "let g:pdv_cfg_Version = "2.0.4"
-    let g:pdv_cfg_Author = "K. Gustavson <kgustavson@straightnorth.com>"
-    let g:pdv_cfg_Copyright = "Copyright 2014 Straight North, LLC. All Rights reserved."
-    let g:pdv_cfg_License = "Straight North All Rights Reserved {@link http://www.straightnorth.com/}"
-    let g:pdv_cfg_CommentEnd = ""
+        let g:pdv_cfg_Package = "StraightNorth"
+        "let g:pdv_cfg_Version = "2.0.4"
+        let g:pdv_cfg_Author = "K. Gustavson <kgustavson@straightnorth.com>"
+        let g:pdv_cfg_Copyright = "Copyright 2014 Straight North, LLC. All Rights reserved."
+        let g:pdv_cfg_License = "Straight North All Rights Reserved {@link http://www.straightnorth.com/}"
+        let g:pdv_cfg_CommentEnd = ""
 
-    " PHP Syntax
-    let php_sql_query = 1
-    let php_baselib = 1
-    let php_htmlInStrings = 1
-    " let php_parent_error_close = 1
-    let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+        " PHP Syntax
+        let php_sql_query = 1
+        let php_baselib = 1
+        let php_htmlInStrings = 1
+        " let php_parent_error_close = 1
 
 
-    "inoremap <LocalLeader>pd <Esc>:call PhpDocSingle()<CR>
-    nnoremap <LocalLeader>pd :call PhpDocSingle()<CR>
-    vnoremap <LocalLeader>pd :call PhpDocRange()<CR>
+        "inoremap <LocalLeader>pd <Esc>:call PhpDocSingle()<CR>
+        nnoremap <LocalLeader>d :call PhpDocSingle()<CR>
+        vnoremap <LocalLeader>d :call PhpDocRange()<CR>
 
-    ""let b:match_words = b:match_words . ',{:},(:),[:]'
-    nnoremap <LocalLeader>ff :EnableFastPHPFolds<CR>
-    vnoremap <LocalLeader>ff :EnableFastPHPFolds<CR>
-endif
+        ""let b:match_words = b:match_words . ',{:},(:),[:]'
+        nnoremap <LocalLeader>ff :EnableFastPHPFolds<CR>
+        vnoremap <LocalLeader>ff :EnableFastPHPFolds<CR>
+    endif
 " }
 
 " PDV 2 PHPDoc Support {
@@ -84,7 +83,9 @@ endif
 " }
 
 " Syntax Checking {
-    let g:syntasatic_cheedck_on_open = 1
+    let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_php_phpcs_args = "--report=csv --standard=phpcs.xml"
 " }
 
 " Testing {
@@ -98,7 +99,8 @@ endif
         if &ft =~ "codeception"
             silent !clear
             echom "Start codeception tests..."
-            execute '!/usr/local/bin/php vendor/bin/codecept run % --no-colors --group active'
+            "execute '!/usr/local/bin/php vendor/bin/codecept run % --no-colors --group active'
+            execute '!vagrant ssh -c "bin/codecept run functional --no-colors --debug --group active"'
         elseif &ft =~ "phpunit"
             silent !clear
             echom "Start phpunit tests..."
@@ -201,3 +203,4 @@ endif
     inoremap <LocalLeader>e <C-O>:call PhpExpandClass()<CR>
     nnoremap <LocalLeader>e :call PhpExpandClass()<CR>
 " }
+let NERD_php_alt_style=1

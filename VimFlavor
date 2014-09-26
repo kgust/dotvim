@@ -51,6 +51,7 @@ flavor 'vim-scripts/matchit.zip'
 
 # Colors
 flavor 'altercation/vim-colors-solarized', branch: 'master'
+flavor 'chriskempson/base16-vim', branch: 'master'
 
 #############
 # FILETYPES #
@@ -111,6 +112,7 @@ flavor 'kien/ctrlp.vim'
 flavor 'sjl/gundo.vim'
 #Bundle 'Toggle'
 flavor 'editorconfig/editorconfig-vim', branch: 'master'
+flavor 'zimbatm/direnv'
 flavor 'vim-scripts/toggle_word.vim', '>= 1.4'
 flavor 'thinca/vim-fontzoom'
 flavor 'vim-scripts/camelcasemotion'
@@ -143,12 +145,13 @@ flavor 'Raimondi/delimitMate'
 flavor 'tpope/vim-fugitive', branch: 'master'
 flavor 'gregsexton/gitv'
 flavor 'scrooloose/nerdcommenter'
-flavor 'scrooloose/syntastic'
+flavor 'scrooloose/syntastic', branch: 'master'
 flavor 'tomtom/checksyntax_vim'
 flavor 'tpope/vim-surround'
 flavor 'rizzatti/funcoo.vim'
 # dash requires funcoo.vim
 flavor 'rizzatti/dash.vim'
+flavor 'tpope/vim-unimpaired', branch: 'master'
 
 #flavor 'Shougo/vimproc', branch: 'master'
 #flavor 'Shougo/unite.vim', branch: 'master'
