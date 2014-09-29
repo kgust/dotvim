@@ -60,7 +60,7 @@ flavor 'chriskempson/base16-vim', branch: 'master'
 # PHP
 flavor 'joonty/vim-phpqa'
 flavor 'arnaud-lb/vim-php-namespace', branch: 'master'
-flavor 'docteurklein/vim-phpunit', branch: 'master'
+flavor 'afternoon/vim-phpunit', branch: 'master'
 flavor 'docteurklein/vim-symfony', branch: 'master'
 flavor 'rayburgemeestre/phpfolding.vim', branch: 'master'
 #flavor 'shawncplus/phpcomplete.vim'
