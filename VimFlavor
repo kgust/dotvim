@@ -125,6 +125,7 @@ flavor 'SirVer/ultisnips', branch: 'master'
 flavor 'honza/vim-snippets', branch: 'master'
 flavor 'vim-scripts/renamer.vim'
 flavor 'junegunn/vim-emoji', branch: 'master'
+flavor 'powerman/vim-plugin-AnsiEsc', branch: 'master'
 
 # External Programs
 flavor 'trammell/vim-conque', branch: 'master'
@@ -135,7 +136,8 @@ flavor 'junegunn/vim-github-dashboard', branch: 'master'
 flavor 'jaxbot/github-issues.vim', branch: 'master'
 flavor 'mattn/webapi-vim'
 flavor 'mattn/gist-vim'
-flavor 'kakkyz81/evervim', branch: 'master'
+#flavor 'kakkyz81/evervim', branch: 'master'
+flavor 'neilagabriel/vim-geeknote', branch: 'master'
 #   - Android
 #flavor 'vim-scripts/adt.vim', '>= 1.0'
 

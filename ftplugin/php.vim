@@ -95,27 +95,29 @@ setlocal colorcolumn=85
     "nnoremap <Leader>pu :Phpunit %<CR>
     "nnoremap <Leader>pua :Phpunit<CR>
 
-    function! RunPhpTests()
-        if &ft =~ "codeception"
-            silent !clear
-            echom "Start codeception tests..."
-            "execute '!/usr/local/bin/php vendor/bin/codecept run % --no-colors --group active'
-            execute '!vagrant ssh -c "bin/codecept run functional --no-colors --debug --group active"'
-        elseif &ft =~ "phpunit"
-            silent !clear
-            echom "Start phpunit tests..."
-            execute '!phpunit --groups active %:.'
-        else
-            echom "Sorry, I can't test this file."
-        endif
-    endfunction
-
     " Test a method
     nnoremap <LocalLeader>m yiw:!phpunit --filter <c-r>"<CR>
     nnoremap <LocalLeader>t :call RunPhpTests()<cr>
 
     "nnoremap pu :!clear && vendor/bin/phpunit %:.<cr>
 
+" }
+
+" function! RunPhpTests() {
+function! RunPhpTests()
+    if &ft =~ "codeception"
+        silent !clear
+        echom "Start codeception tests..."
+        "execute '!/usr/local/bin/php vendor/bin/codecept run % --no-colors --group active'
+        execute '!vagrant ssh -c "cd vhosts/gonorthwebsites && php vendor/bin/codecept run functional --debug --group active"'
+    elseif &ft =~ "phpunit"
+        silent !clear
+        echom "Start phpunit tests..."
+        execute '!phpunit --groups active %:.'
+    else
+        echom "Sorry, I can't test this file."
+    endif
+endfunction
 " }
 
 " Laravel - Jeffery Way {
