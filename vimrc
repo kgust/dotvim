@@ -222,7 +222,7 @@
 
         " Leader Key Mappings {
             " Firstly, define the <Leader> key
-            let mapleader = ","
+            let mapleader = "\<Space>"
             let maplocalleader = "\\"
 
             " fold HMTL tag - TODO move to HTML filetype?
@@ -242,7 +242,7 @@
             nnoremap <Leader>sv :source $MYVIMRC<cr>
 
             " switch to alternate buffer
-            nnoremap <silent><Leader>, :buffer#<CR>
+            nnoremap <silent>,, :buffer#<CR>
 
             " Edit Tool Sharpening
             nnoremap <Leader>et :vsplit $HOME/Google\ Drive/tool-sharpening.md<cr>
@@ -363,7 +363,7 @@
         "let g:fugitive_git_executable = 'myGit'
 
         if has('statusline')
-            set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+            set statusline=%<%f\ %h%m%r%fugitive#statusline()%=%-14.(%l,%c%V%)\ %P
         endif
 
         autocmd Vimrc BufReadPost fugitive://* set bufhidden=delete
@@ -374,6 +374,7 @@
           \ endif
 
         set errorformat+='%f:%l:%m'
+        set diffopt+=vertical
 
     " }
     " Gist {
@@ -403,6 +404,18 @@
         "let g:gundo_width = 60
         "let g:gundo_preview_height = 40
         let g:gundo_right = 1
+    " }
+    " Indent Guides {
+        let g:indent_guides_enable_on_vim_startup = 1
+        let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+        let g:indent_guides_default_mapping = 1
+
+        " when background = dark
+        " hi IndentGuidesOdd ctermbg=black
+        " hi IndentGuidesOdd ctermbg=darkgray
+        " when background = light
+        hi IndentGuidesOdd ctermbg=white
+        hi IndentGuidesOdd ctermbg=lightgray
     " }
     " Learn Vimscript the Hard Way --Steve Losh {
         " More interesting horizontal scrolling
@@ -581,6 +594,10 @@
         " Set the DB type
         let g:sql_type_default = 'mysql'
     " }
+    " Startify {
+        let g:startify_custom_header =
+        \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
+    " }
     " Supertab {
         "let g:SuperTabDefaultCompletionType = "context"
         "let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
@@ -608,7 +625,7 @@
                 echohl WarningMsg | echomsg "Template file not found" | echohl None
             endtry
         endfunction
-        com! SfJumpToView call s:SfJumpToView()
+         com! SfJumpToView call s:SfJumpToView()
 
         " create a mapping only in a Controller file
         autocmd Vimrc BufEnter *Controller.php nnoremap <buffer><Leader>v :SfJumpToView<CR>
@@ -626,6 +643,10 @@
         let concealcursor=""
 
         let g:syntax_js=['function', 'return', 'solarized']
+    " }
+    " Tagbar {
+        let g:tagbar_left = 1
+        "nnoremap <leader>tt :TagbarToggle<cr>
     " }
     " Tslime {
         vmap <C-c><C-c> <Plug>SendSelectionToTmux
