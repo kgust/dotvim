@@ -147,6 +147,8 @@ flavor 'Raimondi/delimitMate'
 flavor 'tpope/vim-fugitive', branch: 'master'
 flavor 'gregsexton/gitv'
 flavor 'scrooloose/nerdcommenter'
+#flavor 'tomtom/tcomment_vim', branch: 'master'
+#flavor 'tpope/vim-commentary', branch: 'master'
 flavor 'scrooloose/syntastic', branch: 'master'
 flavor 'tomtom/checksyntax_vim'
 flavor 'tpope/vim-surround'
@@ -154,6 +156,13 @@ flavor 'rizzatti/funcoo.vim'
 # dash requires funcoo.vim
 flavor 'rizzatti/dash.vim'
 flavor 'tpope/vim-unimpaired', branch: 'master'
+
+flavor 'mhinz/vim-startify', branch: 'master'
+flavor 'nathanaelkane/vim-indent-guides', branch: 'master'
+
+#flavor 'tpope/vim-sensible', branch: 'master'
+flavor 'majutsushi/tagbar', branch: 'master'
+flavor 'tpope/vim-speeddating', branch: 'master'
 
 #flavor 'Shougo/vimproc', branch: 'master'
 #flavor 'Shougo/unite.vim', branch: 'master'
