@@ -5,6 +5,7 @@
 dbext.vim
 evernote_auth.vim
 vim-github-dashboard.vim
+github-issues.vim
 
 # Generated files
 tags
