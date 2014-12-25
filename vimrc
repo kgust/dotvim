@@ -10,7 +10,7 @@
 " General Settings {
     let s:uname = system('uname') " What system am I using?
 
-    set nrformats-=octal	      " Don't treat numbers with leading zeros as octal
+    set nrformats-=octal          " Don't treat numbers with leading zeros as octal
     filetype plugin on            " required!
     filetype plugin indent on     " required!
     scriptencoding utf-8
@@ -237,9 +237,12 @@
 
             " edit .vimrc in a vertical window
             nnoremap ev :vsplit $HOME/.vim/vimrc<cr>
-            nnoremap sv :source $MYVIMRC<cr>
+            nnoremap sv :source $MYVIMRC<cr>:filetype detect<cr>:exe ":echo 'vimrc reloaded'"<cr>
             nnoremap <Leader>ev :vsplit $HOME/.vim/vimrc<cr>
             nnoremap <Leader>sv :source $MYVIMRC<cr>
+
+            " Don't copy the contents of an overwritten selection.
+            vnoremap p "_dp
 
             " switch to alternate buffer
             nnoremap <silent>,, :buffer#<CR>
@@ -287,19 +290,23 @@
 
 " Vim Plugins {
 
-    " AlignMaps {
+    " Align {
         let g:DrChipTopLvlMenu= "&Plugin."
+        nnoremap <leader>l :Align<space>
     " }
     " Ctags {
         set tags=./tags;/,~/.vimtags
     " }
     " CtrlP {
         let g:ctrlp_map = '<C-p>'
+        let g:ctrlp_match_window = 'order::ttb,max:20'
         let g:ctrlp_working_path_mode = 'ra'
         let g:ctrlp_clear_cache_on_exit = 1
         let g:ctrlp_max_files = 3000
         let g:ctrlp_max_depth = 10
         "let g:ctrlp_cmd = 'CtrlP'
+        nnoremap <leader>b :CtrlPBuffer<CR>
+        nnoremap <C-P> :CtrlPClearCache<CR>
 
         let g:ctrlp_user_command = {
             \ 'types': {
@@ -398,6 +405,8 @@
             let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
             let g:gitgutter_sign_modified_removed = emoji#for('collision')
         endif
+        let g:gitgutter_enabled = 0
+        nnoremap <leader>gg :GitGutterToggle<cr>
     " }
     " Gundo {
         nnoremap <Leader>u :GundoToggle<CR>
@@ -489,7 +498,6 @@
         nnoremap 75 :vertical resize 120<cr>
         "nnoremap 100 <c-w>\|
 
-        "nnoremap <c-b> :NERDTreeToggle<cr>
         "nnoremap <leader>o :open %<cr>
 
         nnoremap :sp :rightbelow sp<cr>
@@ -499,7 +507,7 @@
         map <D-p> :CtrlP<cr>
         map <D-r> :CtrlPBufTag<cr>
 
-        set wildignore+=*/vendor/**
+        "set wildignore+=*/vendor/**
         set wildignore+=*/public/forum/**
 
         nnoremap vs :vsplit<cr>
@@ -525,6 +533,7 @@
             \ }
     " }
     " NerdTree {
+        let g:NERDSpaceDelims=1
         nnoremap nt :NERDTreeToggle<CR>
         nnoremap <Leader>nt :NERDTreeToggle<CR>
     " }
@@ -643,12 +652,22 @@
     " }
     " Tagbar {
         let g:tagbar_left = 1
-        "nnoremap <leader>tt :TagbarToggle<cr>
+        nnoremap <leader>] :TagbarToggle<cr>
     " }
-    " Tslime {
+    " TMux and Tslime {
         vmap <C-c><C-c> <Plug>SendSelectionToTmux
         nmap <C-c><C-c> <Plug>NormalModeSendToTmux
         nmap <C-c>r <Plug>SetTmuxVars
+        if exists('$TMUX')
+            " Support resizing in tmux
+            set ttymouse=xterm2
+            " Fix Cursor in TMUX
+            let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+            let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+        else
+            let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+            let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+        endif
     " }
     " UltiSnips {
         " Matt Boehm
@@ -677,7 +696,10 @@
         let g:ycm_key_list_previous_completion=['<Up>']
         let g:ycm_auto_trigger=1 " Don't auto trigger
     " }
-
+    " Whitespace {
+        " NOTE: most whitespace settings are ftplugin/*
+        nnoremap <leader>w :call whitespace#strip_trailing()<cr>
+    " }
 " }
 
 " Windows Compatible -- Keeping for the fun of it {
