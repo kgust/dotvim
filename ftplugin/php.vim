@@ -5,7 +5,9 @@ setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 setlocal colorcolumn=85
 
 " Automatically strip trailing spaces in PHP files when reading/writing
-"autocmd File_Type BufRead,BufWrite *.php %s/\s\+$//e
+augroup whitespace
+    autocmd BufWritePre *.php call whitespace#strip_trailing()
+augroup END
 
 " PDV PHPDoc Support {
     if 1

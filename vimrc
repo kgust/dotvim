@@ -509,9 +509,6 @@
 
         nnoremap mr :MRU<cr>
 
-        " No trailing spaces
-        autocmd BufWritePre *.php,*.js :%s/\s\+$//e
-
         " Edit TODO for project
         nnoremap todo :edit TODO.md<cr>
 

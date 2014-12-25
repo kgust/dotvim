@@ -19,3 +19,7 @@ endif
 
 " add this to automatically set the behat compiler (slows down buffer loading)
 compiler behat
+
+augroup whitespace
+    autocmd BufWritePre *.feature call whitespace#strip_trailing()
+augroup END

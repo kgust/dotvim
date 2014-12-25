@@ -45,3 +45,7 @@ function! NextNonBlankLine(lnum)
 
     return -2
 endfunction
+
+augroup whitespace
+    autocmd BufWritePre *.coffee call whitespace#strip_trailing()
+augroup END

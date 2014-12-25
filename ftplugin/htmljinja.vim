@@ -86,4 +86,8 @@ if exists("b:match_words")
   endfor
 endif
 
+augroup whitespace
+    autocmd BufWritePre *.twig call whitespace#strip_trailing()
+augroup END
+
 " vim:ft=vim:fdm=marker
