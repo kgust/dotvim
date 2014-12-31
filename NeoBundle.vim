@@ -135,6 +135,8 @@ NeoBundle 'sickill/vim-pasta'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'tpope/vim-speeddating'
 
+NeoBundle 'sjl/splice.vim'
+
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/unite.vim'
 "NeoBundle 'm2mdas/phpcomplete-extended'

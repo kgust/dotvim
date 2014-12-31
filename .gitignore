@@ -11,5 +11,5 @@ github-issues.vim
 tags
 .netrwhist
 .vim-flavor/
-flavors/
+#flavors/
 bundle/*
