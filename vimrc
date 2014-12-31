@@ -128,7 +128,7 @@
     set foldlevelstart=1             " start with topmost folds open
     set gdefault                     " the /g flag on :s substitutions by default
     set switchbuf=usetab             " when opening a buffer from the list, use existing window first
-    set colorcolumn=80               " visible wrap here/long line indicator
+    "set colorcolumn=80,120           " visible wrap here/long line indicator
     set visualbell                   " visible alerts
     set noerrorbells                 " don't beep
     set ttyfast                      " disable for slow terminals
@@ -443,15 +443,15 @@
     " }
     " Indent Guides {
         let g:indent_guides_enable_on_vim_startup = 1
-        let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+        let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'conque-term']
         let g:indent_guides_default_mapping = 1
 
         " when background = dark
         " hi IndentGuidesOdd ctermbg=black
         " hi IndentGuidesOdd ctermbg=darkgray
         " when background = light
-        hi IndentGuidesOdd ctermbg=white
-        hi IndentGuidesOdd ctermbg=lightgray
+        hi IndentGuidesOdd ctermbg=white guibg=FloralWhite
+        hi IndentGuidesEven ctermbg=lightgray guibg=linen
     " }
     " Learn Vimscript the Hard Way --Steve Losh {
         " More interesting horizontal scrolling
@@ -669,7 +669,7 @@
         let g:syntastic_error_symbol = '✗'
         let g:syntastic_warning_symbol = '⚠'
         let g:syntastic_enable_signs = 1
-        "let g:syntastic_always_populate_loc_list = 1
+        let g:syntastic_always_populate_loc_list = 1
     " }
     " Syntax {
         let conceallevel=2
