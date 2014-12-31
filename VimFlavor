@@ -76,6 +76,9 @@ flavor 'xsbeats/vim-blade', branch: 'master'
 # Coffeescript
 flavor 'kchmck/vim-coffee-script'
 
+# Docker
+flavor 'ekalinin/Dockerfile.vim', branch: 'master'
+
 # HTML
 #flavor 'mattn/emmet-vim', branch: 'master'
 flavor 'tristen/vim-sparkup', branch: 'master'
@@ -112,7 +115,7 @@ flavor 'kien/ctrlp.vim'
 flavor 'sjl/gundo.vim'
 #Bundle 'Toggle'
 flavor 'editorconfig/editorconfig-vim', branch: 'master'
-flavor 'zimbatm/direnv'
+flavor 'zimbatm/direnv.vim', branch: 'master'
 flavor 'vim-scripts/toggle_word.vim', '>= 1.4'
 flavor 'thinca/vim-fontzoom'
 flavor 'vim-scripts/camelcasemotion'
@@ -164,6 +167,8 @@ flavor 'sickill/vim-pasta', branch: 'master'
 #flavor 'tpope/vim-sensible', branch: 'master'
 flavor 'majutsushi/tagbar', branch: 'master'
 flavor 'tpope/vim-speeddating', branch: 'master'
+
+flavor 'sjl/splice.vim', branch: 'master'
 
 #flavor 'Shougo/vimproc', branch: 'master'
 #flavor 'Shougo/unite.vim', branch: 'master'
