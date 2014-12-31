@@ -1,8 +1,9 @@
 " FileType settings for PHP
+
 " vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
 
 setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
-setlocal colorcolumn=85
+setlocal colorcolumn=80,120
 
 " Automatically strip trailing spaces in PHP files when reading/writing
 augroup whitespace
@@ -52,7 +53,7 @@ augroup END
 
 " PhpQA {
     let g:phpqa_messdetector_ruleset = "/home/kgustavson/workspace/symfony2/phpmd.xml"
-    let g:phpqa_codesniffer_args = "--standard=/home/kgustavson/workspace/php/celltrak_coding_standard.xml"
+    let g:phpqa_codesniffer_args = "--standard=psr2"
 
     " All of these are default = 1
     let g:phpqa_messdetector_autorun = 0
@@ -74,11 +75,11 @@ augroup END
 
     "nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
     "nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
-    let g:php_cs_fixer_path = "~/bin/php-cs-fixer" " define the path to the php-cs-fixer.phar
+    let g:php_cs_fixer_path = "php-cs-fixer" " define the path to the php-cs-fixer.phar
     let g:php_cs_fixer_level = "all"               " which level ?
     let g:php_cs_fixer_config = "default"          " configuration
     let g:php_cs_fixer_php_path = "php"            " Path to PHP
-    let g:php_cs_fixer_fixers_list = ""            " List of fixers
+    "let g:php_cs_fixer_fixers_list = ""            " List of fixers
     let g:php_cs_fixer_enable_default_mapping = 1  " Enable the mapping by default (<leader>pcd)
     let g:php_cs_fixer_dry_run = 0                 " Call command with dry-run option
     let g:php_cs_fixer_verbose = 0                 " Return the output of command if 1, else an inline information.
@@ -87,7 +88,7 @@ augroup END
 " Syntax Checking {
     let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
     let g:syntastic_check_on_open = 1
-    let g:syntastic_php_phpcs_args = "--report=csv --standard=phpcs.xml"
+    let g:syntastic_php_phpcs_args = "--report=csv --standard=psr2"
 " }
 
 " Testing {
@@ -111,7 +112,7 @@ function! RunPhpTests()
         silent !clear
         echom "Start codeception tests..."
         "execute '!/usr/local/bin/php vendor/bin/codecept run % --no-colors --group active'
-        execute '!vagrant ssh -c "cd vhosts/gonorthwebsites && php vendor/bin/codecept run functional --debug --group active"'
+        execute '!vagrant ssh default -c "cd vhosts/gonorthwebsites && php vendor/bin/codecept run functional --debug --group active"'
     elseif &ft =~ "phpunit"
         silent !clear
         echom "Start phpunit tests..."
@@ -207,4 +208,4 @@ endfunction
     inoremap <LocalLeader>e <C-O>:call PhpExpandClass()<CR>
     nnoremap <LocalLeader>e :call PhpExpandClass()<CR>
 " }
-let NERD_php_alt_style=1
+"let NERD_php_alt_style=1
