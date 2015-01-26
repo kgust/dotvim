@@ -1,0 +1,63 @@
+*cheatsheet.txt*      For Vim version 7.0.
+
+Author:	        Kevin Gustavson                            January 25, 2015
+
+CheatSheet:     A variety of things that I want to remember
+Version:        0.0.0
+Homepage:       <none>
+Feedback:	    Kevin Gustavson <kdgustavson@gmail.com>
+
+For instructions on installing this file, type
+	:help add-local-help |add-local-help| inside Vim.
+
+
+==============================================================================
+1. Contents                                                        *cheatsheet*
+
+    1. Contents...............................: |cheatsheet-contents|
+    2. Plugins................................: |cheatsheet-plugins|
+        2.1 NetRW.............................: |cheatsheet-netrw|
+    99. TODO..................................: |cheatsheet-todo|
+
+
+==============================================================================
+2. Plugins                                                 *cheatsheet-plugins*
+
+2.1 NetRW                                                    *cheatsheet-netrw*
+
+2.1.1 Basic NetRW Commands
+
+    :`Explore`..............: Enter Explorer Mode in horizontal mode
+    :`Vexplore`.............: Enter Explorer Mode in vertical mode
+    <c-i>.................: Toggle List Mode
+    `d`.....................: create a new directory
+    `%`.....................: create and open a new file
+    `R`.....................: rename a file
+    `o`.....................: opens current file in a horizontal split
+    `v`.....................: opens current file in a vertical split
+    `j`.....................: moves down
+    `k`.....................: moves up
+    `-` (minus).............: moves up one directory
+
+2.1.2 vim-vinegar extras
+
+    `-` (minus).............: in any other buffer will hop to directory listing
+    `I`.....................: Toggles the help text
+    `.` (period)............: prepopulates the current file at the end of a
+                            command
+    `!` (bang)..............: same as period but starts the command with !(bang)
+    `cg`....................: :cd to the currently edited directory
+    `cl`....................: :lcd to the currently edited directory
+    `~` (tilde).............: go home
+
+==============================================================================
+99. TODO                                                      *cheatsheet-todo*
+
+  TODO:
+    1. Suggestions welcome please email <kdgustavason@gmail.com>
+
+
+==============================================================================
+
+
+vim: ts=4 ft=help
