@@ -101,6 +101,7 @@ augroup END
     " Test a method
     nnoremap <LocalLeader>m yiw:!phpunit --filter <c-r>"<CR>
     nnoremap <LocalLeader>t :call RunPhpTests()<cr>
+    nnoremap test :call RunPhpTests()<cr>
 
     "nnoremap pu :!clear && vendor/bin/phpunit %:.<cr>
 
@@ -110,15 +111,21 @@ augroup END
 function! RunPhpTests()
     if &ft =~ "codeception"
         silent !clear
+        let g:php_last_test = "\nclear && vendor/bin/codecept run ".expand("%")."\n"
+        call SendToTmux(g:php_last_test)
+        redraw!
         echom "Start codeception tests..."
-        "execute '!/usr/local/bin/php vendor/bin/codecept run % --no-colors --group active'
-        execute '!vagrant ssh default -c "cd vhosts/gonorthwebsites && php vendor/bin/codecept run functional --debug --group active"'
     elseif &ft =~ "phpunit"
         silent !clear
         echom "Start phpunit tests..."
-        execute '!phpunit --groups active %:.'
+        " execute '!phpunit --groups active %:.'
+        let g:php_last_test = "\nclear && vendor/bin/phpunit --groups active ".expand("%")."\n"
+        call SendToTmux(g:php_last_test)
     else
-        echom "Sorry, I can't test this file."
+        " Fall back to last test run
+        silent !clear
+        echom "Running last test or default..."
+        call SendToTmux(g:php_last_test)
     endif
 endfunction
 " }
