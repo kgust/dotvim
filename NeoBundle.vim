@@ -70,8 +70,14 @@ NeoBundle 'vim-scripts/dbext.vim'
 NeoBundle 'kgust/sql.vim'
 
 " Vimscript
-NeoBundle 'kana/vim-vspec'
+" NeoBundle 'kana/vim-vspec'
 NeoBundle 'tpope/vim-scriptease'
+
+
+""""""""""
+" SOCIAL "
+""""""""""
+" NeoBundle 'ironcamel/vimchat'
 
 
 """""""""""""
@@ -116,7 +122,7 @@ NeoBundle 'neilagabriel/vim-geeknote'
 
 " Development
 NeoBundle 'Raimondi/delimitMate'
-"NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'scrooloose/nerdcommenter'
@@ -125,10 +131,14 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
 " NeoBundle 'tomtom/checksyntax_vim'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'rizzatti/funcoo.vim'
 " dash requires funcoo.vim
-NeoBundle 'rizzatti/dash.vim'
+" NeoBundle 'rizzatti/funcoo.vim'
+" NeoBundle 'rizzatti/dash.vim'
 NeoBundle 'tpope/vim-unimpaired'
+"easytags requires vim-misc and vim-shell
+" NeoBundle 'xolox/vim-misc'
+" NeoBundle 'xolox/vim-shell'
+" NeoBundle 'xolox/vim-easytags'
 
 NeoBundle 'mhinz/vim-startify'
 NeoBundle 'nathanaelkane/vim-indent-guides'
