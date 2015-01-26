@@ -23,7 +23,7 @@
     " Required:
     NeoBundleFetch 'Shougo/neobundle.vim'
 
-    " My Bundles here:
+    " My Bundles are here:
     source $HOME/.vim/NeoBundle.vim
 
     call neobundle#end()
@@ -85,53 +85,58 @@
 " }
 
 " User Interface Settings {
-    set tabpagemax=15               " only show 15 tabs
-    set showmode                    " display the current mode
+    " General {
+        set tabpagemax=15               " only show 15 tabs
+        set showmode                    " display the current mode
 
-    set splitright                  " I want vertical windows to open on the right
-    "set splitbelow                  " I want horizontal windows to open on the bottom
+        set splitright                  " I want vertical windows to open on the right
+        "set splitbelow                  " I want horizontal windows to open on the bottom
 
-    " Make yank use the "+ register
-    "set clipboard=unnamedplus
+        " Make yank use the "+ register
+        "set clipboard=unnamedplus
 
-    if has('cmdline_info')
-        set ruler                   " show the ruler
-        set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
-        set showcmd                 " show partial commands in status line and
-                                    " selected characters/lines in visual mode
-    endif
+        if has('cmdline_info')
+            set ruler                   " show the ruler
+            set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
+            set showcmd                 " show partial commands in status line and
+                                        " selected characters/lines in visual mode
+        endif
 
-    if has('statusline')
-        set laststatus=2             " show statusline always
-        " Use the commented line if fugitive isn't installed
-        "set statusline=%<%f\ %=\:\b%n%y%m%r%w\ %l,%c%V\ %P " a statusline, also on steroids
-    endif
+        if has('statusline')
+            set laststatus=2             " show statusline always
+            " Use the commented line if fugitive isn't installed
+            "set statusline=%<%f\ %=\:\b%n%y%m%r%w\ %l,%c%V\ %P " a statusline, also on steroids
+        endif
 
-    set backspace=indent,eol,start   " backspace for dummys
-    "set linespace=1                  " spaces between rows
-    set number                       " Line numbers on
-    "set relativenumber              " Turn on relative number mode
-    set showmatch                    " show matching brackets/parenthesis
-    set incsearch                    " find as you type search
-    set hlsearch                     " highlight search terms
-    set winminheight=0               " windows can be 0 line high
-    set ignorecase                   " case insensitive search
-    set smartcase                    " case sensitive when uc present
-    set timeout timeoutlen=200 ttimeoutlen=100
-    set wildmenu                     " show list instead of just completing
-    set wildmode=list:longest,full   " comand <Tab> completion, list matches, then longest common part, then all.
-    set whichwrap=b,s,h,l,<,>,[,]    " backspace and cursor keys wrap to
-    set scrolljump=5                 " lines to scroll when cursor leaves screen
-    set scrolloff=3                  " minimum lines to keep above and below cursor
-    "set foldenable                   " auto fold code
-    "set foldlevel=3                  " fold three or more lines
-    set foldlevelstart=1             " start with topmost folds open
-    set gdefault                     " the /g flag on :s substitutions by default
-    set switchbuf=usetab             " when opening a buffer from the list, use existing window first
-    "set colorcolumn=80,120           " visible wrap here/long line indicator
-    set visualbell                   " visible alerts
-    set noerrorbells                 " don't beep
-    set ttyfast                      " disable for slow terminals
+        set backspace=indent,eol,start   " backspace for dummys
+        "set linespace=1                  " spaces between rows
+        set number                       " Line numbers on
+        "set relativenumber              " Turn on relative number mode
+        set showmatch                    " show matching brackets/parenthesis
+        set incsearch                    " find as you type search
+        set hlsearch                     " highlight search terms
+        set winminheight=0               " windows can be 0 line high
+        set ignorecase                   " case insensitive search
+        set smartcase                    " case sensitive when uc present
+        set timeout timeoutlen=200 ttimeoutlen=100
+        set wildmenu                     " show list instead of just completing
+        set wildmode=list:longest,full   " comand <Tab> completion, list matches, then longest common part, then all.
+        set whichwrap=b,s,h,l,<,>,[,]    " backspace and cursor keys wrap to
+        set scrolljump=5                 " lines to scroll when cursor leaves screen
+        set scrolloff=3                  " minimum lines to keep above and below cursor
+        "set foldenable                   " auto fold code
+        "set foldlevel=3                  " fold three or more lines
+        set foldlevelstart=1             " start with topmost folds open
+        set gdefault                     " the /g flag on :s substitutions by default
+        set switchbuf=usetab             " when opening a buffer from the list, use existing window first
+        "set colorcolumn=80,120           " visible wrap here/long line indicator
+        set visualbell                   " visible alerts
+        set noerrorbells                 " don't beep
+        set ttyfast                      " disable for slow terminals
+
+        " Equalize splits after a window resize
+        autocmd Vimrc VimResized * wincmd =
+    " }
 
     " Colors and Listchars {
         set list
@@ -151,38 +156,52 @@
         set listchars=precedes:◀,extends:▶,trail:⁖,nbsp:⊔,tab:➫•
     " }
 
-    " Equalize splits after a window resize
-    autocmd Vimrc VimResized * wincmd =
+    " Editor Specific Settings {
+        " Console Only VIM Settings {
+            " Fix console Vim, which was giving A B C D when using arrow keys in
+            " insert mode.
+            "set term=xterm-256color
+            set mouse=a
+        " }
 
-    " MacVim Settings {
-    if has("gui_macvim")
-        set macmeta
-    endif
-    " }
-
-    if has('gui_running')
-    " GVIM (here instead of .gvimrc) {
-        set lines=60 columns=140
-
-        if s:uname == "Darwin\n"
-            "set guifont=Inconsolata-dz\ for\ Powerline:h11
-            set guifont=Meslo\ LG\ L\ DZ\ for\ Powerline:h13
-        else
+        " GUI Mode {
+        if has('gui_running')
             "set guifont=Inconsolata\ 12
             set guifont=Inconsolata-dz\ for\ Powerline\ 9
-        endif
 
-        set guioptions-=T                  " remove the toolbar
-        highlight Pmenu guibg=brown gui=bold
+            set lines=60 columns=140
+
+            set guioptions-=T                  " remove the toolbar
+            highlight Pmenu guibg=brown gui=bold
+        endif
+        " }
+
+        " MacVim {
+        if has("gui_macvim")
+            set macmeta
+            "set guifont=Inconsolata-dz\ for\ Powerline:h11
+            set guifont=Meslo\ LG\ L\ DZ\ for\ Powerline:h13
+        endif
+        " }
+
+        " Windows Compatible -- Keeping for the fun of it {
+            " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
+            " across (heterogeneous) systems easier.
+            if has('win32') || has('win64')
+                set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+            endif
+        " }
+
+        if has('nvim')
+        " NeoVim {
+        " }
+        else
+        " Not NeoVim {
+            set cryptmethod=blowfish
+        " }
+        endif
     " }
-    else
-    " Console Only VIM Settings {
-        " Fix console Vim, which was giving A B C D when using arrow keys in
-        " insert mode.
-        "set term=xterm-256color
-        set mouse=a
-    " }
-    endif
+
     " Formatting {
         set autoindent                   " indent at the same level of the previous line
         set copyindent                   " copy the previous indenting on autoindenting
@@ -194,23 +213,10 @@
         set softtabstop=4
         set nowrap                       " wrap long lines
     " }
+
     " Key Mappings {
         "set pastetoggle=<F10>            " pastetoggle (sane indentation on pastes)
         "nnoremap <F10> :set paste!<CR>
-
-        " Easier moving in tabs and windows
-        "nnoremap <C-H> <C-W>h
-        "vnoremap <C-H> <C-W>h
-        "nnoremap <C-J> <C-W>j
-        "vnoremap <C-J> <C-W>j
-        "nnoremap <C-K> <C-W>k
-        "vnoremap <C-K> <C-W>k
-        "nnoremap <C-L> <C-W>l
-        "vnoremap <C-L> <C-W>l
-        "nnoremap <S-H> gT
-        "vnoremap <S-H> gT
-        "nnoremap <S-L> gt
-        "vnoremap <S-L> gt
 
         " disable line-wise moving
         "nnoremap j gj
@@ -362,6 +368,11 @@
                 exec "source".path
             endfor
         endif
+    " }
+    " easytags (vim-easytags) {
+        let g:easytags_cmd = '/usr/local/bin/ctags'
+        let g:easytags_on_cursorhold = 0
+        let g:easytags_async = 1
     " }
     " Emmet-Vim {
         "let g:user_emmet_leader_key='<c-e>'
@@ -727,14 +738,6 @@
         " NOTE: most whitespace settings are ftplugin/*
         nnoremap <leader>w :call whitespace#strip_trailing()<cr>
     " }
-" }
-
-" Windows Compatible -- Keeping for the fun of it {
-    " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-    " across (heterogeneous) systems easier.
-    if has('win32') || has('win64')
-        set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-    endif
 " }
 
 " Functions {
