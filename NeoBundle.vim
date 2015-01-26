@@ -71,6 +71,7 @@ NeoBundle 'kgust/sql.vim'
 
 " Vimscript
 NeoBundle 'kana/vim-vspec'
+NeoBundle 'tpope/vim-scriptease'
 
 
 """""""""""""
@@ -78,7 +79,9 @@ NeoBundle 'kana/vim-vspec'
 """""""""""""
 
 " Usage
-NeoBundle 'scrooloose/nerdtree'
+" NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'tpope/vim-vinegar'
+NeoBundle 'tommcdo/vim-exchange'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'editorconfig/editorconfig-vim'
@@ -120,7 +123,7 @@ NeoBundle 'scrooloose/nerdcommenter'
 "NeoBundle 'tomtom/tcomment_vim'
 "NeoBundle 'tpope/vim-commentary'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'tomtom/checksyntax_vim'
+" NeoBundle 'tomtom/checksyntax_vim'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'rizzatti/funcoo.vim'
 " dash requires funcoo.vim
