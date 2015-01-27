@@ -610,9 +610,6 @@
 
         let g:phpcomplete_index_composer_command = "composer"
     " }
-    " PHP {
-        let g:php_last_test = "\nclear && vendor/bin/codecept run functional\n"
-    " }
     " Powerline {
         "set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
         "set rtp+=/usr/local/lib/python2.7/site-packages/Powerline-beta-py2.7.egg/powerline/bindings/vim

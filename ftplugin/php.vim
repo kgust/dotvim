@@ -17,7 +17,7 @@ augroup END
         let g:pdv_cfg_Package = "StraightNorth"
         "let g:pdv_cfg_Version = "2.0.4"
         let g:pdv_cfg_Author = "K. Gustavson <kgustavson@straightnorth.com>"
-        let g:pdv_cfg_Copyright = "Copyright 2014 Straight North, LLC. All Rights reserved."
+        let g:pdv_cfg_Copyright = "Copyright 2015 Straight North, LLC. All Rights reserved."
         let g:pdv_cfg_License = "Straight North All Rights Reserved {@link http://www.straightnorth.com/}"
         let g:pdv_cfg_CommentEnd = ""
 
@@ -102,32 +102,34 @@ augroup END
     nnoremap <LocalLeader>m yiw:!phpunit --filter <c-r>"<CR>
     nnoremap <LocalLeader>t :call RunPhpTests()<cr>
     nnoremap test :call RunPhpTests()<cr>
-
-    "nnoremap pu :!clear && vendor/bin/phpunit %:.<cr>
-
 " }
 
 " function! RunPhpTests() {
-function! RunPhpTests()
-    if &ft =~ "codeception"
-        silent !clear
-        let g:php_last_test = "\nclear && vendor/bin/codecept run ".expand("%")."\n"
-        call SendToTmux(g:php_last_test)
-        redraw!
-        echom "Start codeception tests..."
-    elseif &ft =~ "phpunit"
-        silent !clear
-        echom "Start phpunit tests..."
-        " execute '!phpunit --groups active %:.'
-        let g:php_last_test = "\nclear && vendor/bin/phpunit --groups active ".expand("%")."\n"
-        call SendToTmux(g:php_last_test)
-    else
-        " Fall back to last test run
-        silent !clear
-        echom "Running last test or default..."
-        call SendToTmux(g:php_last_test)
-    endif
-endfunction
+    function! RunPhpTests()
+        if &ft =~ "codeception"
+            let g:php_last_test = "\nclear && vendor/bin/codecept run ".expand("%:.")."\n"
+            call SendToTmux(g:php_last_test)
+            redraw!
+            echom "Start codeception tests..."
+        elseif &ft =~ "phpunit"
+            " execute '!phpunit --groups active %:.'
+            let g:php_last_test = "\nclear && vendor/bin/phpunit --groups active ".expand("%:.")."\n"
+            call SendToTmux(g:php_last_test)
+            redraw!
+            echom "Start phpunit tests..."
+        else
+            " Fall back to last test run
+            if exists('g:php_last_test')
+                call SendToTmux(g:php_last_test)
+                redraw!
+                echom "Running last test..."
+            else
+                call SendToTmux("\nclear && vendor/bin/codecept run functional\n")
+                redraw!
+                echom "Running codeception functional tests (default)..."
+            endif
+        endif
+    endfunction
 " }
 
 " Laravel - Jeffery Way {
@@ -194,8 +196,7 @@ endfunction
     nmap <LocalLeader>1 :call Class()<cr>
     nmap <LocalLeader>2 :call AddDependency()<cr>
 
-
-    set wildignore+=*/vendor/**
+    "set wildignore+=*/vendor/**
     set wildignore+=*/public/forum/**
 
     " Testing
