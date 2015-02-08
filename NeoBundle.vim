@@ -78,6 +78,7 @@ NeoBundle 'tpope/vim-scriptease'
 " SOCIAL "
 """"""""""
 " NeoBundle 'ironcamel/vimchat'
+NeoBundle 'ryanss/vim-hackernews'
 
 
 """""""""""""
