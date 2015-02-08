@@ -327,6 +327,9 @@
         let g:DrChipTopLvlMenu= "&Plugin."
         nnoremap <leader>l :Align<space>
     " }
+    " asynccommand {
+        let g:asynccommand_prg = "mvim"
+    " }
     " Ctags {
         set tags=./tags;/,~/.vimtags
     " }
