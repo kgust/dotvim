@@ -550,6 +550,7 @@
 
         "set wildignore+=*/vendor/**
         set wildignore+=*/public/forum/**
+        set wildignore+=**/.DS_Store
 
         nnoremap vs :vsplit<cr>
         nnoremap sp :split<cr>
