@@ -64,6 +64,9 @@ NeoBundle 'groenewege/vim-less'
 "NeoBundle 'tpope/vim-markdown'
 "NeoBundle 'suan/vim-instant-markdown'
 
+" Polyglot
+NeoBundle 'sheerun/vim-polyglot'
+
 " SQL
 NeoBundle 'vim-scripts/SQLUtilities'
 NeoBundle 'vim-scripts/dbext.vim'
