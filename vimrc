@@ -292,33 +292,22 @@
     " }
 " }
 
-" FileType Specific Settings {
-    let g:checksyntax_auto = 0
+    " FileType Specific Settings {
+        let g:checksyntax_auto = 0
 
-    "comment out line(s) in visual mode
-    vnoremap  o  :call NERDComment(1, 'toggle')<CR>
-    let g:NERDShutUp=1
+        "comment out line(s) in visual mode
+        vnoremap  o  :call NERDComment(1, 'toggle')<CR>
+        let g:NERDShutUp=1
 
-    let b:match_ignorecase = 1
+        let b:match_ignorecase = 1
 
-    let g:solarized_contrast='normal'
-    let g:solarized_visibility='low'
+        let g:solarized_contrast='normal'
+        let g:solarized_visibility='low'
 
-    " Automatically strip trailing spaces - TODO Q: Can these be combined?
-    autocmd Vimrc BufRead,BufWrite *.php %s/\s\+$//e
-    autocmd Vimrc BufRead,BufWrite *.js %s/\s\+$//e
-
-
-    " http://vim.wikia.com/wiki/Use_eval_to_create_dynamic_templates {
-        augroup templates
-            " clear the augroup
-            au!
-            autocmd Vimrc BufNewFile *.* silent! execute '0r ~/.vim/templates/skeleton.'.expand("<afile>:e")
-
-            autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
-        augroup END
+        " Automatically strip trailing spaces - TODO Q: Can these be combined?
+        autocmd Vimrc BufRead,BufWrite *.php %s/\s\+$//e
+        autocmd Vimrc BufRead,BufWrite *.js %s/\s\+$//e
     " }
-" }
 " }
 
 " Vim Plugins {
