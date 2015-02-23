@@ -1,0 +1,88 @@
+snippet _skel "Template" b
+<?php namespace $1
+
+class $1 extends $2 implements $3
+{
+	$0
+}
+endsnippet
+
+###########
+# Laravel #
+###########
+
+snippet _model "Generic model template" b
+# A generic model
+class `!v expand("%:t:r")`_model {
+	$0
+}
+endsnippet
+
+snippet _view "Generic view template" b
+# A generic view
+class `!v expand("%:t:r")`_view {
+	$0
+}
+endsnippet
+
+snippet _controller "Generic controller template" b
+# a generic controller
+class `!v expand("%:t:r")`_controller {
+	$0
+}
+endsnippet
+
+
+############
+# CellTrak #
+############
+
+snippet file "File-level comment" b
+/**
+ * ${1:CellTrak VisitManager 2.x.}
+ *
+ * @package ${2:AppBundle}
+ */
+
+endsnippet
+
+
+snippet class "Class keyword" !b
+<?php
+
+namespace ${1:`substitute(substitute(expand("%:h"), '\v^\w+\/(\u)', '\1', ''), '\/', '\\\', 'g')`};
+
+class ${2:`Filename('', 'myClass')`}
+{
+    ${3}
+}
+endsnippet
+
+###########
+# PHPUnit #
+###########
+
+snippet set "Set Up Function" !b
+/**
+ * Run before each test.
+ *
+ * @return void
+ */
+public function setUp()
+{
+    $1
+}
+endsnippet
+
+snippet test "Test Method" !b
+/**
+ * ${1:Short description}
+ *
+ * @group ${2:unit}
+ * @return void
+ */
+public function test${3:Name}(${4:$forDepends})
+{
+    $this->assert${5:Equals}(${6:expected}, ${7:actual});
+}
+endsnippet

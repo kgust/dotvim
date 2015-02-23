@@ -701,27 +701,12 @@
         endif
     " }
     " UltiSnips {
-        " Matt Boehm
-            "let g:UltiSnipsExpandTrigger="<tab>"
-            "let g:UltiSnipsJumpForwardTrigger="<tab>"
-            "let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-            "let g:UltiSnipsSnippetDirectories=["mysnippets"]
-            "nnoremap <leader>vs :call g:EditMySnippets()
-        let g:UltiSnipsSnippetsDir="~/.vim/flavors/kgust_ultisnips/UltiSnips"
-        "let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-        "let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-        "let g:UltiSnipsJumpForwardTrigger = "<c-h>"
-        "let g:UltiSnipsJumpBackwardTrigger = "<c-l>"
 
-        "let g:UltiSnipsExpandTrigger="<c-tab>"
-        "let g:UltiSnipsListSnippets="<c-s-tab>""
-
-        nnoremap <leader>es :call g:EditMySnippets()<CR>
-        "let g:UltiSnipsExpandTrigger="<tab>"
-        "let g:UltiSnipsJumpForwardTrigger="<tab>"
-        "let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-        let g:UltiSnipsExpandTrigger="<c-j>"
+        "nnoremap <leader>es :call g:EditMySnippets()<CR>
+        let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
+        let g:UltiSnipsExpandTrigger = "<c-j>"
+        "let g:UltiSnipsSnippetDirectories = ['UltiSnips']
+        "let g:UltiSnipsListSnippets = "<c-s-tab>""
     " }
     " YouCompleteMe {
         let g:ycm_key_list_previous_completion=['<Up>']

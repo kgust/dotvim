@@ -1,0 +1,48 @@
+clearsnippets
+
+#########################
+# Coffee (Coffeescript) #
+#########################
+
+snippet l "console.log (kg)" w
+console.log ${1:output}
+endsnippet
+
+snippet #= "require (kg)" b
+#= require ${1:script}
+endsnippet
+snippet =spy "= sinon.spy()" i
+= sinon.spy()
+endsnippet
+
+#########
+# Sinon #
+#########
+
+snippet =stub "= sinon.stub()" i
+= sinon.stub()
+endsnippet
+
+snippet :spy ": sinon.spy()" i
+: sinon.spy()
+endsnippet
+
+snippet :stub ": sinon.stub()" i
+: sinon.stub()
+endsnippet
+
+snippet spy "sinon.spy" b
+sinon.spy ${1:target}, "${2:method}"
+endsnippet
+
+snippet stub "sinon.stub"
+sinon.stub ${1:target}, "${2:method}"
+endsnippet
+
+snippet .war "withArgs returns" i
+.withArgs(${1:arguments}).returns ${2:value}
+endsnippet
+
+snippet .r "restore()" i
+.restore()
+endsnippet

@@ -1,0 +1,173 @@
+##############
+# Javascript #
+##############
+
+snippet | "console.log (matt boehm)"
+console.log("${1}");
+endsnippet
+
+snippet for "for (...) {...} (matt boehm)"
+for (var ${2:i}=0; $2 < ${1:Things}.length; $2++) {
+    ${3:$1[$2]}
+};
+endsnippet
+
+snippet if "if (matt boehm)"
+if (${1:condition}) {
+    ${VISUAL}$0
+}
+endsnippet
+
+##########
+# jQuery #
+##########
+
+snippet $.pubsub "jQuery Pub Sub" !b
+// Works in modern browsers + IE9, but Modernizer has a polyfill baked in for function.bind.
+// Hit tip Paul Irish (and Jeffery Wey)
+
+var o = $( {} );
+$.subscribe = o.on.bind(o);
+$.unsubscribe = o.off.bind(o);
+$.publish = o.trigger.bind(o);
+endsnippet
+
+#########
+# Mocha #
+#########
+
+snippet d "describe" b
+describe "${1:context}", ->
+
+  $0
+endsnippet
+
+snippet c "context" b
+context "${1:context}", ->
+
+  $0
+endsnippet
+
+snippet b "before" b
+beforeEach ->
+  $0
+endsnippet
+
+snippet a "after" b
+afterEach ->
+  $0
+endsnippet
+
+snippet i "it" b
+it "${1:example}", ->
+  $0
+endsnippet
+
+snippet e "expect" b
+expect( ${1:actual} ).$0
+endsnippet
+
+snippet #=sh "require spec_helper" b
+#= require spec_helper
+#= require ${1:`!p snip.rv = re.sub("_?spec/?(\..*)?", "", path)`}
+
+$0
+endsnippet
+
+################
+# Mocha + Chai #
+################
+
+snippet .s "should" i
+.should
+endsnippet
+
+snippet .h "have" i
+.have
+endsnippet
+
+snippet .n "not" i
+.not
+endsnippet
+
+snippet .e "eql" i
+.eql ${1:value}
+endsnippet
+
+snippet .se "should eql" i
+.should.eql ${1:value}
+endsnippet
+
+snippet .= "equal" i
+.equal ${1:value}
+endsnippet
+
+snippet .s= "should equal" i
+.should.equal ${1:value}
+endsnippet
+
+snippet .sbai "should be an instanceof" i
+.should.be.an.instanceof ${1:Class}
+endsnippet
+
+snippet .shp "should have property" i
+.should.have.property "${1:prop}"${2:, ${3:value}}
+endsnippet
+
+snippet .shdp "should have deep property" i
+.should.have.deep.property "${1:prop}"${2:, ${3:value}}
+endsnippet
+
+snippet sx "should exist" i
+should.exist
+endsnippet
+
+snippet snx "should not exist" i
+should.not.exist
+endsnippet
+
+snippet .sbt "should be true" i
+.should.be.true
+endsnippet
+
+snippet .sbf "should be false" i
+.should.be.false
+endsnippet
+
+snippet .sbn "should be null" i
+.should.be.null
+endsnippet
+
+snippet .sm "should match" i
+.should.match "${1:selector}"
+endsnippet
+
+snippet .shl "should have length" i
+.should.have.lengthOf ${1:0}
+endsnippet
+
+#########################
+# Mocha + Chai + jQuery #
+#########################
+
+extends javascript
+
+snippet .sh "should have" i
+.should.have "${1:selector}"
+endsnippet
+
+snippet .snh "should not have" i
+.should.not.have "${1:selector}"
+endsnippet
+
+snippet .shc "should have class" i
+.should.have.class "${1:class}"
+endsnippet
+
+snippet .sht "should have text" i
+.should.have.text "${1:class}"
+endsnippet
+
+snippet .sha "should have attr" i
+.should.have.attr "${1:attr}"${2:, ${3:value}}
+endsnippet

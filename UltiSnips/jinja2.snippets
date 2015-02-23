@@ -1,0 +1,136 @@
+extends html
+
+snippet debug "Debug a variable or object" !b
+{% debug ${1:variable} %}
+endsnippet
+
+snippet input "Add label + input tags" !b
+<label>{%trans%}${1:trans.object.id}{%endtrans%}
+    <input type="${2:text}" name="${3:name}" />
+</label>
+endsnippet
+
+snippet radio "Add label + radio button tags" !b
+<label>{%trans%}${1:trans.object.id}{%endtrans%}
+    <input type="${2:radio}" name="${3:name}" />
+    <input type="$2" name="${4:name}" />
+</label>
+endsnippet
+
+
+#################################################
+#  Original Twig/HTMLJinja Snippets (modified)  #
+#################################################
+
+snippet {{ "Twig variable" i
+{{${1}}}${2}
+endsnippet
+
+snippet {% "Twig executable" i
+{%${1}%}${2}
+endsnippet
+
+snippet extends "Expanded extends template" !b
+{% extends "${1:App}Bundle::${2:file}.${3:html}.twig" %}${4}
+endsnippet
+
+snippet blockcss
+{% block ${1:stylesheets} %}
+{{ parent() }}
+{{ ${2:appCss}('${3:file}.css')|raw }}
+{% endblock %}${4}
+endsnippet
+
+snippet blockjs
+{% block ${1:javascriptPrerequisites|javascriptCode} %}
+    {{ parent() }}
+    <script type="text/javascript">
+    ${2}
+    </script>
+{% endblock %}
+endsnippet
+
+snippet trans "Inline Translation" i
+{%trans%}$1{%endtrans%}$2
+endsnippet
+
+snippet transwith
+{% trans with {'%${1:variable}%':${2:$1}} %}${3:val.sub}{%endtrans%}${4}
+endsnippet
+
+
+snippet autocomplete
+{% dynapart AutoComplete : member_provider | id="memberType" name="am.memberId" class="lookup" placeholder="activity.filter.execMember.placeholder"|trans %}
+{
+    valueField: "memberId",
+    labelField: "fullName",
+    filters: {
+        searchByMemberType: function(term) {
+            return {
+            value: {
+                'm.memberTypeId': $('#filterGroups').val(),
+                name: term
+            }
+            };
+        }
+    },
+    sorts: [
+        { field: "m.name1", order: "ASC" },
+        { field: "m.name2", order: "ASC" }
+    ]
+}
+{% enddynapart %}
+endsnippet
+
+snippet recordset
+{% block recordset %}
+<div id="alerts">
+    <h1>{% trans %}performance.index.alerts{% endtrans %}</h1>
+{% dynapart RecordSet : alert_provider | id="alert_recordset" %}
+{
+    cacheId: 'alert_recordset',
+    rowsPerPage: 15,
+    autoLoad: true,
+    onFilterReady: onFilterReadyFunction,
+    onRowReady: onRowReadyFunction,
+    recordFilter: "#filterGroups, #filterId, input[name^='am.memberId'], #alert_percentages_filter",
+    filterSkipAutoSubmit: "#filterGroups,#filterId",
+    beforeRecordLoad: beforeRecordLoadFunction,
+    sorts: [
+        {
+            text: "recordSet.sorting.newest_first".trans(),
+            sorting: [
+                { field: "a.currentStartTime", order: "DESC" },
+                { field: "a.activityId", order: "ASC"}
+            ]
+        },
+        {
+            text: "recordSet.sorting.oldest_first".trans(),
+            sorting: [
+                { field: "a.currentStartTime", order: "ASC" },
+                { field: "a.activityId", order: "ASC"}
+            ]
+        }
+    ],
+    actions: [
+        {
+            label: 'View Details', {# FIXME #}
+            objectId: "route.activity_alerts",
+            onClick: function (rowData) {
+                window.location.href = 'activity_detail'.toUrl(rowData);
+            }
+        },
+        {
+            label: 'View Scorecard for Staff', {# FIXME #}
+            objectId: "route.activity_alerts",
+            onClick: function (rowData) {
+                window.location.href = 'activity_detail'.toUrl(rowData);
+            }
+        }
+    ],
+}
+{% enddynapart %}
+</div>
+{% endblock %}
+endsnippet
+
