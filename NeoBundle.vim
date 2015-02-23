@@ -6,8 +6,8 @@
 """""""""""
 " KG Mine "
 """""""""""
+NeoBundle 'kgust/snippet-templates'
 NeoBundle 'kgust/vim-potion'
-NeoBundle 'kgust/snippets'
 
 """"""""""""""""""""""
 " $VIMRUNTIME        "
@@ -29,6 +29,7 @@ NeoBundle 'chriskempson/base16-vim'
 """""""""""""
 
 " PHP
+NeoBundle 'tpope/vim-projectionist'
 NeoBundle 'joonty/vim-phpqa'
 NeoBundle 'arnaud-lb/vim-php-namespace'
 NeoBundle 'afternoon/vim-phpunit'
