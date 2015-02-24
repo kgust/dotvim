@@ -9,6 +9,8 @@ syntax keyword markdownOrgCanceled CANCELED
 syntax keyword markdownOrgWaiting WAITING
 syntax match markdownOrgTimestamp "\[\d\{4}-\d\{2}-\d\{2} .\{-}\]"
 
+let s:concealends = has('conceal') ? ' concealends' : ''
+
 if has('conceal')
   if &termencoding ==# "utf-8" || &encoding ==# "utf-8"
     " Checkboxes
@@ -37,6 +39,7 @@ if has('conceal')
   execute 'syntax match markdownCheckboxChecked "\(\[x\]\|++\)" contained conceal cchar='.s:checkbox_checked
 
   " syntax match newLine "<br>" conceal cchar=}
+  execute 'syntax region markdownStrikeout matchgroup=markdownStrikeoutDelimiter start="\S\@<=\~\~\|\~\~\S\@=" end="\S\@<=\~\~\|\~\~\S\@=" keepend contains=markdownLineStart,markdownItalic' . s:concealends
 endif
 
 " Pandoc
@@ -48,3 +51,5 @@ highlight default link markdownOrgDone Comment
 highlight default link markdownOrgCanceled markdownOrgDone
 highlight default link markdownOrgWaiting markdownOrgTodo
 highlight default link markdownOrgTimestamp Special
+highlight default StrikeoutColor ctermfg=gray guifg=gray
+highlight link markdownStrikeout StrikeoutColor
