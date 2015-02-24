@@ -17,7 +17,7 @@ augroup END
         let g:pdv_cfg_Package = "StraightNorth"
         "let g:pdv_cfg_Version = "2.0.4"
         let g:pdv_cfg_Author = "K. Gustavson <kgustavson@straightnorth.com>"
-        let g:pdv_cfg_Copyright = "Copyright 2015 Straight North, LLC. All Rights reserved."
+        let g:pdv_cfg_Copyright = "Copyright ".strftime("%Y")." Straight North, LLC. All Rights reserved."
         let g:pdv_cfg_License = "Straight North All Rights Reserved {@link http://www.straightnorth.com/}"
         let g:pdv_cfg_CommentEnd = ""
 
@@ -39,7 +39,7 @@ augroup END
 " }
 
 " PDV 2 PHPDoc Support {
-    let g:pdv_template_dir = $HOME."/.vim/flavors/tobyS_pdv/templates"
+    let g:pdv_template_dir = $HOME."/.vim/bundle/pdv/templates"
     let g:PHP_removeCRwhenUnix = 1             " 0 is default
     let g:PHP_BracesAtCodeLevel = 0            " 0 is default
     let g:PHP_vintage_case_default_indent = 0  " 0 is default
@@ -52,7 +52,7 @@ augroup END
 " }
 
 " PhpQA {
-    let g:phpqa_messdetector_ruleset = "/home/kgustavson/workspace/symfony2/phpmd.xml"
+    " let g:phpqa_messdetector_ruleset = $HOME."/workspace/symfony2/phpmd.xml"
     let g:phpqa_codesniffer_args = "--standard=psr2"
 
     " All of these are default = 1
@@ -64,7 +64,7 @@ augroup END
     "let g:phpqa_open_loc = 0
 
     " Clover code coverage XML file
-    let g:phpqa_codecoverage_file = "/home/kgustavson/workspace/symfony2/build/logs/clover.xml"
+    " let g:phpqa_codecoverage_file = $HOME."/workspace/symfony2/build/logs/clover.xml"
     " Show markers for lines that ARE covered by tests (default = 1)
     "let g:phpqa_codecoverage_showcovered = 0
 
