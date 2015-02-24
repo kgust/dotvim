@@ -482,7 +482,7 @@
 
         " Abbreviations
         iabbrev kgatsn kgustavson@straightnorth.com
-        iabbrev copyr Copyright 2014 Straight North LLC. All rights reserved.
+        execute "iabbrev copyr Copyright ".strftime('%Y')." Straight North LLC. All rights reserved."
         iabbrev ssig -- <cr>Kevin Gustavson<cr>Software Developer<cr>kgustavson@straightnorth.com
         " autocorrect ddate to "Monday 1/14/13"
         iab ddate <C-R>=strftime("%a %m/%d/%y")<CR>
@@ -701,8 +701,6 @@
         endif
     " }
     " UltiSnips {
-
-        "nnoremap <leader>es :call g:EditMySnippets()<CR>
         let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
         let g:UltiSnipsExpandTrigger = "<c-j>"
         "let g:UltiSnipsSnippetDirectories = ['UltiSnips']
@@ -727,13 +725,6 @@ function! QuickfixFilenames()
         let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
     endfor
     return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
-endfunction
-
-function! g:EditMySnippets()
-    let ft = &ft
-    "tabe ~/.vim/bundle/snippets/UltiSnips/
-    tabe ~/.vim/flavors/kgust_snippets/UltiSnips/
-    call search(ft)
 endfunction
 
 " http://vim.wikia.com/wiki/Different_syntax_highlighting_within_regions_of_a_file
