@@ -25,7 +25,7 @@ endglobal
 
 
 snippet _skel "Template" b
-<?php namespace `!v expand("%:h")`
+<?php namespace `!v expand("%:h")`;
 
 class `!v expand("%:t:r")`
 {
@@ -156,21 +156,21 @@ endsnippet
 
 snippet _model "Generic model template" b
 # A generic model
-class `!v expand("%:t:r")`_model {
+class `!v expand("%:t:r")` {
     $0
 }
 endsnippet
 
 snippet _view "Generic view template" b
 # A generic view
-class `!v expand("%:t:r")`_view {
+class `!v expand("%:t:r")` {
     $0
 }
 endsnippet
 
 snippet _controller "Generic controller template" b
 # a generic controller
-class `!v expand("%:t:r")`_controller {
+class `!v expand("%:t:r")` {
     $0
 }
 endsnippet
