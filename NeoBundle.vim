@@ -62,7 +62,7 @@ NeoBundle 'dtedesigns/vim-cute-javascript'
 NeoBundle 'groenewege/vim-less'
 
 " Markdown
-"NeoBundle 'tpope/vim-markdown'
+NeoBundle 'tpope/vim-markdown'
 "NeoBundle 'suan/vim-instant-markdown'
 
 " Polyglot
