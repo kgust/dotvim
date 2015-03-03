@@ -232,10 +232,9 @@
         nnoremap <CR> :noh<CR><CR>
 
         " Buffers and Tabs
-        noremap <C-Up> :bprev<CR>
-        noremap <C-Down> :bnext<CR>
-        "noremap <Left> :tabprev<CR>
-        "noremap <Right> :tabnext<CR>
+        noremap <Left> :bprev<CR>
+        noremap <Right> :bnext<CR>
+        nnoremap <leader>p :ls<cr>:b<space>
 
         " Shortcuts
         " Change Working Directory to that of the current file
@@ -331,7 +330,11 @@
         let g:ctrlp_max_depth = 10
         "let g:ctrlp_cmd = 'CtrlP'
         nnoremap <leader>b :CtrlPBuffer<CR>
-        nnoremap <C-P> :CtrlPClearCache<CR>
+        " nnoremap <C-P> :CtrlPClearCache<CR>
+
+        " Jeffery Way
+        " map <D-p> :CtrlP<cr>
+        " map <D-r> :CtrlPBufTag<cr>
 
         let g:ctrlp_user_command = {
             \ 'types': {
@@ -384,10 +387,6 @@
     " Emoji {
         nnoremap <leader>em execute "normal! %s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<cr>:nohls"<cr>
     " }
-    " EverVim & Instant-Markdown {
-        autocmd BufWinEnter *.{md,mkd,mkdn,mdown,mark*} silent setf markdown
-        autocmd BufWinEnter __EVERVIM_NOTE__ silent setf markdown
-    " }
     " fontzoom {
         " Replace the default keymapping
         let g:fontzoom_no_default_key_mappings = 1
@@ -413,6 +412,9 @@
         set errorformat+='%f:%l:%m'
         set diffopt+=vertical
 
+    " }
+    " Geeknote {
+        let g:GeeknoteFormat="markdown"
     " }
     " Gist {
         if s:uname == "Darwin\n"
@@ -534,8 +536,6 @@
 
         "autocmd cursorhold * set nohlsearch
         "autocmd cursormoved * set hlsearch
-        map <D-p> :CtrlP<cr>
-        map <D-r> :CtrlPBufTag<cr>
 
         "set wildignore+=*/vendor/**
         set wildignore+=*/public/forum/**
@@ -551,6 +551,9 @@
         " Edit TODO for project
         nnoremap todo :edit TODO.md<cr>
 
+    " }
+    " Markdown {
+        autocmd BufWinEnter *.{md,mkd,mkdn,mdown,mark*} silent setf markdown
     " }
     " NerdCommenter {
         let g:NERDCustomDelimiters = {
