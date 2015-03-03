@@ -30,13 +30,13 @@ if has('conceal')
     let s:bullet_unchecked = 'o'
     let s:bullet_checked = 'x'
   endif
-  syntax match markdownCheckbullet "^\s*\([-\*] \[[ x]\]\|--\|++\) " contains=markdownCheckbulletChecked,markdownCheckbulletUnchecked
+  syntax match markdownCheckbullet "^\s*\([-\*] \[[ xX]\]\|--\|++\) " contains=markdownCheckbulletChecked,markdownCheckbulletUnchecked
   execute 'syntax match markdownCheckbulletUnchecked "\([-\*] \[ \]\|--\)" contained conceal cchar='.s:bullet_unchecked
-  execute 'syntax match markdownCheckbulletChecked "\([-\*] \[x\]\|++\)" contained conceal cchar='.s:bullet_checked
+  execute 'syntax match markdownCheckbulletChecked "\([-\*] \[[xX]\]\|++\)" contained conceal cchar='.s:bullet_checked
 
-  syntax match markdownCheckbox "^\s*\(\[[ x]\]\|--\|++\) " contains=markdownCheckboxChecked,markdownCheckboxUnchecked
+  syntax match markdownCheckbox "^\s*\(\[[ xX]\]\|--\|++\) " contains=markdownCheckboxChecked,markdownCheckboxUnchecked
   execute 'syntax match markdownCheckboxUnchecked "\(\[ \]\|--\)" contained conceal cchar='.s:checkbox_unchecked
-  execute 'syntax match markdownCheckboxChecked "\(\[x\]\|++\)" contained conceal cchar='.s:checkbox_checked
+  execute 'syntax match markdownCheckboxChecked "\(\[[xX]\]\|++\)" contained conceal cchar='.s:checkbox_checked
 
   " syntax match newLine "<br>" conceal cchar=}
   execute 'syntax region markdownStrikeout matchgroup=markdownStrikeoutDelimiter start="\S\@<=\~\~\|\~\~\S\@=" end="\S\@<=\~\~\|\~\~\S\@=" keepend contains=markdownLineStart,markdownItalic' . s:concealends
