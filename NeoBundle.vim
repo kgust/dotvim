@@ -151,7 +151,7 @@ NeoBundle 'tpope/vim-speeddating'
 
 NeoBundle 'sjl/splice.vim'
 
-# FIXME { 'do': 'make' }
+" FIXME { 'do': 'make' }
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/unite.vim'
 "NeoBundle 'm2mdas/phpcomplete-extended'
