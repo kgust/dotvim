@@ -62,7 +62,7 @@ NeoBundle 'dtedesigns/vim-cute-javascript'
 NeoBundle 'groenewege/vim-less'
 
 " Markdown
-NeoBundle 'tpope/vim-markdown'
+"NeoBundle 'tpope/vim-markdown'
 "NeoBundle 'suan/vim-instant-markdown'
 
 " Polyglot
@@ -103,7 +103,8 @@ NeoBundle 'vim-scripts/camelcasemotion'
 NeoBundle 'vim-scripts/mru.vim'
 NeoBundle 'vim-scripts/scratch.vim'
 NeoBundle 'ervandew/supertab'
-"NeoBundle 'Valloric/YouCompleteMe'
+" FIXME { 'do', './install.sh' }
+NeoBundle 'Valloric/YouCompleteMe'
 NeoBundle 'tsaleh/vim-align'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
@@ -114,13 +115,12 @@ NeoBundle 'powerman/vim-plugin-AnsiEsc'
 " External Programs
 NeoBundle 'trammell/vim-conque'
 NeoBundle 'tpope/vim-dispatch'
-NeoBundle "zweifisch/pipe2eval"
-NeoBundle "jgdavey/tslime.vim"
+NeoBundle 'zweifisch/pipe2eval'
+NeoBundle 'jgdavey/tslime.vim'
 NeoBundle 'junegunn/vim-github-dashboard'
 NeoBundle 'jaxbot/github-issues.vim'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/gist-vim'
-"NeoBundle 'kakkyz81/evervim'
 NeoBundle 'neilagabriel/vim-geeknote'
 "   - Android
 "NeoBundle 'vim-scripts/adt.vim'
@@ -134,11 +134,7 @@ NeoBundle 'gregsexton/gitv'
 " NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'scrooloose/syntastic'
-" NeoBundle 'tomtom/checksyntax_vim'
 NeoBundle 'tpope/vim-surround'
-" dash requires funcoo.vim
-" NeoBundle 'rizzatti/funcoo.vim'
-" NeoBundle 'rizzatti/dash.vim'
 NeoBundle 'tpope/vim-unimpaired'
 "easytags requires vim-misc and vim-shell
 " NeoBundle 'xolox/vim-misc'
@@ -155,6 +151,7 @@ NeoBundle 'tpope/vim-speeddating'
 
 NeoBundle 'sjl/splice.vim'
 
+# FIXME { 'do': 'make' }
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/unite.vim'
 "NeoBundle 'm2mdas/phpcomplete-extended'
