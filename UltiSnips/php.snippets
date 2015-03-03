@@ -150,31 +150,92 @@ snippet cpr "Class property"
 ${1:private} $$2;$4
 endsnippet
 
-###########
-# Laravel #
-###########
+############
+# Laravel4 #
+############
 
-snippet _model "Generic model template" b
+snippet _laravel4_model "Laravel 4 model class" b
 # A generic model
 class `!v expand("%:t:r")` {
     $0
 }
 endsnippet
 
-snippet _view "Generic view template" b
+snippet _laravel4_view "Laravel 4 view file" b
 # A generic view
 class `!v expand("%:t:r")` {
     $0
 }
 endsnippet
 
-snippet _controller "Generic controller template" b
+snippet _laravel4_controller "Laravel 4 controller class" b
 # a generic controller
 class `!v expand("%:t:r")` {
     $0
 }
 endsnippet
 
+snippet _laravel4_migration "Laravel 4 migration class" b
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class create${1/\w+\s*/$0/}Table extends Migration
+
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('${1:TableName}', function (Blueprint $table) {
+            $table->increments('id');
+            $table->${2:datatype}('${3:colname}')
+            $table->timestamps();
+            // $table->softDeletes();
+
+            // $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('$1');
+    }
+}
+endsnippet
+
+snippet lmstring "Laravel migration string template" b
+$table->string('${1:colname}');$0
+endsnippet
+
+snippet lminteger "Laravel migration integer template" b
+$table->integer('$1');$0
+endsnippet
+
+snippet lmtext "Laravel migration text template" b
+$table->text('${1:colname}');$0
+endsnippet
+
+snippet lmstring "Laravel migration string template" b
+$table->string('${1:colname}');$0
+endsnippet
+
+snippet lmunsigned "Laravel migration unsigned template" b
+$table->unsignedInteger('${1:colname}');$0
+endsnippet
+
+snippet lmdrop "Laravel migration drop column" b
+$table->dropColumn('${1:colname}');$0
+endsnippet
 
 ############
 # CellTrak #
