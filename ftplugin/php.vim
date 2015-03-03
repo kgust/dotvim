@@ -182,19 +182,19 @@ augroup END
 
     iabbrev <buffer> pft PHPUnit_Framework_TestCase
 
-    cabbrev <buffer> gm !./artisan generate:model
-    cabbrev <buffer> gc !./artisan generate:controller
-    cabbrev <buffer> gmig !./artisan generate:migration
+    " cabbrev <buffer> gm !./artisan generate:model
+    " cabbrev <buffer> gc !./artisan generate:controller
+    " cabbrev <buffer> gmig !./artisan generate:migration
 
     " Laravel framework commons
-    nnoremap <leader>lr :e app/routes.php<cr>
-    nnoremap <leader>lca :e app/config/app.php<cr>81Gf(%0
-    nnoremap <leader>lcd :e app/config/database.php<cr>
-    nnoremap <leader>lc :e composer.json<cr>
+    " nnoremap <leader>lr :e app/routes.php<cr>
+    " nnoremap <leader>lca :e app/config/app.php<cr>81Gf(%0
+    " nnoremap <leader>lcd :e app/config/database.php<cr>
+    " nnoremap <leader>lc :e composer.json<cr>
 
-    nmap <LocalLeader>fl :call FacadeLookup()<cr>
-    nmap <LocalLeader>1 :call Class()<cr>
-    nmap <LocalLeader>2 :call AddDependency()<cr>
+    " nmap <LocalLeader>fl :call FacadeLookup()<cr>
+    " nmap <LocalLeader>1 :call Class()<cr>
+    " nmap <LocalLeader>2 :call AddDependency()<cr>
 
     "set wildignore+=*/vendor/**
     set wildignore+=*/public/forum/**
