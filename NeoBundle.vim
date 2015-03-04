@@ -62,7 +62,7 @@ NeoBundleLazy 'dtedesigns/vim-cute-javascript'
 NeoBundleLazy 'drslump/vim-syntax-js'
 
 " LESS
-NeoBundle 'groenewege/vim-less'
+NeoBundleLazy 'groenewege/vim-less'
 
 " Markdown
 "NeoBundle 'tpope/vim-markdown'
