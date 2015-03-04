@@ -7,7 +7,6 @@
 " KG Mine "
 """""""""""
 NeoBundle 'kgust/snippet-templates'
-NeoBundle 'kgust/vim-potion'
 
 """"""""""""""""""""""
 " $VIMRUNTIME        "
@@ -24,6 +23,9 @@ NeoBundle 'tobyS/vmustache'
 " Colors
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'chriskempson/base16-vim'
+
+" Polyglot
+NeoBundle 'sheerun/vim-polyglot'
 
 """""""""""""
 " FILETYPES "
@@ -42,11 +44,11 @@ NeoBundleLazy 'stephpy/vim-php-cs-fixer'
 NeoBundleLazy 'dtedesigns/vim-cute-php'
 NeoBundleLazy 'joshtronic/php.vim'
 NeoBundleLazy 'xsbeats/vim-blade'
-"NeoBundle 'shawncplus/phpcomplete.vim'
-"NeoBundle 'm2mdas/phpcomplete-extended'
-"NeoBundle 'm2mdas/phpcomplete-extended-laravel'
-"NeoBundle 'm2mdas/phpcomplete-extended-symfony'
-"NeoBundle '2072/PHP-Indenting-for-VIm'
+"NeoBundleLazy 'shawncplus/phpcomplete.vim'
+"NeoBundleLazy 'm2mdas/phpcomplete-extended'
+"NeoBundleLazy 'm2mdas/phpcomplete-extended-laravel'
+"NeoBundleLazy 'm2mdas/phpcomplete-extended-symfony'
+"NeoBundleLazy '2072/PHP-Indenting-for-VIm'
 
 " Coffeescript
 NeoBundleLazy 'kchmck/vim-coffee-script'
@@ -65,11 +67,11 @@ NeoBundleLazy 'drslump/vim-syntax-js'
 NeoBundleLazy 'groenewege/vim-less'
 
 " Markdown
-"NeoBundle 'tpope/vim-markdown'
-"NeoBundle 'suan/vim-instant-markdown'
+"NeoBundleLazy 'tpope/vim-markdown'
+"NeoBundleLazy 'suan/vim-instant-markdown'
 
-" Polyglot
-NeoBundle 'sheerun/vim-polyglot'
+" Potion
+NeoBundleLazy 'kgust/vim-potion'
 
 " SQL
 NeoBundleLazy 'vim-scripts/SQLUtilities'
@@ -143,6 +145,7 @@ NeoBundle 'tpope/vim-commentary'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
+
 "easytags requires vim-misc and vim-shell
 " NeoBundle 'xolox/vim-misc'
 " NeoBundle 'xolox/vim-shell'
