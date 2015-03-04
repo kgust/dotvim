@@ -13,8 +13,8 @@ NeoBundle 'kgust/vim-potion'
 " $VIMRUNTIME        "
 " - Replace Defaults "
 """"""""""""""""""""""
-NeoBundle '2072/PHP-Indenting-for-VIm'
 NeoBundle 'vim-scripts/matchit.zip'
+NeoBundle 'tpope/vim-projectionist'
 
 """""""""""
 " GENERAL "
@@ -29,13 +29,11 @@ NeoBundle 'chriskempson/base16-vim'
 """""""""""""
 
 " PHP
-NeoBundle 'tpope/vim-projectionist'
 NeoBundle 'joonty/vim-phpqa'
 NeoBundle 'arnaud-lb/vim-php-namespace'
 NeoBundle 'afternoon/vim-phpunit'
 NeoBundle 'docteurklein/vim-symfony'
 NeoBundle 'rayburgemeestre/phpfolding.vim'
-"NeoBundle 'shawncplus/phpcomplete.vim'
 NeoBundle 'veloce/vim-behat'
 NeoBundle 'tobyS/vmustache'
 NeoBundle 'tobyS/pdv'
@@ -44,6 +42,11 @@ NeoBundle 'stephpy/vim-php-cs-fixer'
 NeoBundle 'dtedesigns/vim-cute-php'
 NeoBundle 'joshtronic/php.vim'
 NeoBundle 'xsbeats/vim-blade'
+"NeoBundle 'shawncplus/phpcomplete.vim'
+"NeoBundle 'm2mdas/phpcomplete-extended'
+"NeoBundle 'm2mdas/phpcomplete-extended-laravel'
+"NeoBundle 'm2mdas/phpcomplete-extended-symfony'
+"NeoBundle '2072/PHP-Indenting-for-VIm'
 
 " Coffeescript
 NeoBundle 'kchmck/vim-coffee-script'
@@ -165,6 +168,3 @@ NeoBundle 'Shougo/vimproc.vim', {
 \    },
 \ }
 NeoBundle 'Shougo/unite.vim'
-"NeoBundle 'm2mdas/phpcomplete-extended'
-"NeoBundle 'm2mdas/phpcomplete-extended-laravel'
-"NeoBundle 'm2mdas/phpcomplete-extended-symfony'
