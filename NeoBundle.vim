@@ -103,8 +103,12 @@ NeoBundle 'vim-scripts/camelcasemotion'
 NeoBundle 'vim-scripts/mru.vim'
 NeoBundle 'vim-scripts/scratch.vim'
 NeoBundle 'ervandew/supertab'
-" FIXME { 'do', './install.sh' }
-NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'Valloric/YouCompleteMe', {
+\ 'build' : {
+\     'linux' : './install.sh',
+\     'mac' : './install.sh',
+\    },
+\ }
 NeoBundle 'tsaleh/vim-align'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
@@ -151,8 +155,15 @@ NeoBundle 'tpope/vim-speeddating'
 
 NeoBundle 'sjl/splice.vim'
 
-" FIXME { 'do': 'make' }
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
 NeoBundle 'Shougo/unite.vim'
 "NeoBundle 'm2mdas/phpcomplete-extended'
 "NeoBundle 'm2mdas/phpcomplete-extended-laravel'
