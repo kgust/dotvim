@@ -18,6 +18,7 @@ NeoBundleSource vim-blade
 " NeoBundleSource DBGPavim
 " NeoBundleSource vim-phpqa
 " NeoBundleSource vim-behat
+" NeoBundleSource phpcomplete.vim
 
 " BROKEN with NeoBundleLazy
 " NeoBundleSource vim-phpunit
