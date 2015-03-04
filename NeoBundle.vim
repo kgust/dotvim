@@ -14,7 +14,8 @@ NeoBundle 'kgust/vim-potion'
 " - Replace Defaults "
 """"""""""""""""""""""
 NeoBundle 'vim-scripts/matchit.zip'
-NeoBundle 'tpope/vim-projectionist'
+"NeoBundle 'tpope/vim-projectionist'
+NeoBundle 'tobyS/vmustache'
 
 """""""""""
 " GENERAL "
@@ -29,19 +30,18 @@ NeoBundle 'chriskempson/base16-vim'
 """""""""""""
 
 " PHP
-NeoBundle 'joonty/vim-phpqa'
-NeoBundle 'arnaud-lb/vim-php-namespace'
-NeoBundle 'afternoon/vim-phpunit'
-NeoBundle 'docteurklein/vim-symfony'
-NeoBundle 'rayburgemeestre/phpfolding.vim'
-NeoBundle 'veloce/vim-behat'
-NeoBundle 'tobyS/vmustache'
-NeoBundle 'tobyS/pdv'
-NeoBundle 'brookhong/DBGPavim'
-NeoBundle 'stephpy/vim-php-cs-fixer'
-NeoBundle 'dtedesigns/vim-cute-php'
-NeoBundle 'joshtronic/php.vim'
-NeoBundle 'xsbeats/vim-blade'
+NeoBundleLazy 'joonty/vim-phpqa'
+NeoBundleLazy 'arnaud-lb/vim-php-namespace'
+NeoBundleLazy 'afternoon/vim-phpunit'
+NeoBundleLazy 'docteurklein/vim-symfony'
+NeoBundleLazy 'rayburgemeestre/phpfolding.vim'
+NeoBundleLazy 'veloce/vim-behat'
+NeoBundleLazy 'tobyS/pdv'
+NeoBundleLazy 'brookhong/DBGPavim'
+NeoBundleLazy 'stephpy/vim-php-cs-fixer'
+NeoBundleLazy 'dtedesigns/vim-cute-php'
+NeoBundleLazy 'joshtronic/php.vim'
+NeoBundleLazy 'xsbeats/vim-blade'
 "NeoBundle 'shawncplus/phpcomplete.vim'
 "NeoBundle 'm2mdas/phpcomplete-extended'
 "NeoBundle 'm2mdas/phpcomplete-extended-laravel'

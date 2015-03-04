@@ -5,6 +5,23 @@
 setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 setlocal colorcolumn=80,120
 
+NeoBundleSource php.vim
+NeoBundleSource pdv
+NeoBundleSource phpfolding.vim
+NeoBundleSource vim-php-namespace
+NeoBundleSource vim-php-cs-fixer
+NeoBundleSource vim-cute-php
+
+NeoBundleSource vim-symfony
+NeoBundleSource vim-blade
+
+" NeoBundleSource DBGPavim
+" NeoBundleSource vim-phpqa
+" NeoBundleSource vim-behat
+
+" BROKEN with NeoBundleLazy
+" NeoBundleSource vim-phpunit
+
 " Automatically strip trailing spaces in PHP files when reading/writing
 augroup whitespace
     autocmd BufWritePre *.php call whitespace#strip_trailing()
