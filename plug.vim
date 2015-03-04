@@ -64,6 +64,7 @@ Plug 'groenewege/vim-less'
 " Markdown
 "Plug 'tpope/vim-markdown'
 "Plug 'suan/vim-instant-markdown'
+Plug 'junegunn/vim-xmark', { 'do': 'make' }
 
 " Polyglot
 Plug 'sheerun/vim-polyglot'
@@ -103,7 +104,7 @@ Plug 'vim-scripts/camelcasemotion'
 Plug 'vim-scripts/mru.vim'
 Plug 'vim-scripts/scratch.vim'
 Plug 'ervandew/supertab'
-Plug 'Valloric/YouCompleteMe', { 'do', './install.sh' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 Plug 'tsaleh/vim-align'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
