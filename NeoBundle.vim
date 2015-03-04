@@ -72,9 +72,9 @@ NeoBundleLazy 'groenewege/vim-less'
 NeoBundle 'sheerun/vim-polyglot'
 
 " SQL
-NeoBundle 'vim-scripts/SQLUtilities'
-NeoBundle 'vim-scripts/dbext.vim'
-NeoBundle 'kgust/sql.vim'
+NeoBundleLazy 'vim-scripts/SQLUtilities'
+NeoBundleLazy 'vim-scripts/dbext.vim'
+NeoBundleLazy 'kgust/sql.vim'
 
 " Vimscript
 " NeoBundle 'kana/vim-vspec'
