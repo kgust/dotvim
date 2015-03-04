@@ -13,3 +13,4 @@ tags
 .vim-flavor/
 #flavors/
 bundle/*
+plugged/*
