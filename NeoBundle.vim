@@ -49,7 +49,7 @@ NeoBundleLazy 'xsbeats/vim-blade'
 "NeoBundle '2072/PHP-Indenting-for-VIm'
 
 " Coffeescript
-NeoBundle 'kchmck/vim-coffee-script'
+NeoBundleLazy 'kchmck/vim-coffee-script'
 
 " HTML
 "NeoBundle 'mattn/emmet-vim'

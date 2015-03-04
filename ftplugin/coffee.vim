@@ -1,4 +1,7 @@
 " FileType settings for Coffeescript
+
+NeoBundleSource vim-coffee-script
+
 setlocal foldmethod=expr
 setlocal foldexpr=GetCoffeeScriptFold(v:lnum)
 setlocal foldtext=GetCoffeeScriptFoldText()
