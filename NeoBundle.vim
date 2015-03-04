@@ -77,8 +77,8 @@ NeoBundleLazy 'vim-scripts/dbext.vim'
 NeoBundleLazy 'kgust/sql.vim'
 
 " Vimscript
-" NeoBundle 'kana/vim-vspec'
-NeoBundle 'tpope/vim-scriptease'
+NeoBundleLazy 'kana/vim-vspec'
+NeoBundleLazy 'tpope/vim-scriptease'
 
 
 """"""""""
