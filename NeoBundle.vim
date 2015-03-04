@@ -57,9 +57,9 @@ NeoBundle 'tristen/vim-sparkup'
 "NeoBundle 'othree/html5.vim'
 
 " Javascript
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'drslump/vim-syntax-js'
-NeoBundle 'dtedesigns/vim-cute-javascript'
+NeoBundleLazy 'pangloss/vim-javascript'
+NeoBundleLazy 'dtedesigns/vim-cute-javascript'
+NeoBundleLazy 'drslump/vim-syntax-js'
 
 " LESS
 NeoBundle 'groenewege/vim-less'

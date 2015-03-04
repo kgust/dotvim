@@ -1,4 +1,9 @@
 " FileType settings for Javascript
+
+NeoBundleSource vim-javascript
+NeoBundleSource vim-cute-javascript
+NeoBundleSource vim-syntax-js
+
 setlocal expandtab
 setlocal shiftwidth=4
 setlocal tabstop=4
