@@ -27,6 +27,9 @@ NeoBundle 'chriskempson/base16-vim'
 " Polyglot
 NeoBundle 'sheerun/vim-polyglot'
 
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'edkolev/tmuxline.vim'
+
 """""""""""""
 " FILETYPES "
 """""""""""""
@@ -56,6 +59,7 @@ NeoBundleLazy 'kchmck/vim-coffee-script'
 " HTML
 "NeoBundle 'mattn/emmet-vim'
 NeoBundle 'tristen/vim-sparkup'
+"NeoBundle 'rstacruz/sparkup'
 "NeoBundle 'othree/html5.vim'
 
 " Javascript
@@ -103,11 +107,11 @@ NeoBundle 'sjl/gundo.vim'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'zimbatm/direnv'
 NeoBundle 'vim-scripts/toggle_word.vim'
-NeoBundle 'thinca/vim-fontzoom'
+"NeoBundle 'thinca/vim-fontzoom'
 NeoBundle 'vim-scripts/camelcasemotion'
 NeoBundle 'vim-scripts/mru.vim'
 NeoBundle 'vim-scripts/scratch.vim'
-NeoBundle 'ervandew/supertab'
+"NeoBundle 'ervandew/supertab'
 NeoBundle 'Valloric/YouCompleteMe', {
 \ 'build' : {
 \     'linux' : './install.sh',
@@ -120,18 +124,20 @@ NeoBundle 'honza/vim-snippets'
 NeoBundle 'vim-scripts/renamer.vim'
 NeoBundle 'junegunn/vim-emoji'
 NeoBundle 'powerman/vim-plugin-AnsiEsc'
+NeoBundleLazy 'bling/vim-airline'
+NeoBundleLazy 'itchyny/lightline.vim'
 
 " External Programs
 NeoBundle 'trammell/vim-conque'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'zweifisch/pipe2eval'
 NeoBundle 'jgdavey/tslime.vim'
-NeoBundle 'junegunn/vim-github-dashboard'
-NeoBundle 'jaxbot/github-issues.vim'
+"NeoBundle 'junegunn/vim-github-dashboard'
+"NeoBundle 'jaxbot/github-issues.vim'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'neilagabriel/vim-geeknote'
-"   - Android
+" - Android
 "NeoBundle 'vim-scripts/adt.vim'
 
 " Development
@@ -140,8 +146,8 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
 " NeoBundle 'scrooloose/nerdcommenter'
-" NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tomtom/tcomment_vim'
+" NeoBundle 'tpope/vim-commentary'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
@@ -157,9 +163,9 @@ NeoBundle 'sickill/vim-pasta'
 
 "NeoBundle 'tpope/vim-sensible'
 NeoBundle 'majutsushi/tagbar'
-NeoBundle 'tpope/vim-speeddating'
+"NeoBundle 'tpope/vim-speeddating'
 
-NeoBundle 'sjl/splice.vim'
+NeoBundleLazy 'sjl/splice.vim'
 
 NeoBundle 'Shougo/vimproc.vim', {
 \ 'build' : {

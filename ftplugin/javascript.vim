@@ -10,6 +10,7 @@ setlocal tabstop=4
 setlocal softtabstop=4
 setlocal foldmethod=syntax
 setlocal foldlevelstart=1
+setlocal colorcolumn=80,120
 let javaScript_fold=1
 
 augroup whitespace

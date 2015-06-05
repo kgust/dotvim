@@ -57,7 +57,7 @@
     let g:Powerline_symbols = 'fancy'
     set background=light
     colorscheme solarized
-    set clipboard=unnamed
+    " set clipboard=unnamed
 
     " Set the autocommand group and remove existing mappings
     augroup Vimrc
@@ -108,31 +108,31 @@
             "set statusline=%<%f\ %=\:\b%n%y%m%r%w\ %l,%c%V\ %P " a statusline, also on steroids
         endif
 
-        set backspace=indent,eol,start   " backspace for dummys
-        "set linespace=1                  " spaces between rows
-        set number                       " Line numbers on
-        "set relativenumber              " Turn on relative number mode
-        set showmatch                    " show matching brackets/parenthesis
-        set incsearch                    " find as you type search
-        set hlsearch                     " highlight search terms
-        set winminheight=0               " windows can be 0 line high
-        set ignorecase                   " case insensitive search
-        set smartcase                    " case sensitive when uc present
+        set backspace=indent,eol,start  " backspace for dummys
+        "set colorcolumn=80,120          " visible wrap here/long line indicator
+        "set foldenable                  " auto fold code
+        "set foldlevel=3                 " fold three or more lines
+        set foldlevelstart=1            " start with topmost folds open
+        set gdefault                    " the /g flag on :s substitutions by default
+        set hlsearch                    " highlight search terms
+        set ignorecase                  " case insensitive search
+        set incsearch                   " find as you type search
+        "set linespace=1                 " spaces between rows
+        set noerrorbells                " don't beep
+        set number                      " Line numbers on
+        set scrolljump=5                " lines to scroll when cursor leaves screen
+        set scrolloff=3                 " minimum lines to keep above and below cursor
+        set showmatch                   " show matching brackets/parenthesis
+        set smartcase                   " case sensitive when uc present
+        set switchbuf=usetab            " when opening a buffer from the list, use existing window first
         set timeout timeoutlen=200 ttimeoutlen=100
-        set wildmenu                     " show list instead of just completing
-        set wildmode=list:longest,full   " comand <Tab> completion, list matches, then longest common part, then all.
-        set whichwrap=b,s,h,l,<,>,[,]    " backspace and cursor keys wrap to
-        set scrolljump=5                 " lines to scroll when cursor leaves screen
-        set scrolloff=3                  " minimum lines to keep above and below cursor
-        "set foldenable                   " auto fold code
-        "set foldlevel=3                  " fold three or more lines
-        set foldlevelstart=1             " start with topmost folds open
-        set gdefault                     " the /g flag on :s substitutions by default
-        set switchbuf=usetab             " when opening a buffer from the list, use existing window first
-        "set colorcolumn=80,120           " visible wrap here/long line indicator
-        set visualbell                   " visible alerts
-        set noerrorbells                 " don't beep
-        set ttyfast                      " disable for slow terminals
+        set ttyfast                     " disable for slow terminals
+        set visualbell                  " visible alerts
+        set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
+        set wildignorecase              " ignore case with command line completion
+        set wildmenu                    " show list instead of just completing
+        set wildmode=list:longest,full  " comand <Tab> completion, list matches, then longest common part, then all.
+        "set winminheight=0              " windows can be 0 line high
 
         " Equalize splits after a window resize
         autocmd Vimrc VimResized * wincmd =
@@ -294,23 +294,22 @@
     " FileType Specific Settings {
         let g:checksyntax_auto = 0
 
-        "comment out line(s) in visual mode
-        vnoremap  o  :call NERDComment(1, 'toggle')<CR>
-        let g:NERDShutUp=1
-
         let b:match_ignorecase = 1
 
         let g:solarized_contrast='normal'
         let g:solarized_visibility='low'
 
-        " Automatically strip trailing spaces - TODO Q: Can these be combined?
-        autocmd Vimrc BufRead,BufWrite *.php %s/\s\+$//e
-        autocmd Vimrc BufRead,BufWrite *.js %s/\s\+$//e
     " }
 " }
 
 " Vim Plugins {
 
+    " Airline {
+        "NeoBundleSource vim-airline
+        let g:airline_powerline_fonts = 1
+        " let g:airline#extensions#branch#enabled = 1
+        " let g:airline#extensions#branch#format = 1
+    " }
     " Align {
         let g:DrChipTopLvlMenu= "&Plugin."
         nnoremap <leader>l :Align<space>
@@ -398,9 +397,9 @@
     " Fugitive {
         "let g:fugitive_git_executable = 'myGit'
 
-        if has('statusline')
-            set statusline=%<%f\ %h%m%r%fugitive#statusline()%=%-14.(%l,%c%V%)\ %P
-        endif
+        " if has('statusline')
+        "     set statusline=%<%f\ %h%m%r%fugitive#statusline()%=%-14.(%l,%c%V%)\ %P
+        " endif
 
         autocmd Vimrc BufReadPost fugitive://* set bufhidden=delete
 
@@ -457,6 +456,37 @@
         " when background = light
         hi IndentGuidesOdd ctermbg=white guibg=FloralWhite
         hi IndentGuidesEven ctermbg=lightgray guibg=linen
+    " }
+    " Laravel with Jeffery Way {
+        " Fast saves
+        nnoremap <leader>s :w!<cr>
+
+        "nnoremap <c-v> :vertical resize +5<cr>
+        nnoremap 25 :vertical resize 40<cr>
+        nnoremap 50 <c-w>=
+        nnoremap 75 :vertical resize 120<cr>
+        "nnoremap 100 <c-w>\|
+
+        "nnoremap <leader>o :open %<cr>
+
+        nnoremap :sp :rightbelow sp<cr>
+
+        "autocmd cursorhold * set nohlsearch
+        "autocmd cursormoved * set hlsearch
+
+        set wildignore+=*DS_Store*
+        set wildignore+=.git
+
+        nnoremap vs :vsplit<cr>
+        nnoremap sp :split<cr>
+
+        "highlight Search cterm=underline
+
+        nnoremap mr :MRU<cr>
+
+        " Edit TODO for project
+        nnoremap todo :edit TODO.md<cr>
+
     " }
     " Learn Vimscript the Hard Way --Steve Losh {
         " More interesting horizontal scrolling
@@ -520,41 +550,6 @@
         onoremap ah :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rg_vk0"<cr>
 
     " }
-    " Laravel with Jeffery Way {
-        " Fast saves
-        nnoremap <leader>s :w!<cr>
-
-        "nnoremap <c-v> :vertical resize +5<cr>
-        nnoremap 25 :vertical resize 40<cr>
-        nnoremap 50 <c-w>=
-        nnoremap 75 :vertical resize 120<cr>
-        "nnoremap 100 <c-w>\|
-
-        "nnoremap <leader>o :open %<cr>
-
-        nnoremap :sp :rightbelow sp<cr>
-
-        "autocmd cursorhold * set nohlsearch
-        "autocmd cursormoved * set hlsearch
-
-        "set wildignore+=*/vendor/**
-        set wildignore+=*/public/forum/**
-        set wildignore+=**/.DS_Store
-
-        nnoremap vs :vsplit<cr>
-        nnoremap sp :split<cr>
-
-        "highlight Search cterm=underline
-
-        nnoremap mr :MRU<cr>
-
-        " Edit TODO for project
-        nnoremap todo :edit TODO.md<cr>
-
-    " }
-    " Markdown {
-        autocmd BufWinEnter *.{md,mkd,mkdn,mdown,mark*} silent setf markdown
-    " }
     " NerdCommenter {
         let g:NERDCustomDelimiters = {
                 \ 'rubyX': { 'left': '#', 'leftAlt': 'FOO', 'rightAlt': 'BAR' },
@@ -607,10 +602,7 @@
         let g:phpcomplete_index_composer_command = "composer"
     " }
     " Powerline {
-        "set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
-        "set rtp+=/usr/local/lib/python2.7/site-packages/Powerline-beta-py2.7.egg/powerline/bindings/vim
-        "set rtp+=/Users/kgustavson/powerline/build/lib/powerline/bindings/vim
-        set rtp+=/Users/kgustavson/powerline/powerline/bindings/vim
+        "set rtp+=/Users/kgustavson/powerline/powerline/bindings/vim
     " }
     " Scratch {
         function! ToggleScratch()
@@ -694,7 +686,9 @@
         nmap <C-c>r <Plug>SetTmuxVars
         if exists('$TMUX')
             " Support resizing in tmux
-            set ttymouse=xterm2
+            if (has('nvim') == 0)
+                set ttymouse=xterm2
+            endif
             " Fix Cursor in TMUX
             let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
             let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
@@ -729,6 +723,13 @@ function! QuickfixFilenames()
     endfor
     return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
+
+" function! g:EditMySnippets()
+"     let ft = &ft
+"     "tabe ~/.vim/bundle/snippets/UltiSnips/
+"     tabe ~/.vim/flavors/kgust_snippets/UltiSnips/
+"     call search(ft)
+" endfunction
 
 " http://vim.wikia.com/wiki/Different_syntax_highlighting_within_regions_of_a_file
 function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort

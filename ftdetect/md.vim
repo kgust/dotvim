@@ -1,1 +1,1 @@
-autocmd BufNewFile,BufRead *.md,*.markdown set filetype=markdown
+autocmd BufNewFile,BufRead *.{md,mkd,mkdn,mdown,mark*} silent set filetype=markdown

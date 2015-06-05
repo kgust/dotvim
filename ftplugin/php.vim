@@ -5,6 +5,8 @@
 setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 setlocal colorcolumn=80,120
 
+set commentstring=//\ %s
+
 NeoBundleSource php.vim
 NeoBundleSource pdv
 NeoBundleSource phpfolding.vim
@@ -19,6 +21,7 @@ NeoBundleSource vim-blade
 " NeoBundleSource vim-phpqa
 " NeoBundleSource vim-behat
 " NeoBundleSource phpcomplete.vim
+" NeoBundleSource PHP-Indenting-for-VIm
 
 " BROKEN with NeoBundleLazy
 " NeoBundleSource vim-phpunit
@@ -124,14 +127,21 @@ augroup END
 
 " function! RunPhpTests() {
     function! RunPhpTests()
+        if exists('$VENDORBIN')
+            let s:vendorbin = $VENDORBIN
+        else
+            let s:vendorbin = "vendor/bin"
+        endif
+
         if &ft =~ "codeception"
-            let g:php_last_test = "\nclear && vendor/bin/codecept run ".expand("%:.")."\n"
+            let g:php_last_test = "\nclear && ".s:vendorbin."/codecept run ".expand("%:.")."\n"
             call SendToTmux(g:php_last_test)
             redraw!
             echom "Start codeception tests..."
         elseif &ft =~ "phpunit"
             " execute '!phpunit --groups active %:.'
-            let g:php_last_test = "\nclear && vendor/bin/phpunit --groups active ".expand("%:.")."\n"
+            " let g:php_last_test = "\nclear && ".s:vendorbin."/phpunit --groups active ".expand("%:.")."\n"
+            let g:php_last_test = "\nclear && ".s:vendorbin."/codecept run ".expand("%:.")."\n"
             call SendToTmux(g:php_last_test)
             redraw!
             echom "Start phpunit tests..."
@@ -142,7 +152,7 @@ augroup END
                 redraw!
                 echom "Running last test..."
             else
-                call SendToTmux("\nclear && vendor/bin/codecept run functional\n")
+                call SendToTmux("\nclear && ".s:vendorbin."/codecept run functional\n")
                 redraw!
                 echom "Running codeception functional tests (default)..."
             endif
