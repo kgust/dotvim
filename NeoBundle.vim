@@ -142,7 +142,7 @@ NeoBundle 'ryanss/vim-hackernews'
 """""""""""""
 
 " Usage
-" NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-vinegar'
 NeoBundle 'tommcdo/vim-exchange'
 NeoBundle 'kien/ctrlp.vim'
