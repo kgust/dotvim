@@ -1,40 +1,7 @@
-" Modeline and Notes {
 " vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
-"
-" }
 
-" NeoBundle Required Section {
-    " Note: Skip initialization for vim-tiny or vim-small
-    if !1 | finish | endif
-
-    if has('vim_starting')
-        if &compatible
-            set nocompatible
-        endif
-    endif
-
-    " Required:
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
-
-    " Required:
-    call neobundle#begin(expand('~/.vim/bundle/'))
-
-    " Let NeoBundle manage NeoBundle
-    " Required:
-    NeoBundleFetch 'Shougo/neobundle.vim'
-
-    " My Bundles are here:
-    source $HOME/.vim/NeoBundle.vim
-
-    call neobundle#end()
-
-    " Required:
-    filetype plugin indent on
-
-    " If there are uninstalled bundles found on startup,
-    " this will conveniently prompt you to install them.
-    NeoBundleCheck
-" }
+" My Bundles are here:
+source $HOME/.vim/NeoBundle.vim
 
 " General Settings {
     let s:uname = system('uname') " What system am I using?
@@ -55,9 +22,13 @@
     " 256 colors
     set t_Co=256
     let g:Powerline_symbols = 'fancy'
-    set background=light
     colorscheme solarized
     " set clipboard=unnamed
+
+    set background=light
+    if $ITERM_PROFILE == 'Solarized Dark'
+        set background=dark
+    endif
 
     " Set the autocommand group and remove existing mappings
     augroup Vimrc

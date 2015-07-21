@@ -112,6 +112,21 @@ augroup END
     let g:syntastic_php_phpcs_args = "--report=csv --standard=psr2"
 " }
 
+" OnlineDoc()
+function! OnlineDoc()
+    let s:wordUnderCursor = expand("<cword>")
+
+    if &ft =~ "php"
+        let s:url = "http://php.net/" . s:wordUnderCursor
+    else
+        execute "help " . s:wordUnderCursor
+        return
+    endif
+
+    let s:command = "silent !open " . s:url
+    execute s:command
+endfunction
+
 " Testing {
     " http://knplabs.com/blog/boost-your-productivity-with-sf2-and-vim
     " phpunit compilation
@@ -243,5 +258,8 @@ augroup END
 
     inoremap <LocalLeader>e <C-O>:call PhpExpandClass()<CR>
     nnoremap <LocalLeader>e :call PhpExpandClass()<CR>
+
+    noremap <silent> <F1> :call OnlineDoc()<CR>
+    inoremap <silent> <F1> <ESC>:call OnlineDoc()<CR>
 " }
 "let NERD_php_alt_style=1

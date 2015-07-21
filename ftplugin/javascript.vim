@@ -18,7 +18,7 @@ augroup whitespace
 augroup END
 
 " Syntax Checking {
-  let g:syntastic_javascript_checkers = ['eslint', 'jshint']
+  "let g:syntastic_javascript_checkers = ['eslint', 'jshint']
+  let g:syntastic_javascript_checkers = ['jshint']
   let g:syntastic_check_on_open = 1
-  " let g:syntastic_php_phpcs_args = "--report=csv --standard=psr2"
 " }
