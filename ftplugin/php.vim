@@ -15,7 +15,7 @@ NeoBundleSource vim-php-cs-fixer
 NeoBundleSource vim-cute-php
 
 NeoBundleSource vim-symfony
-NeoBundleSource vim-blade
+"NeoBundleSource vim-blade
 
 " NeoBundleSource DBGPavim
 " NeoBundleSource vim-phpqa
@@ -47,6 +47,14 @@ augroup END
         let php_baselib = 1
         let php_htmlInStrings = 1
         " let php_parent_error_close = 1
+
+        " runtimepath loads plugins after .vim {
+            syntax match phpNiceOperator "::" conceal cchar=∋ contained containedin=phpRegion
+            syntax match phpNiceOperator "=>" conceal cchar=⇛ contained containedin=phpRegion
+            syntax match phpNiceRelation "=>" conceal cchar=➮ contained containedin=phpRegion
+            syntax match phpNiceMemberSelector "\->" conceal cchar=→ contained containedin=phpRegion
+            syntax match phpNiceMethodsVar "\->" conceal cchar=→ contained containedin=phpRegion
+        " }
 
 
         "inoremap <LocalLeader>pd <Esc>:call PhpDocSingle()<CR>
@@ -145,7 +153,7 @@ endfunction
         if exists('$VENDORBIN')
             let s:vendorbin = $VENDORBIN
         else
-            let s:vendorbin = "vendor/bin"
+            let s:vendorbin = "./bin"
         endif
 
         if &ft =~ "codeception"
@@ -155,8 +163,8 @@ endfunction
             echom "Start codeception tests..."
         elseif &ft =~ "phpunit"
             " execute '!phpunit --groups active %:.'
-            " let g:php_last_test = "\nclear && ".s:vendorbin."/phpunit --groups active ".expand("%:.")."\n"
-            let g:php_last_test = "\nclear && ".s:vendorbin."/codecept run ".expand("%:.")."\n"
+            let g:php_last_test = "\nclear && ".s:vendorbin."/phpunit --debug **/".expand("%:.")."\n"
+            " let g:php_last_test = "\nclear && ".s:vendorbin."/codecept run ".expand("%:.")."\n"
             call SendToTmux(g:php_last_test)
             redraw!
             echom "Start phpunit tests..."
@@ -239,7 +247,7 @@ endfunction
     " nmap <LocalLeader>1 :call Class()<cr>
     " nmap <LocalLeader>2 :call AddDependency()<cr>
 
-    "set wildignore+=*/vendor/**
+    " set wildignore+=*/vendor/**
     set wildignore+=*/public/forum/**
 
     " Testing

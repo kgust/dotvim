@@ -1,6 +1,4 @@
 " vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
-set nocompatible
-filetype off
 
 " NeoBundle Auto-install {
     " Setting up Vundle - the vim plugin bundler
@@ -17,11 +15,18 @@ filetype off
 " }
 
 " NeoBundle Required Section {
-    " Note: Skip initialization for vim-tiny or vim-small
-    if !1 | finish | endif
 
-    " Required:
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+    " Note: Skip initialization for vim-tiny or vim-small
+    if 0 | endif
+
+    if has('vim_starting')
+        if &compatible
+            set nocompatible
+        endif
+
+        " Required:
+        set runtimepath+=~/.vim/bundle/neobundle.vim/
+    endif
 
     " Required:
     call neobundle#begin(expand('~/.vim/bundle/'))
@@ -30,7 +35,6 @@ filetype off
     " Required:
     NeoBundleFetch 'Shougo/neobundle.vim'
 
-    call neobundle#end()
 
     " Required:
     filetype plugin indent on
@@ -106,7 +110,7 @@ NeoBundle 'tristen/vim-sparkup'
 "NeoBundle 'othree/html5.vim'
 
 " Javascript
-NeoBundleLazy 'pangloss/vim-javascript'
+NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filtetypes':['javascript']}}
 NeoBundleLazy 'dtedesigns/vim-cute-javascript'
 NeoBundleLazy 'drslump/vim-syntax-js'
 
@@ -180,6 +184,7 @@ NeoBundle 'jgdavey/tslime.vim'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'neilagabriel/vim-geeknote'
+NeoBundle 'wakatime/vim-wakatime'
 " - Android
 "NeoBundle 'vim-scripts/adt.vim'
 
@@ -223,3 +228,5 @@ NeoBundle 'Shougo/vimproc.vim', {
 if version >= 703
     NeoBundle 'Shougo/unite.vim'
 endif
+
+call neobundle#end()

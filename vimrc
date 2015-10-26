@@ -13,10 +13,6 @@ source $HOME/.vim/NeoBundle.vim
     set autowrite
     set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
     set hidden                      " Turn on hidden mode
-    if has('persistent_undo')
-        set undofile                " Turn on undofile functionality
-        set undodir=$HOME/.vimundo  " where to store backup files
-    endif
     set autoread                    " If an unedited file is changed on disk,
                                     "   automatically reload it
     set smarttab
@@ -31,11 +27,17 @@ source $HOME/.vim/NeoBundle.vim
     colorscheme solarized
     " set clipboard=unnamed
 
-    set background=dark
+    set background=light
+    highlight ColorColumn ctermbg=lightgray guibg=#202020 " Change the ColorColumn to lightgray
+    highlight CursorLine gui=underline guisp=lightgray
     if $ITERM_PROFILE == 'Solarized Light'
-        set background=dark
+        set background=light
+        highlight ColorColumn ctermbg=lightgray guibg=#202020 " Change the ColorColumn to lightgray
+        highlight CursorLine gui=underline guisp=lightgray " light background
     elseif $ITERM_PROFILE == 'Solarized Dark'
         set background=dark
+        highlight ColorColumn ctermbg=black guibg=#202020 " Change the ColorColumn to lightgray
+        highlight CursorLine gui=underline guisp=#606060 " dark background
     endif
 
     " Set the autocommand group and remove existing mappings
@@ -51,12 +53,17 @@ source $HOME/.vim/NeoBundle.vim
         set backupdir=$HOME/.vimbackup     " but not when they clog .
         set directory=$HOME/.vimswap       " Same for swap files
         set viewdir=$HOME/.vimviews        " same for view files
+        if has('persistent_undo')
+            set undofile                " Turn on undofile functionality
+            set undodir=$HOME/.vimundo  " where to store backup files
+            " Create the file if it doesn't exist
+            silent execute '!mkdir -p $HOME/.vimundo'
+        endif
 
         " Creating directories if they don't exist
         silent execute '!mkdir -p $HOME/.vimbackup'
         silent execute '!mkdir -p $HOME/.vimswap'
         silent execute '!mkdir -p $HOME/.vimviews'
-        silent execute '!mkdir -p $HOME/.vimundo'
         "autocmd Vimrc BufWinLeave * silent! mkview  "make vim save view (state) (folds, cursor, etc)
         "autocmd Vimrc BufWinEnter * silent! loadview "make vim load view (state) (folds, cursor, etc)
     " }
@@ -120,17 +127,8 @@ source $HOME/.vim/NeoBundle.vim
     " Colors and Listchars {
         set list
         set cursorline                  " highlight current line
-        highlight clear CursorLine
-        "highlight cursorline guibg=#333333     " highlight bg color of current line
-        highlight CursorLine gui=underline guisp=lightgray " light background
-        "highlight CursorLine gui=underline guisp=#606060 " dark background
-
-        highlight ColorColumn ctermbg=black guibg=#202020 " Change the ColorColumn to lightgray
-        if $ITERM_PROFILE == 'tolarized Light'
-            highlight ColorColumn ctermbg=lightgray guibg=#202020 " Change the ColorColumn to lightgray
-        elseif $ITERM_PROFILE == 'Solarized Dark'
-            highlight ColorColumn ctermbg=black guibg=#202020 " Change the ColorColumn to lightgray
-        endif
+        set cursorcolumn                " highlight current column
+        " highlight clear CursorLine
 
         " u+2294 ⊔  u+231f ⌟  u+00bb »  u+2422 ␢  u+27ab ➫  u+2022 •  u+2027 ‧
         " u+2056 ⁖
