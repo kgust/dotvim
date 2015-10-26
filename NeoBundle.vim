@@ -147,7 +147,7 @@ NeoBundle 'tpope/vim-vinegar'
 NeoBundle 'tommcdo/vim-exchange'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'sjl/gundo.vim'
-NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundleLazy 'editorconfig/editorconfig-vim'
 NeoBundle 'zimbatm/direnv'
 NeoBundle 'vim-scripts/toggle_word.vim'
 "NeoBundle 'thinca/vim-fontzoom'
@@ -219,4 +219,7 @@ NeoBundle 'Shougo/vimproc.vim', {
 \     'unix' : 'gmake',
 \    },
 \ }
-NeoBundle 'Shougo/unite.vim'
+
+if version >= 703
+    NeoBundle 'Shougo/unite.vim'
+endif

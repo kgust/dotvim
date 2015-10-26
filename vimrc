@@ -13,11 +13,17 @@ source $HOME/.vim/NeoBundle.vim
     set autowrite
     set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
     set hidden                      " Turn on hidden mode
-    set undofile                    " Turn on undofile functionality
+    if has('persistent_undo')
+        set undofile                " Turn on undofile functionality
+        set undodir=$HOME/.vimundo  " where to store backup files
+    endif
     set autoread                    " If an unedited file is changed on disk,
-                                   "   automatically reload it
+                                    "   automatically reload it
     set smarttab
     set shell=bash                  " Use bash as vim's default shell
+
+    set exrc                        " Enable current directory config files
+    set secure                      " ...and secure them
 
     " 256 colors
     set t_Co=256
@@ -25,8 +31,10 @@ source $HOME/.vim/NeoBundle.vim
     colorscheme solarized
     " set clipboard=unnamed
 
-    set background=light
-    if $ITERM_PROFILE == 'Solarized Dark'
+    set background=dark
+    if $ITERM_PROFILE == 'Solarized Light'
+        set background=dark
+    elseif $ITERM_PROFILE == 'Solarized Dark'
         set background=dark
     endif
 
@@ -43,7 +51,6 @@ source $HOME/.vim/NeoBundle.vim
         set backupdir=$HOME/.vimbackup     " but not when they clog .
         set directory=$HOME/.vimswap       " Same for swap files
         set viewdir=$HOME/.vimviews        " same for view files
-        set undodir=$HOME/.vimundo         " same for undo files
 
         " Creating directories if they don't exist
         silent execute '!mkdir -p $HOME/.vimbackup'
@@ -80,7 +87,6 @@ source $HOME/.vim/NeoBundle.vim
         endif
 
         set backspace=indent,eol,start  " backspace for dummys
-        "set colorcolumn=80,120          " visible wrap here/long line indicator
         "set foldenable                  " auto fold code
         "set foldlevel=3                 " fold three or more lines
         set foldlevelstart=1            " start with topmost folds open
@@ -100,7 +106,9 @@ source $HOME/.vim/NeoBundle.vim
         set ttyfast                     " disable for slow terminals
         set visualbell                  " visible alerts
         set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
-        set wildignorecase              " ignore case with command line completion
+        if exists("&wildignorecase")
+            set wildignorecase          " ignore case with command line completion
+        endif
         set wildmenu                    " show list instead of just completing
         set wildmode=list:longest,full  " comand <Tab> completion, list matches, then longest common part, then all.
         "set winminheight=0              " windows can be 0 line high
@@ -117,9 +125,12 @@ source $HOME/.vim/NeoBundle.vim
         highlight CursorLine gui=underline guisp=lightgray " light background
         "highlight CursorLine gui=underline guisp=#606060 " dark background
 
-        "highlight CursorColumn guibg=#333333   " highlight cursor
-        highlight ColorColumn ctermbg=lightgray guibg=lightgray " Change the ColorColumn to lightgray
-        "highlight ColorColumn ctermbg=lightgray guibg=#202020 " Change the ColorColumn to lightgray
+        highlight ColorColumn ctermbg=black guibg=#202020 " Change the ColorColumn to lightgray
+        if $ITERM_PROFILE == 'tolarized Light'
+            highlight ColorColumn ctermbg=lightgray guibg=#202020 " Change the ColorColumn to lightgray
+        elseif $ITERM_PROFILE == 'Solarized Dark'
+            highlight ColorColumn ctermbg=black guibg=#202020 " Change the ColorColumn to lightgray
+        endif
 
         " u+2294 ⊔  u+231f ⌟  u+00bb »  u+2422 ␢  u+27ab ➫  u+2022 •  u+2027 ‧
         " u+2056 ⁖
@@ -163,13 +174,12 @@ source $HOME/.vim/NeoBundle.vim
             endif
         " }
 
-        if has('nvim')
-        " NeoVim {
-        " }
-        else
-        " Not NeoVim {
+        if exists("&cryptmethod")
             set cryptmethod=blowfish
-        " }
+        end
+
+        if has('nvim')
+        else
         endif
     " }
 
@@ -277,9 +287,11 @@ source $HOME/.vim/NeoBundle.vim
 
     " Airline {
         "NeoBundleSource vim-airline
-        let g:airline_powerline_fonts = 1
+        "let g:airline_powerline_fonts = 0
         " let g:airline#extensions#branch#enabled = 1
         " let g:airline#extensions#branch#format = 1
+        " let g:airline#extensions#tabline#left_sep = ' '
+        " let g:airline#extensions#tabline#left_alt_sep = '|'
     " }
     " Align {
         let g:DrChipTopLvlMenu= "&Plugin."
@@ -417,16 +429,9 @@ source $HOME/.vim/NeoBundle.vim
         let g:gundo_right = 1
     " }
     " Indent Guides {
-        let g:indent_guides_enable_on_vim_startup = 1
-        let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'conque-term']
+        let g:indent_guides_enable_on_vim_startup = 0
+        let g:indent_guides_exclude_filetypes = ['help', 'startify', 'nerdtree', 'conque-term']
         let g:indent_guides_default_mapping = 1
-
-        " when background = dark
-        " hi IndentGuidesOdd ctermbg=black
-        " hi IndentGuidesOdd ctermbg=darkgray
-        " when background = light
-        hi IndentGuidesOdd ctermbg=white guibg=FloralWhite
-        hi IndentGuidesEven ctermbg=lightgray guibg=linen
     " }
     " Laravel with Jeffery Way {
         " Fast saves
@@ -520,6 +525,9 @@ source $HOME/.vim/NeoBundle.vim
         onoremap ih :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<cr>
         onoremap ah :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rg_vk0"<cr>
 
+    " }
+    " Lightline {
+        NeoBundleSource lightline.vim
     " }
     " NerdCommenter {
         let g:NERDCustomDelimiters = {
