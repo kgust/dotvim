@@ -7,59 +7,48 @@ setlocal colorcolumn=80,120
 
 set commentstring=//\ %s
 
+let g:phpcomplete_index_composer_command="composer"
+"let NERD_php_alt_style=1
 
 " Automatically strip trailing spaces in PHP files when reading/writing
 augroup whitespace
     autocmd BufWritePre *.php call util#strip_trailing()
 augroup END
 
-" PDV PHPDoc Support {
-    if 1
-        let g:DisableAutoPHPFolding = 0
-
-        let g:pdv_cfg_Package = "StraightNorth"
-        "let g:pdv_cfg_Version = "2.0.4"
-        let g:pdv_cfg_Author = "K. Gustavson <kgustavson@straightnorth.com>"
-        let g:pdv_cfg_Copyright = "Copyright ".strftime("%Y")." Straight North, LLC. All Rights reserved."
-        let g:pdv_cfg_License = "Straight North All Rights Reserved {@link http://www.straightnorth.com/}"
-        let g:pdv_cfg_CommentEnd = ""
-
-        " PHP Syntax
-        let php_sql_query = 1
-        let php_baselib = 1
-        let php_htmlInStrings = 1
-        " let php_parent_error_close = 1
-
-        " runtimepath loads plugins after .vim {
-            syntax match phpNiceOperator "::" conceal cchar=∋ contained containedin=phpRegion
-            syntax match phpNiceOperator "=>" conceal cchar=⇛ contained containedin=phpRegion
-            syntax match phpNiceRelation "=>" conceal cchar=➮ contained containedin=phpRegion
-            syntax match phpNiceMemberSelector "\->" conceal cchar=→ contained containedin=phpRegion
-            syntax match phpNiceMethodsVar "\->" conceal cchar=→ contained containedin=phpRegion
-        " }
-
-
-        "inoremap <LocalLeader>pd <Esc>:call PhpDocSingle()<CR>
-        nnoremap <LocalLeader>d :call PhpDocSingle()<CR>
-        vnoremap <LocalLeader>d :call PhpDocRange()<CR>
-
-        ""let b:match_words = b:match_words . ',{:},(:),[:]'
-        nnoremap <LocalLeader>ff :EnableFastPHPFolds<CR>
-        vnoremap <LocalLeader>ff :EnableFastPHPFolds<CR>
-    endif
+" runtimepath loads plugins after .vim {
+    syntax match phpNiceOperator "::" conceal cchar=∷ contained containedin=phpRegion
+    syntax match phpNiceOperator "=>" conceal cchar=⇛ contained containedin=phpRegion
+    syntax match phpNiceRelation "=>" conceal cchar=➮ contained containedin=phpRegion
+    syntax match phpNiceMemberSelector "\->" conceal cchar=→ contained containedin=phpRegion
+    syntax match phpNiceMethodsVar "\->" conceal cchar=→ contained containedin=phpRegion
 " }
 
+
+"let b:match_words = b:match_words . ',{:},(:),[:]'
+nnoremap <LocalLeader>ff :EnableFastPHPFolds<CR>
+vnoremap <LocalLeader>ff :EnableFastPHPFolds<CR>
+
 " PDV 2 PHPDoc Support {
-    let g:pdv_template_dir = $HOME."/.vim/bundle/pdv/templates"
+    "let g:pdv_template_dir = $HOME."/.vim/bundle/pdv/templates"
     let g:PHP_removeCRwhenUnix = 1             " 0 is default
     let g:PHP_BracesAtCodeLevel = 0            " 0 is default
     let g:PHP_vintage_case_default_indent = 0  " 0 is default
-    nnoremap <buffer> <LocalLeader>pd :call pdv#DocumentCurrentLine()<CR>
+    nnoremap <LocalLeader>d :call pdv#DocumentWithSnip()<CR>
+    nnoremap <buffer> <LocalLeader>pd :call pdv#DocumentWithSnip()<CR>
 " }
 
 " PHP Namespace {
     inoremap <buffer><LocalLeader>ns <C-O>:call PhpInsertUse()><CR>
     noremap <buffer><LocalLeader>ns :call PhpInsertUse()><CR>
+
+    inoremap <LocalLeader>u <C-O>:call PhpInsertUse()<CR>
+    nnoremap <LocalLeader>u :call PhpInsertUse()<CR>
+
+    inoremap <LocalLeader>e <C-O>:call PhpExpandClass()<CR>
+    nnoremap <LocalLeader>e :call PhpExpandClass()<CR>
+
+    noremap <silent> <F1> :call util#OnlineDoc()<CR>
+    inoremap <silent> <F1> <ESC>:call util#OnlineDoc()<CR>
 " }
 
 " PhpQA {
@@ -102,21 +91,6 @@ augroup END
     let g:syntastic_php_phpcs_args = "--report=csv --standard=psr2"
 " }
 
-" OnlineDoc()
-function! OnlineDoc()
-    let s:wordUnderCursor = expand("<cword>")
-
-    if &ft =~ "php"
-        let s:url = "http://php.net/" . s:wordUnderCursor
-    else
-        execute "help " . s:wordUnderCursor
-        return
-    endif
-
-    let s:command = "silent !open " . s:url
-    execute s:command
-endfunction
-
 " Testing {
     " http://knplabs.com/blog/boost-your-productivity-with-sf2-and-vim
     " phpunit compilation
@@ -126,92 +100,11 @@ endfunction
 
     " Test a method
     nnoremap <LocalLeader>m yiw:!phpunit --filter <c-r>"<CR>
-    nnoremap <LocalLeader>t :call RunPhpTests()<cr>
-    nnoremap test :call RunPhpTests()<cr>
-" }
-
-" function! RunPhpTests() {
-    function! RunPhpTests()
-        if exists('$VENDORBIN')
-            let s:vendorbin = $VENDORBIN
-        else
-            let s:vendorbin = "./bin"
-        endif
-
-        if &ft =~ "codeception"
-            let g:php_last_test = "\nclear && ".s:vendorbin."/codecept run ".expand("%:.")."\n"
-            call SendToTmux(g:php_last_test)
-            redraw!
-            echom "Start codeception tests..."
-        elseif &ft =~ "phpunit"
-            " execute '!phpunit --groups active %:.'
-            let g:php_last_test = "\nclear && ".s:vendorbin."/phpunit --debug **/".expand("%:.")."\n"
-            " let g:php_last_test = "\nclear && ".s:vendorbin."/codecept run ".expand("%:.")."\n"
-            call SendToTmux(g:php_last_test)
-            redraw!
-            echom "Start phpunit tests..."
-        else
-            " Fall back to last test run
-            if exists('g:php_last_test')
-                call SendToTmux(g:php_last_test)
-                redraw!
-                echom "Running last test..."
-            else
-                call SendToTmux("\nclear && ".s:vendorbin."/codecept run functional\n")
-                redraw!
-                echom "Running codeception functional tests (default)..."
-            endif
-        endif
-    endfunction
+    nnoremap <LocalLeader>t :call php#run_tests()<cr>
+    nnoremap test :call php#run_tests()<cr>
 " }
 
 " Laravel - Jeffery Way {
-    " Concept - load underlying class for Laravel
-    function! FacadeLookup()
-        let facade = input('Facade Name: ')
-        let classes = {
-\           'Form': 'Html/FormBuilder.php',
-\           'Html': 'Html/HtmlBuilder.php',
-\           'File': 'Filesystem/Filesystem.php',
-\           'Eloquent': 'Database/Eloquent/Model.php'
-\       }
-
-        execute ":edit vendor/laravel/framework/src/Illuminate/" .  classes[facade]
-    endfunction
-
-
-    " Prepare a new PHP class
-    function! Class()
-        let name = input('Class name? ')
-        let namespace = input('Any Namespace? ')
-
-        if strlen(namespace)
-            exec 'normal i<?php namespace ' . namespace . ';
-        else
-            exec 'normal i<?php
-        endif
-
-        " Open class
-        exec 'normal iclass ' . name . ' {}^[O^['
-
-        exec 'normal i    public function __construct(){ }^['
-    endfunction
-
-    " Add a new dependency to a PHP class
-    function! AddDependency()
-        let dependency = input('Var Name: ')
-        let namespace = input('Class Path: ')
-
-        let segments = split(namespace, '\')
-        let typehint = segments[-1]
-
-        exec 'normal gg/construct:Hf)i, ' . typehint . ' $' . dependency . '^[/}^>O$this->^[a' . dependency . ' = $' . dependency . ';^[?{kOprotected $' . dependency . ';^[?{Ouse ' . namespace . ';^['
-
-        " Remove opening comma if there is only one dependency
-        exec 'normal :%s/(, /(/g
-    '
-    endfunction
-
 
     iabbrev <buffer> pft PHPUnit_Framework_TestCase
 
@@ -225,14 +118,13 @@ endfunction
     " nnoremap <leader>lcd :e app/config/database.php<cr>
     " nnoremap <leader>lc :e composer.json<cr>
 
-    " nmap <LocalLeader>fl :call FacadeLookup()<cr>
-    " nmap <LocalLeader>1 :call Class()<cr>
-    " nmap <LocalLeader>2 :call AddDependency()<cr>
+    " nmap <LocalLeader>fl :call php#FacadeLookup()<cr>
+    " nmap <LocalLeader>1 :call php#Class()<cr>
+    " nmap <LocalLeader>2 :call php#AddDependency()<cr>
 
     " set wildignore+=*/vendor/**
     set wildignore+=*/public/forum/**
 
-    " Testing
     " Extract variable for PHP
     nnoremap <LocalLeader>ev O<c-a> = <ESC>pa;
 
@@ -241,15 +133,4 @@ endfunction
 
     " var dump currently selected var
     nnoremap <LocalLeader>vd Bv2iwyodie(var_dump(<ESC>pa));<ESC>
-
-    " vim-php-namespace
-    inoremap <LocalLeader>u <C-O>:call PhpInsertUse()<CR>
-    nnoremap <LocalLeader>u :call PhpInsertUse()<CR>
-
-    inoremap <LocalLeader>e <C-O>:call PhpExpandClass()<CR>
-    nnoremap <LocalLeader>e :call PhpExpandClass()<CR>
-
-    noremap <silent> <F1> :call OnlineDoc()<CR>
-    inoremap <silent> <F1> <ESC>:call OnlineDoc()<CR>
 " }
-"let NERD_php_alt_style=1
