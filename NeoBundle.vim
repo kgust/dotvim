@@ -1,20 +1,19 @@
-" vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" vim: set foldmarker={{{,}}} foldlevel=0 foldmethod=marker spell:
 
-" NeoBundle Auto-install {
+" NeoBundle Auto-install {{{
     " Setting up Vundle - the vim plugin bundler
     " Credit: http://www.erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc/
     let iCanHazVundle=1
-    let neobundle_readme=expand('~/.vim/bundle/neobundle.vim/README.md')
+    let neobundle_readme=expand('~/.config/nvim/bundle/neobundle.vim/README.md')
     if !filereadable(neobundle_readme)
         echo "Installing neobundle.vim."
         echo ""
-        silent !mkdir -p ~/.vim/bundle
-        silent !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+        silent !mkdir -p ~/.config/nvim/bundle
+        silent !git clone https://github.com/Shougo/neobundle.vim ~/.config/nvim/bundle/neobundle.vim
         let iCanHazVundle=0
     endif
-" }
-
-" NeoBundle Required Section {
+" }}}
+" NeoBundle Required Section {{{
 
     " Note: Skip initialization for vim-tiny or vim-small
     if 0 | endif
@@ -25,11 +24,11 @@
         endif
 
         " Required:
-        set runtimepath+=~/.vim/bundle/neobundle.vim/
+        set runtimepath+=~/.config/nvim/bundle/neobundle.vim/
     endif
 
     " Required:
-    call neobundle#begin(expand('~/.vim/bundle/'))
+    call neobundle#begin(expand('~/.config/nvim/bundle/'))
 
     " Let NeoBundle manage NeoBundle
     " Required:
@@ -42,34 +41,23 @@
     " If there are uninstalled bundles found on startup,
     " this will conveniently prompt you to install them.
     NeoBundleCheck
-" }
+" }}}
 
-
-""""""""""""
-" EXAMPLES "
-""""""""""""
-
-
-"""""""""""
-" KG Mine "
-"""""""""""
+" KG Mine {{{
 NeoBundle 'kgust/snippet-templates'
+" }}}
 
-""""""""""""""""""""""
-" $VIMRUNTIME        "
-" - Replace Defaults "
-""""""""""""""""""""""
+" $VIMRUNTIME Replace Defaults "
 NeoBundle 'vim-scripts/matchit.zip'
 "NeoBundle 'tpope/vim-projectionist'
 NeoBundle 'tobyS/vmustache'
 
-"""""""""""
-" GENERAL "
-"""""""""""
+" GENERAL {{{
 
-" Colors
+" Themes
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'chriskempson/base16-vim'
+NeoBundle 'NLKNguyen/papercolor-theme'
 
 " Polyglot
 NeoBundle 'sheerun/vim-polyglot'
@@ -77,11 +65,11 @@ NeoBundle 'sheerun/vim-polyglot'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'edkolev/tmuxline.vim'
 
-"""""""""""""
-" FILETYPES "
-"""""""""""""
+" }}}
+" FILETYPES {{{
 
 " PHP
+NeoBundleLazy 'alvan/vim-php-manual'
 NeoBundleLazy 'joonty/vim-phpqa'
 NeoBundleLazy 'arnaud-lb/vim-php-namespace'
 NeoBundleLazy 'afternoon/vim-phpunit'
@@ -133,17 +121,14 @@ NeoBundleLazy 'kgust/sql.vim'
 NeoBundleLazy 'kana/vim-vspec'
 NeoBundleLazy 'tpope/vim-scriptease'
 
+" }}}
+" SOCIAL {{{
 
-""""""""""
-" SOCIAL "
-""""""""""
 " NeoBundle 'ironcamel/vimchat'
 NeoBundle 'ryanss/vim-hackernews'
 
-
-"""""""""""""
-" UTILITIES "
-"""""""""""""
+" }}}
+" UTILITIES {{{
 
 " Usage
 NeoBundle 'scrooloose/nerdtree'
@@ -173,9 +158,10 @@ NeoBundle 'junegunn/vim-emoji'
 NeoBundle 'powerman/vim-plugin-AnsiEsc'
 NeoBundleLazy 'bling/vim-airline'
 NeoBundleLazy 'itchyny/lightline.vim'
+NeoBundle 'KabbAmine/gulp-vim'
 
 " External Programs
-NeoBundle 'trammell/vim-conque'
+"NeoBundle 'trammell/vim-conque'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'zweifisch/pipe2eval'
 NeoBundle 'jgdavey/tslime.vim'
@@ -197,6 +183,8 @@ NeoBundle 'gregsexton/gitv'
 NeoBundle 'tomtom/tcomment_vim'
 " NeoBundle 'tpope/vim-commentary'
 NeoBundle 'scrooloose/syntastic'
+NeoBundleLazy 'jebberjeb/vim-pivotal-tracker'
+NeoBundle 'https://github.com/khadiwala/wundervim'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
 
@@ -204,6 +192,7 @@ NeoBundle 'tpope/vim-unimpaired'
 " NeoBundle 'xolox/vim-misc'
 " NeoBundle 'xolox/vim-shell'
 " NeoBundle 'xolox/vim-easytags'
+NeoBundle 'https://bitbucket.org/dfrank/vim-indexer'
 
 NeoBundle 'mhinz/vim-startify'
 NeoBundle 'nathanaelkane/vim-indent-guides'
@@ -228,5 +217,7 @@ NeoBundle 'Shougo/vimproc.vim', {
 if version >= 703
     NeoBundle 'Shougo/unite.vim'
 endif
+
+" }}}
 
 call neobundle#end()
