@@ -5,5 +5,5 @@ setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 inoremap <buffer> <? </
 
 augroup whitespace
-    autocmd BufWritePre *.html call whitespace#strip_trailing()
+    autocmd BufWritePre *.html call util#strip_trailing()
 augroup END

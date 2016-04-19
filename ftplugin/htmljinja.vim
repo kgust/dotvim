@@ -29,7 +29,7 @@ set softtabstop=4
 set shiftwidth=4
 set list
 set foldmethod=marker
-set foldmarker=block,endblock
+set foldmarker={%\ block,{%\ endblock
 set foldlevel=0
 UltiSnipsAddFiletypes jinja2.html
 " KG: End
@@ -87,7 +87,7 @@ if exists("b:match_words")
 endif
 
 augroup whitespace
-    autocmd BufWritePre *.twig call whitespace#strip_trailing()
+    autocmd BufWritePre *.twig call util#strip_trailing()
 augroup END
 
 " vim:ft=vim:fdm=marker

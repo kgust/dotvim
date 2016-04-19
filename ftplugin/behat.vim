@@ -21,5 +21,5 @@ endif
 compiler behat
 
 augroup whitespace
-    autocmd BufWritePre *.feature call whitespace#strip_trailing()
+    autocmd BufWritePre *.feature call util#strip_trailing()
 augroup END

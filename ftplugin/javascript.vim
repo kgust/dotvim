@@ -27,7 +27,7 @@ let b:javascript_fold = 1
 let b:javascript_enable_domhtmlcss = 1
 
 augroup whitespace
-  autocmd BufWritePre *.js call whitespace#strip_trailing()
+  autocmd BufWritePre *.js call util#strip_trailing()
 augroup END
 
 " Syntax Checking {

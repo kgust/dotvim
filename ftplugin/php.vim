@@ -28,7 +28,7 @@ NeoBundleSource vim-symfony
 
 " Automatically strip trailing spaces in PHP files when reading/writing
 augroup whitespace
-    autocmd BufWritePre *.php call whitespace#strip_trailing()
+    autocmd BufWritePre *.php call util#strip_trailing()
 augroup END
 
 " PDV PHPDoc Support {

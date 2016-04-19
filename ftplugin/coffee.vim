@@ -1,6 +1,6 @@
 " FileType settings for Coffeescript
 
-NeoBundleSource vim-coffee-script
+" NeoBundleSource vim-coffee-script
 
 setlocal foldmethod=expr
 setlocal foldexpr=GetCoffeeScriptFold(v:lnum)
@@ -50,5 +50,5 @@ function! NextNonBlankLine(lnum)
 endfunction
 
 augroup whitespace
-    autocmd BufWritePre *.coffee call whitespace#strip_trailing()
+    autocmd BufWritePre *.coffee call util#strip_trailing()
 augroup END
