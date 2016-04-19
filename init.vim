@@ -1,14 +1,17 @@
 " vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
 
 " My Bundles are here:
-source $HOME/.vim/NeoBundle.vim
+"source $HOME/.config/nvim/NeoBundle.vim
+source $HOME/.config/nvim/dein.vim
 
 " General Settings {
     let s:uname = system('uname') " What system am I using?
 
     set nrformats-=octal          " Don't treat numbers with leading zeros as octal
     scriptencoding utf-8
-    set encoding=utf-8
+    if has('nvim')
+        set encoding=utf-8
+    endif
     syntax on
     set autowrite
     set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
@@ -16,7 +19,7 @@ source $HOME/.vim/NeoBundle.vim
     set autoread                    " If an unedited file is changed on disk,
                                     "   automatically reload it
     set smarttab
-    set shell=bash                  " Use bash as vim's default shell
+    " set shell=bash                  " Use bash as vim's default shell
 
     set exrc                        " Enable current directory config files
     set secure                      " ...and secure them
@@ -24,21 +27,24 @@ source $HOME/.vim/NeoBundle.vim
     " 256 colors
     set t_Co=256
     let g:Powerline_symbols = 'fancy'
-    colorscheme solarized
-    " set clipboard=unnamed
+    colorscheme solarized "PaperColor
+    set clipboard=unnamed
 
-    set background=light
-    highlight ColorColumn ctermbg=lightgray guibg=#202020 " Change the ColorColumn to lightgray
-    highlight CursorLine gui=underline guisp=lightgray
-    if $ITERM_PROFILE == 'Solarized Light'
-        set background=light
-        highlight ColorColumn ctermbg=lightgray guibg=#202020 " Change the ColorColumn to lightgray
-        highlight CursorLine gui=underline guisp=lightgray " light background
-    elseif $ITERM_PROFILE == 'Solarized Dark'
-        set background=dark
-        highlight ColorColumn ctermbg=black guibg=#202020 " Change the ColorColumn to lightgray
-        highlight CursorLine gui=underline guisp=#606060 " dark background
-    endif
+    set background=dark
+    " highlight ColorColumn ctermbg=lightgray guibg=#202020 " Change the ColorColumn to lightgray
+    " highlight CursorLine gui=underline ctermbg=231 guisp=lightgray
+    " highlight CursorColumn gui=underline ctermbg=231 guisp=lightgray
+    " if $ITERM_PROFILE == 'Solarized Light'
+    "     set background=light
+    "     highlight ColorColumn ctermbg=lightgray guibg=#202020 " Change the ColorColumn to lightgray
+    "     highlight CursorLine gui=underline ctermbg=231 guisp=lightgray " light background
+    "     highlight CursorColumn gui=underline ctermbg=231 guisp=lightgray
+    " elseif $ITERM_PROFILE == 'Solarized Dark'
+    "     set background=dark
+    "     highlight ColorColumn ctermbg=black guibg=#202020 " Change the ColorColumn to lightgray
+    "     highlight CursorLine gui=underline guisp=#606060 " dark background
+    "     highlight CursorColumn gui=#606060 ctermbg=lightgray guisp=lightgray
+    " endif
 
     " Set the autocommand group and remove existing mappings
     augroup Vimrc
@@ -89,13 +95,11 @@ source $HOME/.vim/NeoBundle.vim
 
         if has('statusline')
             set laststatus=2             " show statusline always
-            " Use the commented line if fugitive isn't installed
-            "set statusline=%<%f\ %=\:\b%n%y%m%r%w\ %l,%c%V\ %P " a statusline, also on steroids
         endif
 
         set backspace=indent,eol,start  " backspace for dummys
-        "set foldenable                  " auto fold code
-        "set foldlevel=3                 " fold three or more lines
+        set foldenable                  " auto fold code
+        set foldlevel=3                 " fold three or more lines
         set foldlevelstart=1            " start with topmost folds open
         set gdefault                    " the /g flag on :s substitutions by default
         set hlsearch                    " highlight search terms
@@ -103,7 +107,8 @@ source $HOME/.vim/NeoBundle.vim
         set incsearch                   " find as you type search
         "set linespace=1                 " spaces between rows
         set noerrorbells                " don't beep
-        set number                      " Line numbers on
+        set relativenumber              " Relative line numbers on
+        set number                      " Line number (in relative mode still shows the current number
         set scrolljump=5                " lines to scroll when cursor leaves screen
         set scrolloff=3                 " minimum lines to keep above and below cursor
         set showmatch                   " show matching brackets/parenthesis
@@ -247,9 +252,9 @@ source $HOME/.vim/NeoBundle.vim
             nnoremap <Leader>v V`]
 
             " edit .vimrc in a vertical window
-            nnoremap ev :vsplit $HOME/.vim/vimrc<cr>
+            nnoremap ev :vsplit $MYVIMRC<cr>
             nnoremap sv :source $MYVIMRC<cr>:filetype detect<cr>:exe ":echo 'vimrc reloaded'"<cr>
-            nnoremap <Leader>ev :vsplit $HOME/.vim/vimrc<cr>
+            nnoremap <Leader>ev :vsplit $MYVIMRC<cr>
             nnoremap <Leader>sv :source $MYVIMRC<cr>
 
             " Don't copy the contents of an overwritten selection.
@@ -284,6 +289,7 @@ source $HOME/.vim/NeoBundle.vim
 " Vim Plugins {
 
     " Airline {
+        let g:airline_theme='PaperColor'
         "NeoBundleSource vim-airline
         "let g:airline_powerline_fonts = 0
         " let g:airline#extensions#branch#enabled = 1
@@ -337,6 +343,15 @@ source $HOME/.vim/NeoBundle.vim
         let g:dbgPavimPort = 9000
         let g:dbgPavimBreakAtEntry = 0
     " }
+    " deoplete {
+        let g:deoplete#enable_at_startup = 1
+        let g:deoplete#file#enable_buffer_path = 1
+        let g:deoplete#enable_smart_case = 1
+        let g:deoplete#omni_patterns = {}
+        let g:deoplete#omni_patterns.java = '[^. *\t]\.\w*'
+        let g:deoplete#omni_patterns.php =
+                    \ '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+    " }
     " direnv {
         if exists("$EXTRA_VIM")
             for path in split($EXTRA_VIM, ':')
@@ -376,12 +391,6 @@ source $HOME/.vim/NeoBundle.vim
         silent! nmap <unique> <silent> <C-ScrollWheelDown> <Plug>(fontzoom-smaller)
     " }
     " Fugitive {
-        "let g:fugitive_git_executable = 'myGit'
-
-        " if has('statusline')
-        "     set statusline=%<%f\ %h%m%r%fugitive#statusline()%=%-14.(%l,%c%V%)\ %P
-        " endif
-
         autocmd Vimrc BufReadPost fugitive://* set bufhidden=delete
 
         autocmd Vimrc User fugitive
@@ -391,7 +400,6 @@ source $HOME/.vim/NeoBundle.vim
 
         set errorformat+='%f:%l:%m'
         set diffopt+=vertical
-
     " }
     " Geeknote {
         let g:GeeknoteFormat="markdown"
@@ -417,7 +425,7 @@ source $HOME/.vim/NeoBundle.vim
             let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
             let g:gitgutter_sign_modified_removed = emoji#for('collision')
         endif
-        let g:gitgutter_enabled = 0
+        let g:gitgutter_enabled = 1
         nnoremap <leader>gg :GitGutterToggle<cr>
     " }
     " Gundo {
@@ -492,6 +500,7 @@ source $HOME/.vim/NeoBundle.vim
         iabbrev ssig -- <cr>Kevin Gustavson<cr>Software Developer<cr>kgustavson@straightnorth.com
         " autocorrect ddate to "Monday 1/14/13"
         iab ddate <C-R>=strftime("%a %m/%d/%y")<CR>
+        " iab RC REDCap
 
         " Filler text
         iabbrev nitt Now is the time for all good men to come to the aid of their country.
@@ -525,7 +534,7 @@ source $HOME/.vim/NeoBundle.vim
 
     " }
     " Lightline {
-        NeoBundleSource lightline.vim
+        " NeoBundleSource lightline.vim
     " }
     " NerdCommenter {
         let g:NERDCustomDelimiters = {
@@ -546,37 +555,19 @@ source $HOME/.vim/NeoBundle.vim
     " Netrw {
         let g:netrw_liststyle=3
     " }
-    " OmniComplete {
-        "if has("autocmd") && exists("+omnifunc")
-            "autocmd Vimrc Filetype *
-                "\if &omnifunc == "" |
-                "\setlocal omnifunc=syntaxcomplete#Complete |
-                "\endif
-        "endif
-
-        " Popup menu hightLight Group
-        "highlight Pmenu     ctermbg=13     guibg=DarkBlue
-        highlight PmenuSel     ctermbg=7     guibg=DarkBlue         guifg=LightBlue
-        "highlight PmenuSbar ctermbg=7     guibg=DarkGray
-        "highlight PmenuThumb             guibg=Black
-
-        highlight Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
-        highlight PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
-        highlight PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
-
-        " some convenient mappings
-        inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-        inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
-        inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-        inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-        inoremap <expr> <C-d>        pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
-        inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
-
-        " automatically open and close the popup menu / preview window
-        autocmd Vimrc CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-        set completeopt=menu,longest,preview
-
-        let g:phpcomplete_index_composer_command = "composer"
+    " Padawan {
+        let $PATH=$PATH . ':' . expand('~/.composer/vendor/bin')
+        let g:padawan#composer_command = "composer"
+    " }
+    " pdv (phpdocumentor) {
+        let g:pdv_template_dir = $HOME . "/.config/nvim/repos/github.com/tobyS/pdv/templates_snip"
+    " }
+    " php-cs-fixer {
+        " let g:php_cs_fixer_config_file='.php_cs' " wasn't working
+        let g:php_cs_fixer_level = 'symfony'
+        let g:php_cs_fixer_fixers_list = "-phpdoc_scalar, -phpdoc_short_description, -unalign_double_arrow, -unalign_equals, align_double_arrow, align_equals, ordered_use"
+        let g:php_cs_fixer_verbose = 1
+        let g:php_cs_fixer_dry_run = 1
     " }
     " Powerline {
         "set rtp+=/Users/kgustavson/powerline/powerline/bindings/vim
@@ -608,14 +599,14 @@ source $HOME/.vim/NeoBundle.vim
         \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
     " }
     " Supertab {
-        "let g:SuperTabDefaultCompletionType = "context"
-        "let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+        " let g:SuperTabDefaultCompletionType = "context"
+        " let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
     " }
     " Symfony {
         " disable the mapping of Symfony's console
         let g:symfony_enable_shell_mapping = 0
         " remap it (default is <C-F>)
-        "noremap <Leader>sfc :execute ":!"g:symfony_enable_shell_cmd<CR>
+        noremap <Leader>sy :execute ":!"g:symfony_enable_shell_cmd<CR>
 
         " first set path
         set path+=**
@@ -654,7 +645,7 @@ source $HOME/.vim/NeoBundle.vim
         let g:syntax_js=['function', 'return', 'solarized']
     " }
     " Tagbar {
-        let g:tagbar_left = 1
+        let g:tagbar_left = 0
         nnoremap <leader>] :TagbarToggle<cr>
     " }
     " TMux and Tslime {
@@ -686,7 +677,7 @@ source $HOME/.vim/NeoBundle.vim
     " }
     " Whitespace {
         " NOTE: most whitespace settings are ftplugin/*
-        nnoremap <leader>w :call whitespace#strip_trailing()<cr>
+        nnoremap <leader>w :call util#strip_trailing()<cr>
     " }
 " }
 
@@ -734,3 +725,6 @@ function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
                 \ contains=@'.group
 endfunction
 " }
+
+" Ensure Vim help is up to date
+helptags $VIMRUNTIME/doc

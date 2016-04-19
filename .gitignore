@@ -6,6 +6,7 @@ dbext.vim
 evernote_auth.vim
 vim-github-dashboard.vim
 github-issues.vim
+vim-pivotal-tracker.vim
 
 # Generated files
 tags
@@ -14,3 +15,12 @@ tags
 #flavors/
 bundle/*
 plugged/*
+
+# Dein Plugin Manager
+.dein/
+merged
+myrepos/
+repos/
+rollbacks/
+temp/
+

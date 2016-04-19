@@ -7,24 +7,6 @@ setlocal colorcolumn=80,120
 
 set commentstring=//\ %s
 
-NeoBundleSource php.vim
-NeoBundleSource pdv
-NeoBundleSource phpfolding.vim
-NeoBundleSource vim-php-namespace
-NeoBundleSource vim-php-cs-fixer
-NeoBundleSource vim-cute-php
-
-NeoBundleSource vim-symfony
-"NeoBundleSource vim-blade
-
-" NeoBundleSource DBGPavim
-" NeoBundleSource vim-phpqa
-" NeoBundleSource vim-behat
-" NeoBundleSource phpcomplete.vim
-" NeoBundleSource PHP-Indenting-for-VIm
-
-" BROKEN with NeoBundleLazy
-" NeoBundleSource vim-phpunit
 
 " Automatically strip trailing spaces in PHP files when reading/writing
 augroup whitespace
