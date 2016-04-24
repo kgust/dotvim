@@ -1,8 +1,8 @@
 " vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
 
 " My Bundles are here:
-"source $HOME/.config/nvim/NeoBundle.vim
-source $HOME/.config/nvim/dein.vim
+"source $XDG_CONFIG_HOME/nvim/NeoBundle.vim
+source $XDG_CONFIG_HOME/nvim/dein.vim
 
 " General Settings {
     let s:uname = system('uname') " What system am I using?
@@ -55,15 +55,15 @@ source $HOME/.config/nvim/dein.vim
     augroup END
 
     " Set up the directories {
-        set backup                         " backups are nice ...
-        set backupdir=$HOME/.vimbackup     " but not when they clog .
-        set directory=$HOME/.vimswap       " Same for swap files
-        set viewdir=$HOME/.vimviews        " same for view files
+        set backup                                  " backups are nice ...
+        set backupdir=$XDG_DATA_HOME/nvim/backup,.    " but not when they clog .
+        " set directory=$HOME/.vimswap              " Same for swap files
+        " set viewdir=$HOME/.vimviews               " same for view files
         if has('persistent_undo')
             set undofile                " Turn on undofile functionality
-            set undodir=$HOME/.vimundo  " where to store backup files
-            " Create the file if it doesn't exist
-            silent execute '!mkdir -p $HOME/.vimundo'
+        "     set undodir=$HOME/.vimundo  " where to store backup files
+        "     " Create the file if it doesn't exist
+        "     silent execute '!mkdir -p $HOME/.vimundo'
         endif
 
         " Creating directories if they don't exist
@@ -560,7 +560,7 @@ source $HOME/.config/nvim/dein.vim
         let g:padawan#composer_command = "composer"
     " }
     " pdv (phpdocumentor) {
-        let g:pdv_template_dir = $HOME . "/.config/nvim/repos/github.com/tobyS/pdv/templates_snip"
+        let g:pdv_template_dir = $XDG_CONFIG_HOME."/nvim/repos/github.com/tobyS/pdv/templates_snip"
     " }
     " php-cs-fixer {
         " let g:php_cs_fixer_config_file='.php_cs' " wasn't working
@@ -666,10 +666,9 @@ source $HOME/.config/nvim/dein.vim
         endif
     " }
     " UltiSnips {
-        let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
         let g:UltiSnipsExpandTrigger = "<c-j>"
         "let g:UltiSnipsSnippetDirectories = ['UltiSnips']
-        "let g:UltiSnipsListSnippets = "<c-s-tab>""
+        let g:UltiSnipsListSnippets = "<c-s-tab>""
     " }
     " YouCompleteMe {
         let g:ycm_key_list_previous_completion=['<Up>']
