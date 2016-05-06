@@ -135,5 +135,5 @@ vnoremap <LocalLeader>ff :EnableFastPHPFolds<CR>
     nnoremap <LocalLeader>vd Bv2iwyodie(var_dump(<ESC>pa));<ESC>
 " }
 
-# Start the Padawan Server
+" Start the Padawan Server
 call padawan#RestartServer()
